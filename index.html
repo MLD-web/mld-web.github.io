@@ -3,22 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MLD | Potenciamos tu Marca</title>
-    <meta name="description" content="MLD - Agencia de marketing y publicidad enfocada en creatividad, innovación y resultados medibles.">
+    <title>MLD | Marca La Diferencia | Agencia de Marketing y Publicidad</title>
+    <meta name="description" content="MLD - Agencia de marketing y publicidad enfocada en branding, marketing digital y resultados medibles. Marca La Diferencia con nuestras estrategias creativas e innovadoras.">
+    <!-- Open Graph -->
+    <meta property="og:title" content="MLD | Marca La Diferencia | Agencia de Marketing y Publicidad">
+    <meta property="og:description" content="Transformamos ideas en estrategias creativas que conectan y generan resultados medibles.">
+    <meta property="og:image" content="assets/logo.jpeg">
+    <meta property="og:type" content="website">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --mld-orange: #ff6600;
+            --mld-black: #000000;
+            --mld-white: #ffffff;
+        }
+    </style>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#4F46E5',
-                        secondary: '#F97316',
-                        dark: '#1F2937',
+                        primary: '#ff6600',
+                        accent: '#ff6600',
+                        dark: '#000000',
+                        light: '#ffffff',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -31,66 +44,77 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="font-sans bg-gray-50 text-dark">
+<body class="font-sans bg-black text-white">
     <!-- Navbar -->
-    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex-shrink-0 flex items-center gap-3">
-                    <img src="assets/logo.jpeg" alt="MLD Logo" class="h-10 w-10 object-cover rounded-lg shadow-sm">
-                    <span class="text-2xl font-heading font-extrabold text-primary">MLD</span>
+                    <img src="assets/logo.jpeg" alt="MLD Logo" class="h-10 w-10 object-cover rounded-lg">
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-heading font-extrabold text-white leading-none">MLD</span>
+                        <span class="text-[10px] text-primary font-bold tracking-[0.2em] uppercase">Marca La Diferencia</span>
+                    </div>
                 </div>
                 <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#inicio" class="text-gray-600 hover:text-primary transition font-medium">Inicio</a>
-                    <a href="#nosotros" class="text-gray-600 hover:text-primary transition font-medium">Nosotros</a>
-                    <a href="#servicios" class="text-gray-600 hover:text-primary transition font-medium">Servicios</a>
-                    <a href="#portafolio" class="text-gray-600 hover:text-primary transition font-medium">Portafolio</a>
-                    <a href="#contacto" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition font-semibold shadow-lg shadow-primary/20">Cotizar ahora</a>
+                    <a href="#inicio" class="text-gray-300 hover:text-primary transition font-medium">Inicio</a>
+                    <a href="#nosotros" class="text-gray-300 hover:text-primary transition font-medium">Nosotros</a>
+                    <a href="#servicios" class="text-gray-300 hover:text-primary transition font-medium">Servicios</a>
+                    <a href="#portafolio" class="text-gray-300 hover:text-primary transition font-medium">Portafolio</a>
+                    <a href="#contacto" class="bg-primary text-white px-6 py-2 rounded-full hover:scale-105 transition transform duration-300 font-semibold shadow-lg shadow-primary/20">Cotizar ahora</a>
                 </div>
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button" class="text-gray-600 focus:outline-none">
+                    <button id="mobile-menu-button" class="text-white focus:outline-none">
                         <i data-lucide="menu" class="w-8 h-8"></i>
                     </button>
                 </div>
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 px-4 pt-2 pb-6 space-y-2">
-            <a href="#inicio" class="block py-2 text-gray-600 hover:text-primary">Inicio</a>
-            <a href="#nosotros" class="block py-2 text-gray-600 hover:text-primary">Nosotros</a>
-            <a href="#servicios" class="block py-2 text-gray-600 hover:text-primary">Servicios</a>
-            <a href="#portafolio" class="block py-2 text-gray-600 hover:text-primary">Portafolio</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-black border-b border-white/10 px-4 pt-2 pb-6 space-y-2">
+            <a href="#inicio" class="block py-2 text-gray-300 hover:text-primary">Inicio</a>
+            <a href="#nosotros" class="block py-2 text-gray-300 hover:text-primary">Nosotros</a>
+            <a href="#servicios" class="block py-2 text-gray-300 hover:text-primary">Servicios</a>
+            <a href="#portafolio" class="block py-2 text-gray-300 hover:text-primary">Portafolio</a>
             <a href="#contacto" class="block py-2 text-primary font-bold">Cotizar ahora</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="inicio" class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
-        <div class="absolute top-0 right-0 -z-10 w-1/3 h-full bg-gradient-to-l from-primary/5 to-transparent"></div>
+    <section id="inicio" class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-black">
+        <!-- Abstract Background Elements -->
+        <div class="absolute top-0 right-0 -z-10 w-1/2 h-full bg-gradient-to-l from-primary/10 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 -z-10 w-64 h-64 bg-primary/20 rounded-full blur-[120px]"></div>
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <span class="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-sm font-bold tracking-wider uppercase mb-6">Creatividad que genera impacto</span>
-                    <h1 class="text-4xl md:text-6xl font-heading font-extrabold leading-tight mb-6">
-                        Potenciamos tu marca con <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">estrategia e innovación</span>
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1">
+                    <span class="inline-block py-1 px-4 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-bold tracking-widest uppercase mb-6 animate-pulse">Marca La Diferencia</span>
+                    <h1 class="text-5xl md:text-7xl font-heading font-extrabold leading-tight mb-8">
+                        Elevamos tu marca al <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-400">siguiente nivel</span>
                     </h1>
-                    <p class="text-lg text-gray-600 mb-10 leading-relaxed">
-                        Transformamos ideas en estrategias creativas que conectan con tu público objetivo y generan resultados medibles. Somos el motor de crecimiento para marcas que buscan destacar.
+                    <p class="text-xl text-gray-400 mb-10 leading-relaxed max-w-lg">
+                        MLD transforma ideas en estrategias creativas e innovadoras que conectan con el público objetivo y generan resultados medibles.
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#contacto" class="flex items-center justify-center bg-primary text-white px-8 py-4 rounded-xl hover:bg-opacity-90 transition font-bold text-lg shadow-xl shadow-primary/20">
-                            Agenda una llamada
-                            <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                    <div class="flex flex-col sm:flex-row gap-5">
+                        <a href="https://wa.me/51963198424" target="_blank" class="flex items-center justify-center bg-primary text-white px-10 py-5 rounded-full hover:scale-105 transition transform duration-300 font-bold text-lg shadow-2xl shadow-primary/30">
+                            Hablar por WhatsApp
+                            <i data-lucide="message-circle" class="ml-2 w-6 h-6"></i>
                         </a>
-                        <a href="#servicios" class="flex items-center justify-center bg-white border-2 border-gray-100 text-dark px-8 py-4 rounded-xl hover:bg-gray-50 transition font-bold text-lg">
-                            Ver servicios
+                        <a href="tel:+51963198424" class="flex items-center justify-center bg-transparent border border-white/20 text-white px-10 py-5 rounded-full hover:bg-white/5 transition transform duration-300 font-bold text-lg">
+                            Llamar ahora
                         </a>
                     </div>
                 </div>
-                <div class="relative">
-                    <div class="w-full h-[400px] md:h-[500px] bg-gradient-to-tr from-primary to-secondary rounded-3xl rotate-3 absolute -inset-1 opacity-20 blur-2xl"></div>
-                    <div class="relative bg-white p-4 rounded-3xl shadow-2xl">
-                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=2070" alt="Agencia de marketing" class="rounded-2xl w-full h-full object-cover">
+                <div class="order-1 md:order-2 relative group">
+                    <!-- Glow effect -->
+                    <div class="absolute -inset-4 bg-primary/30 rounded-full blur-3xl opacity-50 group-hover:opacity-100 transition duration-1000"></div>
+                    <!-- 3D Logo Container -->
+                    <div class="relative transition-transform duration-700 group-hover:scale-105 group-hover:rotate-1">
+                        <img src="assets/logo.jpeg" alt="MLD 3D Logo" class="w-full max-w-[500px] mx-auto drop-shadow-[0_35px_35px_rgba(255,102,0,0.3)] rounded-3xl">
+                        <!-- Decorative 3D elements (abstract) -->
+                        <div class="absolute -top-10 -right-10 w-20 h-20 bg-primary/20 backdrop-blur-3xl rounded-xl rotate-12 animate-bounce transition-all duration-1000" style="animation-duration: 4s;"></div>
+                        <div class="absolute -bottom-8 -left-8 w-16 h-16 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-full animate-pulse"></div>
                     </div>
                 </div>
             </div>
@@ -98,52 +122,55 @@
     </section>
 
     <!-- About Us Section -->
-    <section id="nosotros" class="py-24 bg-white">
+    <section id="nosotros" class="py-32 bg-black relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="order-2 md:order-1 grid grid-cols-2 gap-4">
-                    <div class="space-y-4">
-                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1000" alt="Team 1" class="rounded-2xl shadow-lg">
-                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=1000" alt="Team 2" class="rounded-2xl shadow-lg">
-                    </div>
-                    <div class="pt-8 space-y-4">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1000" alt="Team 3" class="rounded-2xl shadow-lg">
-                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=1000" alt="Team 4" class="rounded-2xl shadow-lg">
+            <div class="grid md:grid-cols-2 gap-20 items-center">
+                <div class="order-2 md:order-1 relative">
+                    <div class="absolute -inset-10 bg-primary/5 rounded-full blur-[100px]"></div>
+                    <div class="relative grid grid-cols-2 gap-6">
+                        <div class="space-y-6">
+                            <img src="https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=800" alt="Abstract 3D 1" class="rounded-3xl shadow-2xl border border-white/10 hover:border-primary/50 transition duration-500">
+                            <img src="https://images.unsplash.com/photo-1633167606207-d840b5070fc2?auto=format&fit=crop&q=80&w=800" alt="Abstract 3D 2" class="rounded-3xl shadow-2xl border border-white/10 hover:border-primary/50 transition duration-500 translate-x-4">
+                        </div>
+                        <div class="pt-12 space-y-6">
+                            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800" alt="Abstract 3D 3" class="rounded-3xl shadow-2xl border border-white/10 hover:border-primary/50 transition duration-500">
+                            <img src="https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?auto=format&fit=crop&q=80&w=800" alt="Abstract 3D 4" class="rounded-3xl shadow-2xl border border-white/10 hover:border-primary/50 transition duration-500 -translate-x-4">
+                        </div>
                     </div>
                 </div>
                 <div class="order-1 md:order-2">
-                    <h2 class="text-3xl md:text-4xl font-heading font-extrabold mb-6">¿Quiénes somos?</h2>
-                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                        Somos un equipo apasionado de estrategas, creativos y analistas que creen en el poder de las ideas para transformar negocios. No solo creamos campañas; construimos conexiones significativas entre marcas y personas.
+                    <h2 class="text-4xl md:text-5xl font-heading font-extrabold mb-8 tracking-tight">Trascendemos lo <span class="text-primary">convencional</span></h2>
+                    <p class="text-xl text-gray-400 mb-10 leading-relaxed">
+                        Somos una agencia premium que fusiona arte, estrategia y tecnología para crear marcas que dejan huella. En MLD, no solo seguimos tendencias; las marcamos.
                     </p>
-                    <div class="space-y-6">
-                        <div class="flex gap-4">
-                            <div class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
-                                <i data-lucide="target" class="w-6 h-6"></i>
+                    <div class="space-y-8">
+                        <div class="flex gap-6 group">
+                            <div class="flex-shrink-0 w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                                <i data-lucide="target" class="w-7 h-7"></i>
                             </div>
                             <div>
-                                <h3 class="font-bold text-xl mb-1">Misión</h3>
-                                <p class="text-gray-600">Transformar ideas en soluciones innovadoras que conectan marcas con su audiencia y generan resultados medibles.</p>
+                                <h3 class="font-bold text-2xl mb-2">Misión</h3>
+                                <p class="text-gray-400 leading-relaxed">Transformar ideas en soluciones disruptivas que conectan marcas con su audiencia a través de la excelencia creativa.</p>
                             </div>
                         </div>
-                        <div class="flex gap-4">
-                            <div class="flex-shrink-0 w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary">
-                                <i data-lucide="eye" class="w-6 h-6"></i>
+                        <div class="flex gap-6 group">
+                            <div class="flex-shrink-0 w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                                <i data-lucide="eye" class="w-7 h-7"></i>
                             </div>
                             <div>
-                                <h3 class="font-bold text-xl mb-1">Visión</h3>
-                                <p class="text-gray-600">Ser el referente líder en el ecosistema digital, impulsando la evolución de las marcas a través de la creatividad estratégica.</p>
+                                <h3 class="font-bold text-2xl mb-2">Visión</h3>
+                                <p class="text-gray-400 leading-relaxed">Liderar la industria creativa global, redefiniendo los estándares del marketing digital y el branding de lujo.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="mt-10 grid grid-cols-2 gap-4">
-                        <div class="p-4 bg-gray-50 rounded-xl">
-                            <h4 class="font-bold text-primary mb-1">Innovación</h4>
-                            <p class="text-sm text-gray-500">Buscamos siempre lo nuevo.</p>
+                    <div class="mt-12 grid grid-cols-2 gap-6">
+                        <div class="p-6 bg-white/5 border border-white/10 rounded-3xl hover:border-primary/30 transition">
+                            <h4 class="font-bold text-primary text-lg mb-2">Innovación</h4>
+                            <p class="text-sm text-gray-500">Exploramos nuevas fronteras digitales constantemente.</p>
                         </div>
-                        <div class="p-4 bg-gray-50 rounded-xl">
-                            <h4 class="font-bold text-primary mb-1">Resultados</h4>
-                            <p class="text-sm text-gray-500">Enfoque en impacto real.</p>
+                        <div class="p-6 bg-white/5 border border-white/10 rounded-3xl hover:border-primary/30 transition">
+                            <h4 class="font-bold text-primary text-lg mb-2">Resultados</h4>
+                            <p class="text-sm text-gray-500">Enfoque absoluto en el retorno y crecimiento.</p>
                         </div>
                     </div>
                 </div>
@@ -152,83 +179,89 @@
     </section>
 
     <!-- Services Section -->
-    <section id="servicios" class="py-24 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-heading font-extrabold mb-4">Nuestros Servicios</h2>
-            <p class="text-lg text-gray-600 max-w-2xl mx-auto">Ofrecemos soluciones integrales diseñadas para potenciar tu presencia y generar resultados reales.</p>
+    <section id="servicios" class="py-32 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-20">
+            <h2 class="text-4xl md:text-5xl font-heading font-extrabold mb-6 tracking-tight">Nuestros <span class="text-primary">Servicios</span></h2>
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto">Soluciones integrales de alto impacto diseñadas para marcas que exigen lo mejor.</p>
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-3 gap-10">
                 <!-- Branding -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group">
-                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
-                        <i data-lucide="palette" class="w-8 h-8"></i>
+                <div class="bg-white/5 p-10 rounded-[2.5rem] border border-white/10 hover:border-primary/50 transition-all duration-500 group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-primary/10 blur-3xl group-hover:bg-primary/20 transition-all"></div>
+                    <div class="w-16 h-16 bg-primary/10 border border-primary/20 rounded-2xl flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-white transition-colors duration-500">
+                        <i data-lucide="palette" class="w-9 h-9"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Branding</h3>
-                    <p class="text-gray-600 mb-4">Creamos identidades visuales únicas que transmiten la esencia de tu marca y conectan emocionalmente con tu audiencia.</p>
-                    <ul class="text-sm text-gray-500 space-y-2">
-                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-primary"></i>Logotipos y manuales</li>
-                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-primary"></i>Naming y voz de marca</li>
+                    <h3 class="text-2xl font-bold mb-4">Branding</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Creamos identidades visuales premium que transmiten la esencia de tu marca y conectan emocionalmente.</p>
+                    <ul class="text-sm text-gray-500 space-y-3">
+                        <li class="flex items-center group/item"><i data-lucide="chevron-right" class="w-4 h-4 mr-2 text-primary group-hover/item:translate-x-1 transition"></i>Estrategia de Marca</li>
+                        <li class="flex items-center group/item"><i data-lucide="chevron-right" class="w-4 h-4 mr-2 text-primary group-hover/item:translate-x-1 transition"></i>Identidad Visual 3D</li>
                     </ul>
                 </div>
                 <!-- Marketing Digital -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group">
-                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
-                        <i data-lucide="globe" class="w-8 h-8"></i>
+                <div class="bg-white/5 p-10 rounded-[2.5rem] border border-white/10 hover:border-primary/50 transition-all duration-500 group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-primary/10 blur-3xl group-hover:bg-primary/20 transition-all"></div>
+                    <div class="w-16 h-16 bg-primary/10 border border-primary/20 rounded-2xl flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-white transition-colors duration-500">
+                        <i data-lucide="globe" class="w-9 h-9"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Marketing Digital</h3>
-                    <p class="text-gray-600 mb-4">Estrategias 360° para dominar el entorno online, desde posicionamiento SEO hasta campañas de Google Ads.</p>
-                    <ul class="text-sm text-gray-500 space-y-2">
-                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-primary"></i>SEO y SEM</li>
-                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-primary"></i>Inbound Marketing</li>
-                    </ul>
-                </div>
-                <!-- Redes Sociales -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group">
-                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
-                        <i data-lucide="instagram" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Social Media</h3>
-                    <p class="text-gray-600 mb-4">Gestionamos tu presencia en redes sociales para construir comunidades activas y leales alrededor de tu marca.</p>
-                    <ul class="text-sm text-gray-500 space-y-2">
-                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-primary"></i>Gestión de comunidades</li>
-                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-primary"></i>Publicidad en redes</li>
-                    </ul>
-                </div>
-                <!-- Contenidos -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group">
-                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
-                        <i data-lucide="file-text" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Estrategia de Contenidos</h3>
-                    <p class="text-gray-600 mb-4">Creamos historias que venden. Contenido relevante que educa, entretiene y convierte a prospectos en clientes.</p>
-                    <ul class="text-sm text-gray-500 space-y-2">
-                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-primary"></i>Copywriting persuasivo</li>
-                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-primary"></i>Video Marketing</li>
+                    <h3 class="text-2xl font-bold mb-4">Marketing Digital</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Estrategias 360° optimizadas para dominar el entorno online y maximizar la visibilidad.</p>
+                    <ul class="text-sm text-gray-500 space-y-3">
+                        <li class="flex items-center group/item"><i data-lucide="chevron-right" class="w-4 h-4 mr-2 text-primary group-hover/item:translate-x-1 transition"></i>SEO & SEM de Alto Nivel</li>
+                        <li class="flex items-center group/item"><i data-lucide="chevron-right" class="w-4 h-4 mr-2 text-primary group-hover/item:translate-x-1 transition"></i>Inbound Marketing</li>
                     </ul>
                 </div>
                 <!-- Publicidad -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group">
-                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
-                        <i data-lucide="megaphone" class="w-8 h-8"></i>
+                <div class="bg-white/5 p-10 rounded-[2.5rem] border border-white/10 hover:border-primary/50 transition-all duration-500 group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-primary/10 blur-3xl group-hover:bg-primary/20 transition-all"></div>
+                    <div class="w-16 h-16 bg-primary/10 border border-primary/20 rounded-2xl flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-white transition-colors duration-500">
+                        <i data-lucide="megaphone" class="w-9 h-9"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Publicidad Creativa</h3>
-                    <p class="text-gray-600 mb-4">Campañas disruptivas que captan la atención en un mundo saturado de información. Creatividad con propósito.</p>
-                    <ul class="text-sm text-gray-500 space-y-2">
-                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-primary"></i>Conceptos creativos</li>
-                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-primary"></i>Diseño publicitario</li>
+                    <h3 class="text-2xl font-bold mb-4">Publicidad Creativa</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Campañas disruptivas que captan la atención en un mundo saturado. Creatividad con propósito.</p>
+                    <ul class="text-sm text-gray-500 space-y-3">
+                        <li class="flex items-center group/item"><i data-lucide="chevron-right" class="w-4 h-4 mr-2 text-primary group-hover/item:translate-x-1 transition"></i>Conceptos Transgresores</li>
+                        <li class="flex items-center group/item"><i data-lucide="chevron-right" class="w-4 h-4 mr-2 text-primary group-hover/item:translate-x-1 transition"></i>Producción Premium</li>
+                    </ul>
+                </div>
+                <!-- Contenidos -->
+                <div class="bg-white/5 p-10 rounded-[2.5rem] border border-white/10 hover:border-primary/50 transition-all duration-500 group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-primary/10 blur-3xl group-hover:bg-primary/20 transition-all"></div>
+                    <div class="w-16 h-16 bg-primary/10 border border-primary/20 rounded-2xl flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-white transition-colors duration-500">
+                        <i data-lucide="file-text" class="w-9 h-9"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Contenidos</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Storytelling que vende. Contenido relevante que educa, entretiene y convierte.</p>
+                    <ul class="text-sm text-gray-500 space-y-3">
+                        <li class="flex items-center group/item"><i data-lucide="chevron-right" class="w-4 h-4 mr-2 text-primary group-hover/item:translate-x-1 transition"></i>Copywriting Persuasivo</li>
+                        <li class="flex items-center group/item"><i data-lucide="chevron-right" class="w-4 h-4 mr-2 text-primary group-hover/item:translate-x-1 transition"></i>Video Marketing 4K</li>
+                    </ul>
+                </div>
+                <!-- Redes Sociales -->
+                <div class="bg-white/5 p-10 rounded-[2.5rem] border border-white/10 hover:border-primary/50 transition-all duration-500 group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-primary/10 blur-3xl group-hover:bg-primary/20 transition-all"></div>
+                    <div class="w-16 h-16 bg-primary/10 border border-primary/20 rounded-2xl flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-white transition-colors duration-500">
+                        <i data-lucide="instagram" class="w-9 h-9"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Social Media</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Gestión estratégica de comunidades para construir lealtad absoluta hacia tu marca.</p>
+                    <ul class="text-sm text-gray-500 space-y-3">
+                        <li class="flex items-center group/item"><i data-lucide="chevron-right" class="w-4 h-4 mr-2 text-primary group-hover/item:translate-x-1 transition"></i>Social Ads ROI</li>
+                        <li class="flex items-center group/item"><i data-lucide="chevron-right" class="w-4 h-4 mr-2 text-primary group-hover/item:translate-x-1 transition"></i>Influencer Marketing</li>
                     </ul>
                 </div>
                 <!-- Analítica -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group">
-                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
-                        <i data-lucide="bar-chart-3" class="w-8 h-8"></i>
+                <div class="bg-white/5 p-10 rounded-[2.5rem] border border-white/10 hover:border-primary/50 transition-all duration-500 group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-primary/10 blur-3xl group-hover:bg-primary/20 transition-all"></div>
+                    <div class="w-16 h-16 bg-primary/10 border border-primary/20 rounded-2xl flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-white transition-colors duration-500">
+                        <i data-lucide="bar-chart-3" class="w-9 h-9"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Performance & Analítica</h3>
-                    <p class="text-gray-600 mb-4">Medimos todo. Optimizamos tus campañas basándonos en datos reales para maximizar tu retorno de inversión.</p>
-                    <ul class="text-sm text-gray-500 space-y-2">
-                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-primary"></i>Dashboards en tiempo real</li>
-                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-primary"></i>Optimización de embudos</li>
+                    <h3 class="text-2xl font-bold mb-4">Analítica</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed italic">"Lo que no se mide, no se puede mejorar."</p>
+                    <ul class="text-sm text-gray-500 space-y-3">
+                        <li class="flex items-center group/item"><i data-lucide="chevron-right" class="w-4 h-4 mr-2 text-primary group-hover/item:translate-x-1 transition"></i>Dashboards Real-time</li>
+                        <li class="flex items-center group/item"><i data-lucide="chevron-right" class="w-4 h-4 mr-2 text-primary group-hover/item:translate-x-1 transition"></i>Optimización de Embudo</li>
                     </ul>
                 </div>
             </div>
@@ -236,196 +269,218 @@
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portafolio" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-heading font-extrabold mb-4">Casos de Éxito</h2>
-            <p class="text-lg text-gray-600 max-w-2xl mx-auto">Proyectos que transformaron marcas y generaron impacto real.</p>
+    <section id="portafolio" class="py-32 bg-black relative overflow-hidden">
+        <!-- Decoration -->
+        <div class="absolute top-1/2 left-0 w-96 h-96 bg-primary/5 rounded-full blur-[150px] -translate-x-1/2"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-24">
+            <h2 class="text-4xl md:text-5xl font-heading font-extrabold mb-6 tracking-tight">Casos de <span class="text-primary">Éxito</span></h2>
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto">Proyectos que transformaron marcas y redefinieron mercados.</p>
         </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-32">
             <!-- Project 1 -->
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="relative group overflow-hidden rounded-3xl">
-                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=1000" alt="Caso de éxito 1" class="w-full h-[400px] object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors"></div>
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="relative group">
+                    <div class="absolute -inset-2 bg-primary/20 rounded-[2.5rem] blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                    <div class="relative overflow-hidden rounded-[2rem] border border-white/10">
+                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1200" alt="Caso de éxito 1" class="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+                    </div>
                 </div>
-                <div>
-                    <span class="text-primary font-bold uppercase tracking-wider text-sm">Tech Startup - Rebranding</span>
-                    <h3 class="text-2xl md:text-3xl font-bold mt-2 mb-6">Escalando una identidad global</h3>
-                    <div class="space-y-4">
-                        <p class="text-gray-600"><strong class="text-dark">El Reto:</strong> Una startup de IA necesitaba una imagen que transmitiera confianza a inversores globales sin perder su espíritu innovador.</p>
-                        <p class="text-gray-600"><strong class="text-dark">Estrategia:</strong> Rediseño total de marca basado en el concepto de "Inteligencia Humana" y campaña de lanzamiento en LinkedIn.</p>
-                        <p class="text-gray-600"><strong class="text-dark">Solución:</strong> Nueva identidad visual minimalista, sitio web optimizado para conversión y estrategia de contenidos premium.</p>
-                        <div class="pt-4 flex gap-8">
+                <div class="space-y-8">
+                    <span class="text-primary font-bold uppercase tracking-[0.3em] text-sm">Luxury Real Estate • Rebranding</span>
+                    <h3 class="text-4xl font-bold leading-tight">Elevando la exclusividad al entorno digital</h3>
+                    <div class="space-y-6">
+                        <p class="text-gray-400"><strong class="text-white">El Reto:</strong> Posicionar una desarrolladora de lujo en un mercado global hiper-competitivo.</p>
+                        <p class="text-gray-400"><strong class="text-white">Estrategia:</strong> Identidad visual minimalista inspirada en arquitectura moderna y campaña de contenidos ultra-premium.</p>
+                        <p class="text-gray-400"><strong class="text-white">Resultados:</strong> Incremento del 200% en leads internacionales y consolidación de marca elite.</p>
+                        <div class="pt-6 flex gap-12">
                             <div>
-                                <span class="block text-3xl font-heading font-extrabold text-primary">+150%</span>
-                                <span class="text-sm text-gray-500 uppercase tracking-tighter">Leads orgánicos</span>
+                                <span class="block text-4xl font-heading font-extrabold text-primary">+200%</span>
+                                <span class="text-xs text-gray-500 uppercase tracking-widest mt-1">Leads Elite</span>
                             </div>
                             <div>
-                                <span class="block text-3xl font-heading font-extrabold text-primary">$2M</span>
-                                <span class="text-sm text-gray-500 uppercase tracking-tighter">Ronda de inversión</span>
+                                <span class="block text-4xl font-heading font-extrabold text-primary">Global</span>
+                                <span class="text-xs text-gray-500 uppercase tracking-widest mt-1">Presencia</span>
                             </div>
                         </div>
                     </div>
+                    <a href="portafolio/" class="inline-flex items-center text-white font-bold group">
+                        Ver detalles del caso
+                        <i data-lucide="arrow-up-right" class="ml-2 w-5 h-5 text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                    </a>
                 </div>
             </div>
 
             <!-- Project 2 -->
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="order-2 md:order-1">
-                    <span class="text-secondary font-bold uppercase tracking-wider text-sm">E-commerce - Performance</span>
-                    <h3 class="text-2xl md:text-3xl font-bold mt-2 mb-6">Maximizando el retorno publicitario</h3>
-                    <div class="space-y-4">
-                        <p class="text-gray-600"><strong class="text-dark">El Reto:</strong> Una tienda de moda sostenible tenía ventas estancadas a pesar de invertir en anuncios.</p>
-                        <p class="text-gray-600"><strong class="text-dark">Estrategia:</strong> Optimización del embudo de ventas y segmentación avanzada basada en comportamiento de compra.</p>
-                        <p class="text-gray-600"><strong class="text-dark">Solución:</strong> Campañas de retargeting dinámico y mejora de la experiencia de usuario (UX) en el checkout.</p>
-                        <div class="pt-4 flex gap-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1 space-y-8">
+                    <span class="text-primary font-bold uppercase tracking-[0.3em] text-sm">Fintech • Performance</span>
+                    <h3 class="text-4xl font-bold leading-tight">Escalabilidad masiva con precisión analítica</h3>
+                    <div class="space-y-6">
+                        <p class="text-gray-400"><strong class="text-white">El Reto:</strong> Adquisición de usuarios a bajo costo en un sector de alta fricción.</p>
+                        <p class="text-gray-400"><strong class="text-white">Estrategia:</strong> Optimización de embudo basada en IA y segmentación psicográfica avanzada.</p>
+                        <p class="text-gray-400"><strong class="text-white">Resultados:</strong> Reducción del 45% en CAC y crecimiento exponencial de la base activa.</p>
+                        <div class="pt-6 flex gap-12">
                             <div>
-                                <span class="block text-3xl font-heading font-extrabold text-secondary">4.5x</span>
-                                <span class="text-sm text-gray-500 uppercase tracking-tighter">ROAS Promedio</span>
+                                <span class="block text-4xl font-heading font-extrabold text-primary">-45%</span>
+                                <span class="text-xs text-gray-500 uppercase tracking-widest mt-1">Coste Adquisición</span>
                             </div>
                             <div>
-                                <span class="block text-3xl font-heading font-extrabold text-secondary">-30%</span>
-                                <span class="text-sm text-gray-500 uppercase tracking-tighter">Costo por adquisición</span>
+                                <span class="block text-4xl font-heading font-extrabold text-primary">5x</span>
+                                <span class="text-xs text-gray-500 uppercase tracking-widest mt-1">ROI Publicitario</span>
                             </div>
                         </div>
                     </div>
+                    <a href="portafolio/" class="inline-flex items-center text-white font-bold group">
+                        Ver detalles del caso
+                        <i data-lucide="arrow-up-right" class="ml-2 w-5 h-5 text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                    </a>
                 </div>
-                <div class="order-1 md:order-2 relative group overflow-hidden rounded-3xl">
-                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=1000" alt="Caso de éxito 2" class="w-full h-[400px] object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-secondary/20 group-hover:bg-transparent transition-colors"></div>
+                <div class="order-1 md:order-2 relative group">
+                    <div class="absolute -inset-2 bg-primary/20 rounded-[2.5rem] blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                    <div class="relative overflow-hidden rounded-[2rem] border border-white/10">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200" alt="Caso de éxito 2" class="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Work Process Section -->
-    <section class="py-24 bg-dark text-white overflow-hidden">
+    <section class="py-32 bg-black text-white overflow-hidden relative">
+        <div class="absolute top-0 right-0 w-full h-full opacity-5 pointer-events-none">
+            <div class="absolute top-10 left-10 w-40 h-40 border border-primary rounded-full"></div>
+            <div class="absolute bottom-20 right-20 w-80 h-80 border border-primary rounded-full"></div>
+        </div>
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-heading font-extrabold mb-4">Nuestro Proceso</h2>
-                <p class="text-lg text-gray-400 max-w-2xl mx-auto">Un camino estructurado para convertir grandes ideas en realidades rentables.</p>
+            <div class="text-center mb-24">
+                <h2 class="text-4xl md:text-5xl font-heading font-extrabold mb-6 tracking-tight">Nuestro <span class="text-primary">Proceso</span></h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">Un camino estructurado y tecnológico para convertir visiones en realidades rentables.</p>
             </div>
-            <div class="grid md:grid-cols-6 gap-8 relative">
-                <!-- Line -->
-                <div class="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-gradient-to-r from-primary to-secondary opacity-20"></div>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-12 relative">
+                <!-- Line (Hidden on mobile) -->
+                <div class="hidden lg:block absolute top-10 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
 
                 <!-- Step 1 -->
-                <div class="relative text-center">
-                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 shadow-xl shadow-primary/40">
-                        <span class="text-2xl font-bold">1</span>
+                <div class="relative text-center group">
+                    <div class="w-20 h-20 bg-white/5 border border-white/10 rounded-3xl flex items-center justify-center mx-auto mb-8 relative z-10 shadow-2xl group-hover:bg-primary group-hover:text-white transition-all duration-500 group-hover:-translate-y-2">
+                        <span class="text-3xl font-bold">01</span>
                     </div>
-                    <h3 class="font-bold mb-2">Análisis</h3>
-                    <p class="text-sm text-gray-400">Investigamos a fondo tu mercado y competencia.</p>
+                    <h3 class="font-bold text-xl mb-3">Discovery</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Inmersión total en tu modelo de negocio y mercado.</p>
                 </div>
                 <!-- Step 2 -->
-                <div class="relative text-center">
-                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 shadow-xl shadow-primary/40">
-                        <span class="text-2xl font-bold">2</span>
+                <div class="relative text-center group">
+                    <div class="w-20 h-20 bg-white/5 border border-white/10 rounded-3xl flex items-center justify-center mx-auto mb-8 relative z-10 shadow-2xl group-hover:bg-primary group-hover:text-white transition-all duration-500 group-hover:-translate-y-2">
+                        <span class="text-3xl font-bold">02</span>
                     </div>
-                    <h3 class="font-bold mb-2">Estrategia</h3>
-                    <p class="text-sm text-gray-400">Trazamos la hoja de ruta hacia tus objetivos.</p>
+                    <h3 class="font-bold text-xl mb-3">Estrategia</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Arquitectura de soluciones personalizada y escalable.</p>
                 </div>
                 <!-- Step 3 -->
-                <div class="relative text-center">
-                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 shadow-xl shadow-primary/40">
-                        <span class="text-2xl font-bold">3</span>
+                <div class="relative text-center group">
+                    <div class="w-20 h-20 bg-white/5 border border-white/10 rounded-3xl flex items-center justify-center mx-auto mb-8 relative z-10 shadow-2xl group-hover:bg-primary group-hover:text-white transition-all duration-500 group-hover:-translate-y-2">
+                        <span class="text-3xl font-bold">03</span>
                     </div>
-                    <h3 class="font-bold mb-2">Creatividad</h3>
-                    <p class="text-sm text-gray-400">Damos vida a conceptos innovadores.</p>
+                    <h3 class="font-bold text-xl mb-3">Creatividad</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Desarrollo de conceptos disruptivos de alto nivel.</p>
                 </div>
                 <!-- Step 4 -->
-                <div class="relative text-center">
-                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 shadow-xl shadow-primary/40">
-                        <span class="text-2xl font-bold">4</span>
+                <div class="relative text-center group">
+                    <div class="w-20 h-20 bg-white/5 border border-white/10 rounded-3xl flex items-center justify-center mx-auto mb-8 relative z-10 shadow-2xl group-hover:bg-primary group-hover:text-white transition-all duration-500 group-hover:-translate-y-2">
+                        <span class="text-3xl font-bold">04</span>
                     </div>
-                    <h3 class="font-bold mb-2">Ejecución</h3>
-                    <p class="text-sm text-gray-400">Implementamos con precisión milimétrica.</p>
+                    <h3 class="font-bold text-xl mb-3">Ejecución</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Implementación técnica con estándares de excelencia.</p>
                 </div>
                 <!-- Step 5 -->
-                <div class="relative text-center">
-                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 shadow-xl shadow-primary/40">
-                        <span class="text-2xl font-bold">5</span>
+                <div class="relative text-center group">
+                    <div class="w-20 h-20 bg-white/5 border border-white/10 rounded-3xl flex items-center justify-center mx-auto mb-8 relative z-10 shadow-2xl group-hover:bg-primary group-hover:text-white transition-all duration-500 group-hover:-translate-y-2">
+                        <span class="text-3xl font-bold">05</span>
                     </div>
-                    <h3 class="font-bold mb-2">Medición</h3>
-                    <p class="text-sm text-gray-400">Analizamos cada KPI y resultado.</p>
+                    <h3 class="font-bold text-xl mb-3">Analítica</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Monitoreo en tiempo real y análisis de KPIs.</p>
                 </div>
                 <!-- Step 6 -->
-                <div class="relative text-center">
-                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 shadow-xl shadow-primary/40">
-                        <span class="text-2xl font-bold">6</span>
+                <div class="relative text-center group">
+                    <div class="w-20 h-20 bg-white/5 border border-white/10 rounded-3xl flex items-center justify-center mx-auto mb-8 relative z-10 shadow-2xl group-hover:bg-primary group-hover:text-white transition-all duration-500 group-hover:-translate-y-2">
+                        <span class="text-3xl font-bold">06</span>
                     </div>
-                    <h3 class="font-bold mb-2">Optimización</h3>
-                    <p class="text-sm text-gray-400">Escalamos lo que funciona para crecer.</p>
+                    <h3 class="font-bold text-xl mb-3">Scale Up</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Optimización continua para el crecimiento infinito.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section class="py-24 bg-gray-50">
+    <section class="py-32 bg-black relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-heading font-extrabold mb-4">Lo que dicen nuestros clientes</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">La confianza de nuestros socios es nuestro mayor activo.</p>
+            <div class="text-center mb-24">
+                <h2 class="text-4xl md:text-5xl font-heading font-extrabold mb-6 tracking-tight">Voz de nuestros <span class="text-primary">Socios</span></h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">La excelencia se mide por el éxito de quienes confían en nosotros.</p>
             </div>
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-3 gap-10">
                 <!-- Testimonial 1 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-                    <div class="flex text-secondary mb-4">
+                <div class="bg-white/5 p-10 rounded-[2.5rem] border border-white/10 relative group hover:border-primary/30 transition-all duration-500">
+                    <div class="flex text-primary mb-6">
                         <i data-lucide="star" class="w-5 h-5 fill-current"></i>
                         <i data-lucide="star" class="w-5 h-5 fill-current"></i>
                         <i data-lucide="star" class="w-5 h-5 fill-current"></i>
                         <i data-lucide="star" class="w-5 h-5 fill-current"></i>
                         <i data-lucide="star" class="w-5 h-5 fill-current"></i>
                     </div>
-                    <p class="text-gray-600 mb-6 italic">"Trabajar con MLD transformó por completo nuestra presencia digital. No solo entendieron nuestra visión, sino que la elevaron a otro nivel con resultados que superaron nuestras expectativas."</p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-gray-200 rounded-full overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100" alt="Client 1">
+                    <p class="text-gray-300 mb-8 italic leading-relaxed text-lg">"MLD elevó nuestra marca a un nivel que no creíamos posible. Su enfoque en el lujo y la tecnología es único en el mercado."</p>
+                    <div class="flex items-center gap-5">
+                        <div class="w-14 h-14 bg-primary/20 rounded-2xl overflow-hidden border border-primary/30">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200" alt="Client 1" class="w-full h-full object-cover">
                         </div>
                         <div>
-                            <h4 class="font-bold">Ana Martínez</h4>
-                            <p class="text-sm text-gray-500">CEO, TechFlow</p>
+                            <h4 class="font-bold text-white">Alexandra Vance</h4>
+                            <p class="text-sm text-primary font-medium">Founder, V-Tech</p>
                         </div>
                     </div>
                 </div>
                 <!-- Testimonial 2 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-                    <div class="flex text-secondary mb-4">
+                <div class="bg-white/5 p-10 rounded-[2.5rem] border border-white/10 relative group hover:border-primary/30 transition-all duration-500">
+                    <div class="flex text-primary mb-6">
                         <i data-lucide="star" class="w-5 h-5 fill-current"></i>
                         <i data-lucide="star" class="w-5 h-5 fill-current"></i>
                         <i data-lucide="star" class="w-5 h-5 fill-current"></i>
                         <i data-lucide="star" class="w-5 h-5 fill-current"></i>
                         <i data-lucide="star" class="w-5 h-5 fill-current"></i>
                     </div>
-                    <p class="text-gray-600 mb-6 italic">"El enfoque en resultados medibles es lo que los diferencia. Por fin tenemos una estrategia de marketing que realmente sabemos cuánto nos está aportando al negocio."</p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-gray-200 rounded-full overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=100" alt="Client 2">
+                    <p class="text-gray-300 mb-8 italic leading-relaxed text-lg">"Resultados tangibles desde el primer mes. La precisión de su estrategia analítica es quirúrgica."</p>
+                    <div class="flex items-center gap-5">
+                        <div class="w-14 h-14 bg-primary/20 rounded-2xl overflow-hidden border border-primary/30">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200" alt="Client 2" class="w-full h-full object-cover">
                         </div>
                         <div>
-                            <h4 class="font-bold">Carlos Ruiz</h4>
-                            <p class="text-sm text-gray-500">Director de Marketing, EcoStyle</p>
+                            <h4 class="font-bold text-white">Julian Black</h4>
+                            <p class="text-sm text-primary font-medium">CMO, Zenith Corp</p>
                         </div>
                     </div>
                 </div>
                 <!-- Testimonial 3 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-                    <div class="flex text-secondary mb-4">
+                <div class="bg-white/5 p-10 rounded-[2.5rem] border border-white/10 relative group hover:border-primary/30 transition-all duration-500">
+                    <div class="flex text-primary mb-6">
                         <i data-lucide="star" class="w-5 h-5 fill-current"></i>
                         <i data-lucide="star" class="w-5 h-5 fill-current"></i>
                         <i data-lucide="star" class="w-5 h-5 fill-current"></i>
                         <i data-lucide="star" class="w-5 h-5 fill-current"></i>
                         <i data-lucide="star" class="w-5 h-5 fill-current"></i>
                     </div>
-                    <p class="text-gray-600 mb-6 italic">"Creatividad pura. Sus campañas no solo son visualmente impactantes, sino que conectan de forma genuina con nuestro público objetivo. Un socio estratégico invaluable."</p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-gray-200 rounded-full overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=100" alt="Client 3">
+                    <p class="text-gray-300 mb-8 italic leading-relaxed text-lg">"Creatividad que rompe esquemas. MLD es el socio ideal para marcas que buscan Marca La Diferencia."</p>
+                    <div class="flex items-center gap-5">
+                        <div class="w-14 h-14 bg-primary/20 rounded-2xl overflow-hidden border border-primary/30">
+                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=200" alt="Client 3" class="w-full h-full object-cover">
                         </div>
                         <div>
-                            <h4 class="font-bold">Laura Gómez</h4>
-                            <p class="text-sm text-gray-500">Fundadora, Bloom Media</p>
+                            <h4 class="font-bold text-white">Elena Rosso</h4>
+                            <p class="text-sm text-primary font-medium">Creative Director, Aura Luxe</p>
                         </div>
                     </div>
                 </div>
@@ -434,62 +489,66 @@
     </section>
 
     <!-- Branding CTA Section -->
-    <section class="py-20 bg-primary relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute top-0 left-0 w-64 h-64 bg-white rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-            <div class="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full translate-x-1/3 translate-y-1/3"></div>
+    <section class="py-32 bg-primary relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-1/2 -translate-y-1/2 blur-[100px]"></div>
+            <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-black rounded-full translate-x-1/3 translate-y-1/3 blur-[120px]"></div>
         </div>
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <h2 class="text-3xl md:text-5xl font-heading font-extrabold text-white mb-8">Creatividad con propósito, <span class="text-secondary">resultados sin límites.</span></h2>
-            <p class="text-xl text-white/80 mb-10 max-w-2xl mx-auto">Transformamos tus ideas en estrategias que conectan, escalan y generan impacto real en el mercado.</p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <span class="bg-white/10 text-white px-4 py-2 rounded-full border border-white/20 text-sm font-medium italic">#InnovaciónConstante</span>
-                <span class="bg-white/10 text-white px-4 py-2 rounded-full border border-white/20 text-sm font-medium italic">#ResultadosMedibles</span>
-                <span class="bg-white/10 text-white px-4 py-2 rounded-full border border-white/20 text-sm font-medium italic">#PasiónPorLasMarcas</span>
+            <h2 class="text-4xl md:text-6xl font-heading font-extrabold text-white mb-10 leading-tight">Creatividad con propósito, <br><span class="text-black">resultados sin límites.</span></h2>
+            <p class="text-2xl text-white/90 mb-12 max-w-2xl mx-auto font-medium">Transformamos tu visión en un legado digital imborrable.</p>
+            <div class="flex flex-wrap justify-center gap-5">
+                <span class="bg-black/20 text-white px-6 py-3 rounded-full border border-white/20 text-sm font-bold tracking-widest uppercase backdrop-blur-md">#Innovación</span>
+                <span class="bg-black/20 text-white px-6 py-3 rounded-full border border-white/20 text-sm font-bold tracking-widest uppercase backdrop-blur-md">#Resultados</span>
+                <span class="bg-black/20 text-white px-6 py-3 rounded-full border border-white/20 text-sm font-bold tracking-widest uppercase backdrop-blur-md">#Premium</span>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contacto" class="py-24 bg-white">
+    <section id="contacto" class="py-32 bg-black">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-16">
+            <div class="grid md:grid-cols-2 gap-20">
                 <div>
-                    <h2 class="text-3xl md:text-4xl font-heading font-extrabold mb-6">¿Listo para potenciar su marca?</h2>
-                    <p class="text-lg text-gray-600 mb-10">Cuéntanos tu proyecto y descubramos juntos cómo podemos llevar tu negocio al siguiente nivel.</p>
+                    <h2 class="text-4xl md:text-5xl font-heading font-extrabold mb-8 tracking-tight text-white">¿Listo para <span class="text-primary">liderar</span>?</h2>
+                    <p class="text-xl text-gray-400 mb-12 leading-relaxed">Estás a un paso de transformar tu presencia de marca. Conectemos y definamos el futuro de tu negocio.</p>
 
-                    <div class="space-y-6">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
-                                <i data-lucide="mail" class="w-6 h-6"></i>
+                    <div class="space-y-10">
+                        <div class="flex items-center gap-6 group">
+                            <div class="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                                <i data-lucide="mail" class="w-8 h-8"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold">Escríbenos</h4>
-                                <p class="text-gray-600">contacto@mld.com</p>
+                                <h4 class="font-bold text-gray-500 text-sm uppercase tracking-widest mb-1">Escríbenos</h4>
+                                <p class="text-xl text-white font-medium">holamldmarketing@gmail.com</p>
                             </div>
                         </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
-                                <i data-lucide="phone" class="w-6 h-6"></i>
+                        <div class="flex items-center gap-6 group">
+                            <div class="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                                <i data-lucide="phone" class="w-8 h-8"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold">Llámanos</h4>
-                                <p class="text-gray-600">+1 (555) 000-0000</p>
+                                <h4 class="font-bold text-gray-500 text-sm uppercase tracking-widest mb-1">Llámanos</h4>
+                                <p class="text-xl text-white font-medium">(+51) 963 198 424</p>
                             </div>
                         </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
-                                <i data-lucide="map-pin" class="w-6 h-6"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold">Visítanos</h4>
-                                <p class="text-gray-600">Av. Creatividad 123, Distrito de Innovación</p>
-                            </div>
-                        </div>
+                        <!-- Physical Address Removed -->
+                    </div>
+
+                    <div class="mt-16 flex gap-6">
+                        <a href="https://wa.me/51963198424" target="_blank" class="flex-1 bg-primary text-white py-5 rounded-2xl font-bold text-lg hover:scale-105 transition transform duration-300 shadow-2xl shadow-primary/30 flex items-center justify-center gap-3">
+                            <i data-lucide="message-circle"></i>
+                            WhatsApp
+                        </a>
+                        <a href="tel:+51963198424" class="flex-1 bg-white/5 border border-white/10 text-white py-5 rounded-2xl font-bold text-lg hover:bg-white/10 transition flex items-center justify-center gap-3">
+                            <i data-lucide="phone"></i>
+                            Llamar
+                        </a>
                     </div>
                 </div>
-                <div class="bg-gray-50 p-8 md:p-12 rounded-3xl">
-                    <form action="#" class="space-y-6">
+                <div class="bg-white/5 p-10 md:p-14 rounded-[3rem] border border-white/10 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-[80px]"></div>
+                    <form action="#" class="space-y-8 relative z-10">
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-sm font-bold mb-2">Nombre</label>
@@ -526,18 +585,24 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark py-12 border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="flex items-center gap-3">
-                <img src="assets/logo.jpeg" alt="MLD Logo" class="h-10 w-10 object-cover rounded-lg shadow-sm">
-                <span class="text-2xl font-heading font-extrabold text-white">MLD</span>
+    <footer class="bg-black py-16 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-10">
+            <div class="flex items-center gap-4">
+                <img src="assets/logo.jpeg" alt="MLD Logo" class="h-12 w-12 object-cover rounded-xl shadow-2xl">
+                <div class="flex flex-col">
+                    <span class="text-2xl font-heading font-extrabold text-white leading-none">MLD</span>
+                    <span class="text-[10px] text-primary font-bold tracking-widest uppercase">Marca La Diferencia</span>
+                </div>
             </div>
-            <div class="flex gap-8 text-gray-400">
-                <a href="#" class="hover:text-primary transition"><i data-lucide="instagram"></i></a>
-                <a href="#" class="hover:text-primary transition"><i data-lucide="linkedin"></i></a>
-                <a href="#" class="hover:text-primary transition"><i data-lucide="twitter"></i></a>
+            <div class="flex gap-10 text-gray-400">
+                <a href="#" class="hover:text-primary transition-all transform hover:scale-110"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                <a href="#" class="hover:text-primary transition-all transform hover:scale-110"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                <a href="#" class="hover:text-primary transition-all transform hover:scale-110"><i data-lucide="twitter" class="w-6 h-6"></i></a>
             </div>
-            <p class="text-gray-500 text-sm">© 2024 MLD. Todos los derechos reservados.</p>
+            <div class="text-right">
+                <p class="text-gray-500 text-sm font-medium">© 2024 MLD. Marca La Diferencia.</p>
+                <p class="text-[10px] text-gray-700 uppercase tracking-widest mt-1">Premium Marketing Agency</p>
+            </div>
         </div>
     </footer>
 
@@ -550,6 +615,29 @@
 
         btn.addEventListener('click', () => {
             menu.classList.toggle('hidden');
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            root: null,
+            threshold: 0.1,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            if (section.id !== 'inicio') { // Hero is already visible
+                section.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-1000', 'ease-out');
+                observer.observe(section);
+            }
         });
     </script>
 </body>
