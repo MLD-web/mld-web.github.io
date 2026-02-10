@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MLD | Marca La Diferencia | Agencia de Marketing y Publicidad</title>
-    <meta name="description" content="MLD - Agencia de marketing y publicidad enfocada en branding, marketing digital y resultados medibles. Marca La Diferencia con nuestras estrategias creativas e innovadoras.">
+    <meta name="description" content="MLD es una agencia de marketing estratégico enfocada en crecimiento real, sistemas de negocio y ejecución basada en datos. Marca La Diferencia con nuestro partner estratégico.">
+    <meta name="keywords" content="marketing estratégico, crecimiento digital, performance marketing, branding estratégico, agencia de publicidad, MLD, Marca La Diferencia">
+    <link rel="canonical" href="https://mld.com.pe/">
+
     <!-- Open Graph -->
     <meta property="og:title" content="MLD | Marca La Diferencia | Agencia de Marketing y Publicidad">
-    <meta property="og:description" content="Transformamos ideas en estrategias creativas que conectan y generan resultados medibles.">
+    <meta property="og:description" content="No vendemos publicaciones, diseñamos sistemas de crecimiento real basados en datos y criterio de negocio.">
     <meta property="og:image" content="assets/logo.png">
+    <meta property="og:url" content="https://mld.com.pe/">
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="MLD Marca La Diferencia">
     <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
@@ -23,10 +28,36 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         :root {
             --mld-orange: #ff6600;
             --mld-black: #000000;
             --mld-white: #ffffff;
+        }
+
+        .bg-mld-black { background-color: var(--mld-black); }
+        .text-mld-white { color: var(--mld-white); }
+        .text-mld-orange { color: var(--mld-orange); }
+        .bg-mld-orange { background-color: var(--mld-orange); }
+        .border-mld-orange { border-color: var(--mld-orange); }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float-up {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-float-up {
+            animation: float-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
     </style>
     <script>
@@ -35,6 +66,7 @@
                 extend: {
                     colors: {
                         primary: '#ff6600',
+                        secondary: '#ffffff',
                         accent: '#ff6600',
                         dark: '#000000',
                         light: '#ffffff',
@@ -49,6 +81,14 @@
     </script>
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
 </head>
 <body class="font-sans bg-black text-white">
     <!-- Navbar -->
@@ -87,98 +127,100 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="inicio" class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-black">
-        <!-- Abstract Background Elements -->
-        <div class="absolute top-0 right-0 -z-10 w-1/2 h-full bg-gradient-to-l from-primary/10 to-transparent"></div>
-        <div class="absolute bottom-0 left-0 -z-10 w-64 h-64 bg-primary/20 rounded-full blur-[120px]"></div>
+    <section id="inicio" class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-black">
+        <!-- background asset -->
+        <div class="absolute inset-0 z-0">
+            <img src="assets/hero.png" alt="Strategic Growth System" class="w-full h-full object-cover opacity-40" loading="eager">
+            <div class="absolute inset-0 bg-gradient-to-b from-black via-black/60 to-black"></div>
+        </div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid md:grid-cols-2 gap-16 items-center">
                 <div class="order-2 md:order-1">
-                    <span class="inline-block py-1 px-4 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-bold tracking-widest uppercase mb-6 animate-pulse">Marca La Diferencia</span>
-                    <h1 class="text-5xl md:text-7xl font-heading font-extrabold leading-tight mb-8">
-                        Elevamos tu marca al <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-400">siguiente nivel</span>
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="h-[1px] w-12 bg-primary"></div>
+                        <span class="text-primary text-sm font-bold tracking-[0.3em] uppercase">MLD | Marca La Diferencia</span>
+                    </div>
+                    <h1 class="text-5xl md:text-8xl font-heading font-extrabold leading-[1.1] mb-8">
+                        Estrategia de <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">Crecimiento</span> Real
                     </h1>
-                    <p class="text-xl text-gray-400 mb-10 leading-relaxed max-w-lg">
-                        MLD transforma ideas en estrategias creativas e innovadoras que conectan con el público objetivo y generan resultados medibles.
+                    <p class="text-xl text-gray-300 mb-10 leading-relaxed max-w-xl font-light">
+                        No somos una agencia tradicional. Somos tu <span class="text-primary font-semibold text-white">partner estratégico</span> de crecimiento digital orientado a resultados de negocio, no métricas de vanidad.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-5">
-                        <a href="https://wa.me/51963198424" target="_blank" class="flex items-center justify-center bg-primary text-white px-10 py-5 rounded-full hover:scale-105 transition transform duration-300 font-bold text-lg shadow-2xl shadow-primary/30">
-                            Hablar por WhatsApp
-                            <i data-lucide="message-circle" class="ml-2 w-6 h-6"></i>
+                        <a href="#contacto" class="flex items-center justify-center bg-primary text-white px-10 py-5 rounded-full hover:scale-105 transition transform duration-300 font-bold text-lg shadow-2xl shadow-primary/30">
+                            Iniciar Diagnóstico
+                            <i data-lucide="arrow-right" class="ml-2 w-6 h-6"></i>
                         </a>
-                        <a href="tel:+51963198424" class="flex items-center justify-center bg-transparent border border-white/20 text-white px-10 py-5 rounded-full hover:bg-white/5 transition transform duration-300 font-bold text-lg">
-                            Llamar ahora
+                        <a href="https://wa.me/51963198424" target="_blank" class="flex items-center justify-center bg-transparent border border-white/20 text-white px-10 py-5 rounded-full hover:bg-white/5 transition transform duration-300 font-bold text-lg">
+                            WhatsApp Directo
                         </a>
                     </div>
                 </div>
-                <div class="order-1 md:order-2 relative group">
-                    <!-- Glow effect -->
-                    <div class="absolute -inset-4 bg-primary/30 rounded-full blur-3xl opacity-50 group-hover:opacity-100 transition duration-1000"></div>
+                <div class="order-1 md:order-2 relative flex justify-center">
                     <!-- 3D Logo Container -->
-                    <div class="relative transition-transform duration-700 group-hover:scale-105 group-hover:rotate-1">
-                        <img src="assets/logo.png" alt="MLD 3D Logo" class="w-full max-w-[500px] mx-auto drop-shadow-[0_35px_35px_rgba(255,102,0,0.3)] rounded-3xl">
-                        <!-- Decorative 3D elements (abstract) -->
-                        <div class="absolute -top-10 -right-10 w-20 h-20 bg-primary/20 backdrop-blur-3xl rounded-xl rotate-12 animate-bounce transition-all duration-1000" style="animation-duration: 4s;"></div>
-                        <div class="absolute -bottom-8 -left-8 w-16 h-16 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-full animate-pulse"></div>
+                    <div class="relative w-full max-w-[500px] animate-float">
+                        <img src="assets/logo.png" alt="MLD 3D Logo" class="w-full drop-shadow-[0_0_50px_rgba(255,102,0,0.4)]">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-500 animate-bounce">
+            <span class="text-[10px] uppercase tracking-widest font-bold">Scroll para explorar</span>
+            <i data-lucide="chevron-down" class="w-4 h-4"></i>
+        </div>
+    </section>
+
+    <!-- Who We Are Section -->
+    <section id="nosotros" class="py-32 bg-black relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-20 items-center">
+                <div class="order-2 md:order-1 relative">
+                    <img src="assets/quienes-somos.png" alt="Strategic Marketing Systems" class="w-full rounded-[3rem] shadow-2xl border border-white/10" loading="lazy">
+                    <div class="absolute -bottom-10 -right-10 w-48 h-48 bg-primary/20 blur-[80px]"></div>
+                </div>
+                <div class="order-1 md:order-2">
+                    <h2 class="text-4xl md:text-5xl font-heading font-extrabold mb-8 tracking-tight text-white uppercase">Quiénes <span class="text-primary">Somos</span></h2>
+                    <div class="space-y-6 text-xl text-gray-400 leading-relaxed">
+                        <p>MLD es una agencia de marketing y publicidad enfocada en <span class="text-white font-semibold">crecimiento estratégico</span>, criterio de negocio y ejecución basada en datos.</p>
+                        <p>No vendemos publicaciones ni anuncios aislados: diseñamos <span class="text-white">sistemas de marketing</span> que ayudan a las marcas a tomar mejores decisiones, escalar con orden y construir ventajas reales en el mercado.</p>
+                        <p>Trabajamos con empresas que entienden que el marketing no es un gasto creativo, sino una <span class="text-primary font-bold">palanca estratégica</span> de crecimiento.</p>
+                    </div>
+                    <div class="mt-12">
+                        <a href="#contacto" class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all">
+                            Solicitar auditoría gratuita
+                            <i data-lucide="chevron-right"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Us Section -->
-    <section id="nosotros" class="py-32 bg-black relative">
+    <!-- Philosophy Section -->
+    <section class="py-32 bg-white/5 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-20 items-center">
-                <div class="order-2 md:order-1 relative">
-                    <div class="absolute -inset-10 bg-primary/5 rounded-full blur-[100px]"></div>
-                    <div class="relative grid grid-cols-2 gap-6">
-                        <div class="space-y-6">
-                            <img src="https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=800" alt="Abstract 3D 1" class="rounded-3xl shadow-2xl border border-white/10 hover:border-primary/50 transition duration-500">
-                            <img src="https://images.unsplash.com/photo-1633167606207-d840b5070fc2?auto=format&fit=crop&q=80&w=800" alt="Abstract 3D 2" class="rounded-3xl shadow-2xl border border-white/10 hover:border-primary/50 transition duration-500 translate-x-4">
-                        </div>
-                        <div class="pt-12 space-y-6">
-                            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800" alt="Abstract 3D 3" class="rounded-3xl shadow-2xl border border-white/10 hover:border-primary/50 transition duration-500">
-                            <img src="https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?auto=format&fit=crop&q=80&w=800" alt="Abstract 3D 4" class="rounded-3xl shadow-2xl border border-white/10 hover:border-primary/50 transition duration-500 -translate-x-4">
-                        </div>
-                    </div>
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-5xl font-heading font-extrabold mb-6 tracking-tight uppercase">Nuestra <span class="text-primary">Filosofía</span></h2>
+                <p class="text-xl text-gray-400">En MLD creemos en tres principios no negociables:</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="p-10 bg-black rounded-[2.5rem] border border-white/10 hover:border-primary/50 transition">
+                    <div class="text-primary text-4xl font-black mb-6">01</div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Estrategia antes que táctica</h3>
+                    <p class="text-gray-400">Nada se ejecuta sin una hipótesis clara, un objetivo medible y un porqué de negocio.</p>
                 </div>
-                <div class="order-1 md:order-2">
-                    <h2 class="text-4xl md:text-5xl font-heading font-extrabold mb-8 tracking-tight">Trascendemos lo <span class="text-primary">convencional</span></h2>
-                    <p class="text-xl text-gray-400 mb-10 leading-relaxed">
-                        Somos una agencia premium que fusiona arte, estrategia y tecnología para crear marcas que dejan huella. En MLD, no solo seguimos tendencias; las marcamos.
-                    </p>
-                    <div class="space-y-8">
-                        <div class="flex gap-6 group">
-                            <div class="flex-shrink-0 w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                                <i data-lucide="target" class="w-7 h-7"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-2xl mb-2">Misión</h3>
-                                <p class="text-gray-400 leading-relaxed">Transformar ideas en soluciones disruptivas que conectan marcas con su audiencia a través de la excelencia creativa.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-6 group">
-                            <div class="flex-shrink-0 w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                                <i data-lucide="eye" class="w-7 h-7"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-2xl mb-2">Visión</h3>
-                                <p class="text-gray-400 leading-relaxed">Liderar la industria creativa global, redefiniendo los estándares del marketing digital y el branding de lujo.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-12 grid grid-cols-2 gap-6">
-                        <div class="p-6 bg-white/5 border border-white/10 rounded-3xl hover:border-primary/30 transition">
-                            <h4 class="font-bold text-primary text-lg mb-2">Innovación</h4>
-                            <p class="text-sm text-gray-500">Exploramos nuevas fronteras digitales constantemente.</p>
-                        </div>
-                        <div class="p-6 bg-white/5 border border-white/10 rounded-3xl hover:border-primary/30 transition">
-                            <h4 class="font-bold text-primary text-lg mb-2">Resultados</h4>
-                            <p class="text-sm text-gray-500">Enfoque absoluto en el retorno y crecimiento.</p>
-                        </div>
-                    </div>
+                <div class="p-10 bg-black rounded-[2.5rem] border border-white/10 hover:border-primary/50 transition">
+                    <div class="text-primary text-4xl font-black mb-6">02</div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Datos + criterio humano</h3>
+                    <p class="text-gray-400">Usamos métricas, experimentación e IA, siempre filtradas por pensamiento estratégico.</p>
+                </div>
+                <div class="p-10 bg-black rounded-[2.5rem] border border-white/10 hover:border-primary/50 transition">
+                    <div class="text-primary text-4xl font-black mb-6">03</div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Crecimiento sostenible</h3>
+                    <p class="text-gray-400">Priorizamos sistemas que escalan a largo plazo frente a resultados inflados de corto plazo.</p>
                 </div>
             </div>
         </div>
@@ -187,88 +229,98 @@
     <!-- Services Section -->
     <section id="servicios" class="py-32 bg-black">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-20">
-            <h2 class="text-4xl md:text-5xl font-heading font-extrabold mb-6 tracking-tight">Nuestros <span class="text-primary">Servicios</span></h2>
-            <p class="text-xl text-gray-400 max-w-2xl mx-auto">Soluciones integrales de alto impacto diseñadas para marcas que exigen lo mejor.</p>
+            <h2 class="text-4xl md:text-5xl font-heading font-extrabold mb-6 tracking-tight uppercase">Qué <span class="text-primary">Hacemos</span></h2>
+            <div class="max-w-4xl mx-auto space-y-6">
+                <p class="text-2xl text-white font-medium leading-relaxed">Diseñamos, construimos y operamos <span class="text-primary">ecosistemas completos</span> de marketing y crecimiento digital.</p>
+                <p class="text-lg text-gray-400">Ofrecemos servicios integrales que cubren todos los pilares del crecimiento digital y la performance, con foco en impacto real y retorno de inversión. Nuestros servicios se adaptan al nivel de madurez de cada negocio y están pensados para escalar con orden.</p>
+            </div>
         </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-3 gap-10">
-                <!-- Branding -->
-                <div class="bg-white/5 p-10 rounded-[2.5rem] border border-white/10 hover:border-primary/50 transition-all duration-500 group relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-primary/10 blur-3xl group-hover:bg-primary/20 transition-all"></div>
-                    <div class="w-16 h-16 bg-primary/10 border border-primary/20 rounded-2xl flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-white transition-colors duration-500">
-                        <i data-lucide="palette" class="w-9 h-9"></i>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <!-- servicios.png asset integration -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full -z-10 opacity-10">
+                <img src="assets/servicios.png" alt="Integrated Marketing Systems" class="w-full h-full object-contain" loading="lazy">
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- 1. Estrategia -->
+                <div class="bg-black/60 backdrop-blur-sm p-8 rounded-[2rem] border border-white/10 hover:border-primary/50 transition-all duration-500 group">
+                    <div class="w-14 h-14 bg-primary/10 border border-primary/20 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+                        <i data-lucide="brain" class="w-8 h-8"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Branding</h3>
-                    <p class="text-gray-400 mb-6 leading-relaxed">Creamos identidades visuales premium que transmiten la esencia de tu marca y conectan emocionalmente.</p>
-                    <ul class="text-sm text-gray-500 space-y-3">
-                        <li class="flex items-center group/item"><i data-lucide="chevron-right" class="w-4 h-4 mr-2 text-primary group-hover/item:translate-x-1 transition"></i>Estrategia de Marca</li>
-                        <li class="flex items-center group/item"><i data-lucide="chevron-right" class="w-4 h-4 mr-2 text-primary group-hover/item:translate-x-1 transition"></i>Identidad Visual 3D</li>
-                    </ul>
+                    <h3 class="text-xl font-bold mb-3 text-white">Estrategia de marketing y crecimiento</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Diagnóstico profundo del negocio, definición de posicionamiento, funnels, customer journey y sistemas de adquisición basados en impacto y datos.</p>
                 </div>
-                <!-- Marketing Digital -->
-                <div class="bg-white/5 p-10 rounded-[2.5rem] border border-white/10 hover:border-primary/50 transition-all duration-500 group relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-primary/10 blur-3xl group-hover:bg-primary/20 transition-all"></div>
-                    <div class="w-16 h-16 bg-primary/10 border border-primary/20 rounded-2xl flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-white transition-colors duration-500">
-                        <i data-lucide="globe" class="w-9 h-9"></i>
+
+                <!-- 2. Performance -->
+                <div class="bg-black/60 backdrop-blur-sm p-8 rounded-[2rem] border border-white/10 hover:border-primary/50 transition-all duration-500 group">
+                    <div class="w-14 h-14 bg-primary/10 border border-primary/20 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+                        <i data-lucide="trending-up" class="w-8 h-8"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Marketing Digital</h3>
-                    <p class="text-gray-400 mb-6 leading-relaxed">Estrategias 360° optimizadas para dominar el entorno online y maximizar la visibilidad.</p>
-                    <ul class="text-sm text-gray-500 space-y-3">
-                        <li class="flex items-center group/item"><i data-lucide="chevron-right" class="w-4 h-4 mr-2 text-primary group-hover/item:translate-x-1 transition"></i>SEO & SEM de Alto Nivel</li>
-                        <li class="flex items-center group/item"><i data-lucide="chevron-right" class="w-4 h-4 mr-2 text-primary group-hover/item:translate-x-1 transition"></i>Inbound Marketing</li>
-                    </ul>
+                    <h3 class="text-xl font-bold mb-3 text-white">Performance y adquisición</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Paid Media, CRO, testing estructurado y escalamiento rentable y controlado de campañas.</p>
                 </div>
-                <!-- Publicidad -->
-                <div class="bg-white/5 p-10 rounded-[2.5rem] border border-white/10 hover:border-primary/50 transition-all duration-500 group relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-primary/10 blur-3xl group-hover:bg-primary/20 transition-all"></div>
-                    <div class="w-16 h-16 bg-primary/10 border border-primary/20 rounded-2xl flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-white transition-colors duration-500">
-                        <i data-lucide="megaphone" class="w-9 h-9"></i>
+
+                <!-- 3. Branding -->
+                <div class="bg-black/60 backdrop-blur-sm p-8 rounded-[2rem] border border-white/10 hover:border-primary/50 transition-all duration-500 group">
+                    <div class="w-14 h-14 bg-primary/10 border border-primary/20 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+                        <i data-lucide="magnet" class="w-8 h-8"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Publicidad Creativa</h3>
-                    <p class="text-gray-400 mb-6 leading-relaxed">Campañas disruptivas que captan la atención en un mundo saturado. Creatividad con propósito.</p>
-                    <ul class="text-sm text-gray-500 space-y-3">
-                        <li class="flex items-center group/item"><i data-lucide="chevron-right" class="w-4 h-4 mr-2 text-primary group-hover/item:translate-x-1 transition"></i>Conceptos Transgresores</li>
-                        <li class="flex items-center group/item"><i data-lucide="chevron-right" class="w-4 h-4 mr-2 text-primary group-hover/item:translate-x-1 transition"></i>Producción Premium</li>
-                    </ul>
+                    <h3 class="text-xl font-bold mb-3 text-white">Branding y comunicación estratégica</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Desarrollo de marca, mensajes alineados a intención de compra, creatividad orientada a performance y coherencia total entre narrativa y experiencia digital.</p>
                 </div>
-                <!-- Contenidos -->
-                <div class="bg-white/5 p-10 rounded-[2.5rem] border border-white/10 hover:border-primary/50 transition-all duration-500 group relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-primary/10 blur-3xl group-hover:bg-primary/20 transition-all"></div>
-                    <div class="w-16 h-16 bg-primary/10 border border-primary/20 rounded-2xl flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-white transition-colors duration-500">
-                        <i data-lucide="file-text" class="w-9 h-9"></i>
+
+                <!-- 4. Diseño y desarrollo -->
+                <div class="bg-black/60 backdrop-blur-sm p-8 rounded-[2rem] border border-white/10 hover:border-primary/50 transition-all duration-500 group">
+                    <div class="w-14 h-14 bg-primary/10 border border-primary/20 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+                        <i data-lucide="globe" class="w-8 h-8"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Contenidos</h3>
-                    <p class="text-gray-400 mb-6 leading-relaxed">Storytelling que vende. Contenido relevante que educa, entretiene y convierte.</p>
-                    <ul class="text-sm text-gray-500 space-y-3">
-                        <li class="flex items-center group/item"><i data-lucide="chevron-right" class="w-4 h-4 mr-2 text-primary group-hover/item:translate-x-1 transition"></i>Copywriting Persuasivo</li>
-                        <li class="flex items-center group/item"><i data-lucide="chevron-right" class="w-4 h-4 mr-2 text-primary group-hover/item:translate-x-1 transition"></i>Video Marketing 4K</li>
-                    </ul>
+                    <h3 class="text-xl font-bold mb-3 text-white">Diseño y desarrollo web</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Diseño y desarrollo de sitios web estratégicos, landing pages y plataformas digitales alineadas a objetivos de negocio.</p>
                 </div>
-                <!-- Redes Sociales -->
-                <div class="bg-white/5 p-10 rounded-[2.5rem] border border-white/10 hover:border-primary/50 transition-all duration-500 group relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-primary/10 blur-3xl group-hover:bg-primary/20 transition-all"></div>
-                    <div class="w-16 h-16 bg-primary/10 border border-primary/20 rounded-2xl flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-white transition-colors duration-500">
-                        <i data-lucide="instagram" class="w-9 h-9"></i>
+
+                <!-- 5. Administración -->
+                <div class="bg-black/60 backdrop-blur-sm p-8 rounded-[2rem] border border-white/10 hover:border-primary/50 transition-all duration-500 group">
+                    <div class="w-14 h-14 bg-primary/10 border border-primary/20 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+                        <i data-lucide="settings" class="w-8 h-8"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Social Media</h3>
-                    <p class="text-gray-400 mb-6 leading-relaxed">Gestión estratégica de comunidades para construir lealtad absoluta hacia tu marca.</p>
-                    <ul class="text-sm text-gray-500 space-y-3">
-                        <li class="flex items-center group/item"><i data-lucide="chevron-right" class="w-4 h-4 mr-2 text-primary group-hover/item:translate-x-1 transition"></i>Social Ads ROI</li>
-                        <li class="flex items-center group/item"><i data-lucide="chevron-right" class="w-4 h-4 mr-2 text-primary group-hover/item:translate-x-1 transition"></i>Influencer Marketing</li>
-                    </ul>
+                    <h3 class="text-xl font-bold mb-3 text-white">Administración web</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Gestión continua, mantenimiento, actualizaciones y mejoras para asegurar estabilidad y rendimiento.</p>
                 </div>
-                <!-- Analítica -->
-                <div class="bg-white/5 p-10 rounded-[2.5rem] border border-white/10 hover:border-primary/50 transition-all duration-500 group relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-primary/10 blur-3xl group-hover:bg-primary/20 transition-all"></div>
-                    <div class="w-16 h-16 bg-primary/10 border border-primary/20 rounded-2xl flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-white transition-colors duration-500">
-                        <i data-lucide="bar-chart-3" class="w-9 h-9"></i>
+
+                <!-- 6. SEO -->
+                <div class="bg-black/60 backdrop-blur-sm p-8 rounded-[2rem] border border-white/10 hover:border-primary/50 transition-all duration-500 group">
+                    <div class="w-14 h-14 bg-primary/10 border border-primary/20 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+                        <i data-lucide="zap" class="w-8 h-8"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Analítica</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed italic">"Lo que no se mide, no se puede mejorar."</p>
-                    <ul class="text-sm text-gray-500 space-y-3">
-                        <li class="flex items-center group/item"><i data-lucide="chevron-right" class="w-4 h-4 mr-2 text-primary group-hover/item:translate-x-1 transition"></i>Dashboards Real-time</li>
-                        <li class="flex items-center group/item"><i data-lucide="chevron-right" class="w-4 h-4 mr-2 text-primary group-hover/item:translate-x-1 transition"></i>Optimización de Embudo</li>
-                    </ul>
+                    <h3 class="text-xl font-bold mb-3 text-white">Optimización web y SEO</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Optimización técnica, velocidad, estructura SEO, contenidos y posicionamiento orgánico.</p>
+                </div>
+
+                <!-- 7. Automatización -->
+                <div class="bg-black/60 backdrop-blur-sm p-8 rounded-[2rem] border border-white/10 hover:border-primary/50 transition-all duration-500 group">
+                    <div class="w-14 h-14 bg-primary/10 border border-primary/20 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+                        <i data-lucide="bot" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Automatización, CRM e IA integrada</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Implementación de CRM, automatizaciones de marketing y ventas, integraciones con IA, dashboards y métricas accionables en tiempo real.</p>
+                </div>
+
+                <!-- 8. Web & App -->
+                <div class="bg-black/60 backdrop-blur-sm p-8 rounded-[2rem] border border-white/10 hover:border-primary/50 transition-all duration-500 group">
+                    <div class="w-14 h-14 bg-primary/10 border border-primary/20 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+                        <i data-lucide="layout" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Desarrollo Web y App</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Desarrollo de aplicaciones web y móviles orientadas a escalabilidad, eficiencia y objetivos de negocio.</p>
+                </div>
+
+                <!-- 9. Seguridad -->
+                <div class="bg-black/60 backdrop-blur-sm p-8 rounded-[2rem] border border-white/10 hover:border-primary/50 transition-all duration-500 group">
+                    <div class="w-14 h-14 bg-primary/10 border border-primary/20 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+                        <i data-lucide="shield-check" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Seguridad web</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Implementación de medidas de seguridad, monitoreo, backups, protección contra ataques y buenas prácticas técnicas.</p>
                 </div>
             </div>
         </div>
@@ -276,148 +328,190 @@
 
     <!-- Portfolio Section -->
     <section id="portafolio" class="py-32 bg-black relative overflow-hidden">
-        <!-- Decoration -->
-        <div class="absolute top-1/2 left-0 w-96 h-96 bg-primary/5 rounded-full blur-[150px] -translate-x-1/2"></div>
+        <!-- background asset -->
+        <div class="absolute top-0 right-0 w-full h-full -z-10 opacity-20">
+            <img src="assets/casos-exito.png" alt="Successful Growth Results" class="w-full h-full object-cover" loading="lazy">
+        </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-24">
-            <h2 class="text-4xl md:text-5xl font-heading font-extrabold mb-6 tracking-tight">Casos de <span class="text-primary">Éxito</span></h2>
-            <p class="text-xl text-gray-400 max-w-2xl mx-auto">Proyectos que transformaron marcas y redefinieron mercados.</p>
+            <h2 class="text-4xl md:text-5xl font-heading font-extrabold mb-6 tracking-tight uppercase">Casos de <span class="text-primary">Impacto</span></h2>
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto">No vendemos promesas, mostramos sistemas que funcionan y resultados que escalan.</p>
         </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-32">
-            <!-- Project 1 -->
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="relative group">
-                    <div class="absolute -inset-2 bg-primary/20 rounded-[2.5rem] blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                    <div class="relative overflow-hidden rounded-[2rem] border border-white/10">
-                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1200" alt="Caso de éxito 1" class="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
-                    </div>
-                </div>
-                <div class="space-y-8">
-                    <span class="text-primary font-bold uppercase tracking-[0.3em] text-sm">Luxury Real Estate • Rebranding</span>
-                    <h3 class="text-4xl font-bold leading-tight">Elevando la exclusividad al entorno digital</h3>
-                    <div class="space-y-6">
-                        <p class="text-gray-400"><strong class="text-white">El Reto:</strong> Posicionar una desarrolladora de lujo en un mercado global hiper-competitivo.</p>
-                        <p class="text-gray-400"><strong class="text-white">Estrategia:</strong> Identidad visual minimalista inspirada en arquitectura moderna y campaña de contenidos ultra-premium.</p>
-                        <p class="text-gray-400"><strong class="text-white">Resultados:</strong> Incremento del 200% en leads internacionales y consolidación de marca elite.</p>
-                        <div class="pt-6 flex gap-12">
-                            <div>
-                                <span class="block text-4xl font-heading font-extrabold text-primary">+200%</span>
-                                <span class="text-xs text-gray-500 uppercase tracking-widest mt-1">Leads Elite</span>
-                            </div>
-                            <div>
-                                <span class="block text-4xl font-heading font-extrabold text-primary">Global</span>
-                                <span class="text-xs text-gray-500 uppercase tracking-widest mt-1">Presencia</span>
-                            </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Project 1 -->
+                <div class="group cursor-pointer" onclick="openModal('luxury')">
+                    <div class="relative overflow-hidden rounded-[2.5rem] border border-white/10 aspect-[16/10] mb-8">
+                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1200" alt="Luxury Rebranding" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-60"></div>
+                        <div class="absolute bottom-8 left-8">
+                            <span class="bg-primary text-white text-[10px] font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full mb-4 inline-block">Rebranding & Strategy</span>
+                            <h3 class="text-3xl font-bold text-white">Elite Residences</h3>
                         </div>
                     </div>
-                    <a href="portafolio/" class="inline-flex items-center text-white font-bold group">
-                        Ver detalles del caso
-                        <i data-lucide="arrow-up-right" class="ml-2 w-5 h-5 text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
-                    </a>
+                    <div class="flex items-center justify-between px-4">
+                        <p class="text-gray-400">Escalamiento de marca ultra-premium en mercado global.</p>
+                        <div class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all">
+                            <i data-lucide="plus" class="text-white"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="group cursor-pointer" onclick="openModal('fintech')">
+                    <div class="relative overflow-hidden rounded-[2.5rem] border border-white/10 aspect-[16/10] mb-8">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200" alt="Fintech Performance" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-60"></div>
+                        <div class="absolute bottom-8 left-8">
+                            <span class="bg-primary text-white text-[10px] font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full mb-4 inline-block">Performance & Acquisition</span>
+                            <h3 class="text-3xl font-bold text-white">NeoBank Global</h3>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between px-4">
+                        <p class="text-gray-400">Adquisición masiva con precisión quirúrgica de datos.</p>
+                        <div class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all">
+                            <i data-lucide="plus" class="text-white"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Project 2 -->
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="order-2 md:order-1 space-y-8">
-                    <span class="text-primary font-bold uppercase tracking-[0.3em] text-sm">Fintech • Performance</span>
-                    <h3 class="text-4xl font-bold leading-tight">Escalabilidad masiva con precisión analítica</h3>
-                    <div class="space-y-6">
-                        <p class="text-gray-400"><strong class="text-white">El Reto:</strong> Adquisición de usuarios a bajo costo en un sector de alta fricción.</p>
-                        <p class="text-gray-400"><strong class="text-white">Estrategia:</strong> Optimización de embudo basada en IA y segmentación psicográfica avanzada.</p>
-                        <p class="text-gray-400"><strong class="text-white">Resultados:</strong> Reducción del 45% en CAC y crecimiento exponencial de la base activa.</p>
-                        <div class="pt-6 flex gap-12">
-                            <div>
-                                <span class="block text-4xl font-heading font-extrabold text-primary">-45%</span>
-                                <span class="text-xs text-gray-500 uppercase tracking-widest mt-1">Coste Adquisición</span>
-                            </div>
-                            <div>
-                                <span class="block text-4xl font-heading font-extrabold text-primary">5x</span>
-                                <span class="text-xs text-gray-500 uppercase tracking-widest mt-1">ROI Publicitario</span>
-                            </div>
+            <div class="mt-20 flex flex-col md:flex-row items-center justify-center gap-6">
+                <a href="portafolio/" class="inline-flex items-center gap-4 text-white font-bold text-lg hover:text-primary transition group">
+                    Explorar todos los casos
+                    <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-primary transition">
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </div>
+                </a>
+                <a href="#contacto" class="inline-flex items-center bg-white/5 border border-white/10 px-8 py-4 rounded-full text-white font-bold hover:bg-primary hover:border-primary transition-all">
+                    Consultar por un servicio a medida
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Study Modal -->
+    <div id="caseModal" class="fixed inset-0 z-[100] hidden overflow-y-auto">
+        <div class="fixed inset-0 bg-black/90 backdrop-blur-xl" onclick="closeModal()"></div>
+        <div class="relative min-h-screen flex items-center justify-center p-4 md:p-10">
+            <div class="bg-mld-black border border-white/10 w-full max-w-6xl rounded-[3rem] overflow-hidden relative animate-float-up">
+                <button onclick="closeModal()" class="absolute top-8 right-8 z-10 w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-primary transition">
+                    <i data-lucide="x"></i>
+                </button>
+
+                <div id="modalContent" class="grid md:grid-cols-2 min-h-[70vh]">
+                    <!-- content injected by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Work Process Section -->
+    <section class="py-32 bg-black text-white overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-24">
+                <h2 class="text-4xl md:text-5xl font-heading font-extrabold mb-6 tracking-tight uppercase">Cómo <span class="text-primary">Trabajamos</span></h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">Nuestro proceso está diseñado para la claridad, la velocidad y el retorno de inversión.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-20 items-center mb-32">
+                <div class="space-y-12">
+                    <!-- Step 1 -->
+                    <div class="flex gap-8 group">
+                        <div class="flex-shrink-0 w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-primary text-2xl font-black group-hover:bg-primary group-hover:text-white transition-all duration-500">01</div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">Diagnóstico</h3>
+                            <p class="text-gray-400">Entendemos el negocio, no solo el marketing. Analizamos tus activos, mercado y competencia.</p>
                         </div>
                     </div>
-                    <a href="portafolio/" class="inline-flex items-center text-white font-bold group">
-                        Ver detalles del caso
-                        <i data-lucide="arrow-up-right" class="ml-2 w-5 h-5 text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
-                    </a>
-                </div>
-                <div class="order-1 md:order-2 relative group">
-                    <div class="absolute -inset-2 bg-primary/20 rounded-[2.5rem] blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                    <div class="relative overflow-hidden rounded-[2rem] border border-white/10">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200" alt="Caso de éxito 2" class="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+                    <!-- Step 2 -->
+                    <div class="flex gap-8 group">
+                        <div class="flex-shrink-0 w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-primary text-2xl font-black group-hover:bg-primary group-hover:text-white transition-all duration-500">02</div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">Diseño estratégico</h3>
+                            <p class="text-gray-400">Definimos el sistema completo antes de ejecutar una sola acción táctica.</p>
+                        </div>
                     </div>
+                    <!-- Step 3 -->
+                    <div class="flex gap-8 group">
+                        <div class="flex-shrink-0 w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-primary text-2xl font-black group-hover:bg-primary group-hover:text-white transition-all duration-500">03</div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">Implementación</h3>
+                            <p class="text-gray-400">Lanzamos con foco en velocidad y control, asegurando que cada pieza del sistema funcione.</p>
+                        </div>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="flex gap-8 group">
+                        <div class="flex-shrink-0 w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-primary text-2xl font-black group-hover:bg-primary group-hover:text-white transition-all duration-500">04</div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">Medición</h3>
+                            <p class="text-gray-400">Seguimos métricas que importan al negocio (ROI, CAC, LTV), no métricas de vanidad.</p>
+                        </div>
+                    </div>
+                    <!-- Step 5 -->
+                    <div class="flex gap-8 group">
+                        <div class="flex-shrink-0 w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-primary text-2xl font-black group-hover:bg-primary group-hover:text-white transition-all duration-500">05</div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">Optimización</h3>
+                            <p class="text-gray-400">Iteramos, aprendemos y escalamos basándonos en evidencia real y datos.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="assets/proceso.png" alt="Structured Growth Stages" class="w-full rounded-[3rem] shadow-2xl border border-white/10 relative z-10" loading="lazy">
+                    <div class="absolute -top-10 -left-10 w-64 h-64 bg-primary/10 blur-[100px]"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Work Process Section -->
-    <section class="py-32 bg-black text-white overflow-hidden relative">
-        <div class="absolute top-0 right-0 w-full h-full opacity-5 pointer-events-none">
-            <div class="absolute top-10 left-10 w-40 h-40 border border-primary rounded-full"></div>
-            <div class="absolute bottom-20 right-20 w-80 h-80 border border-primary rounded-full"></div>
-        </div>
-
+    <!-- Who We Help & Difference -->
+    <section class="py-32 bg-white/5 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-24">
-                <h2 class="text-4xl md:text-5xl font-heading font-extrabold mb-6 tracking-tight">Nuestro <span class="text-primary">Proceso</span></h2>
-                <p class="text-xl text-gray-400 max-w-2xl mx-auto">Un camino estructurado y tecnológico para convertir visiones en realidades rentables.</p>
+            <div class="grid md:grid-cols-2 gap-16">
+                <!-- Who We Help -->
+                <div class="bg-black p-12 rounded-[3rem] border border-white/10">
+                    <h2 class="text-3xl font-heading font-extrabold mb-8 uppercase">A quién <span class="text-primary">Ayudamos</span></h2>
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4">
+                            <i data-lucide="check-circle-2" class="text-primary mt-1 flex-shrink-0"></i>
+                            <p class="text-gray-300 text-lg">Empresas en crecimiento que buscan escalar con orden.</p>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <i data-lucide="check-circle-2" class="text-primary mt-1 flex-shrink-0"></i>
+                            <p class="text-gray-300 text-lg">Marcas que ya invierten en marketing pero quieren mayor retorno.</p>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <i data-lucide="check-circle-2" class="text-primary mt-1 flex-shrink-0"></i>
+                            <p class="text-gray-300 text-lg">Fundadores y CEOs que valoran estrategia y análisis.</p>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <i data-lucide="check-circle-2" class="text-primary mt-1 flex-shrink-0"></i>
+                            <p class="text-gray-300 text-lg">Negocios que buscan sistemas, no improvisación.</p>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Our Difference -->
+                <div class="bg-black p-12 rounded-[3rem] border border-white/10 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-8 opacity-10">
+                        <i data-lucide="zap" class="w-32 h-32"></i>
+                    </div>
+                    <h2 class="text-3xl font-heading font-extrabold mb-8 uppercase">Nuestra <span class="text-primary">Diferencia</span></h2>
+                    <ul class="space-y-4">
+                        <li class="text-gray-300 border-l-2 border-primary pl-4 py-1">Pensamos como socios estratégicos, no proveedores.</li>
+                        <li class="text-gray-300 border-l-2 border-primary pl-4 py-1">Diseñamos sistemas antes de ejecutar acciones.</li>
+                        <li class="text-gray-300 border-l-2 border-primary pl-4 py-1">Integramos marketing, tecnología y negocio.</li>
+                        <li class="text-gray-300 border-l-2 border-primary pl-4 py-1">Optimizamos decisiones, no métricas de vanidad.</li>
+                        <li class="text-gray-300 border-l-2 border-primary pl-4 py-1">Construimos activos digitales que generan valor a largo plazo.</li>
+                    </ul>
+                    <p class="mt-8 text-white font-bold text-lg italic">MLD no es una agencia tradicional. Es un partner estratégico de crecimiento digital.</p>
+                </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-12 relative">
-                <!-- Line (Hidden on mobile) -->
-                <div class="hidden lg:block absolute top-10 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
-
-                <!-- Step 1 -->
-                <div class="relative text-center group">
-                    <div class="w-20 h-20 bg-white/5 border border-white/10 rounded-3xl flex items-center justify-center mx-auto mb-8 relative z-10 shadow-2xl group-hover:bg-primary group-hover:text-white transition-all duration-500 group-hover:-translate-y-2">
-                        <span class="text-3xl font-bold">01</span>
-                    </div>
-                    <h3 class="font-bold text-xl mb-3">Discovery</h3>
-                    <p class="text-sm text-gray-500 leading-relaxed">Inmersión total en tu modelo de negocio y mercado.</p>
-                </div>
-                <!-- Step 2 -->
-                <div class="relative text-center group">
-                    <div class="w-20 h-20 bg-white/5 border border-white/10 rounded-3xl flex items-center justify-center mx-auto mb-8 relative z-10 shadow-2xl group-hover:bg-primary group-hover:text-white transition-all duration-500 group-hover:-translate-y-2">
-                        <span class="text-3xl font-bold">02</span>
-                    </div>
-                    <h3 class="font-bold text-xl mb-3">Estrategia</h3>
-                    <p class="text-sm text-gray-500 leading-relaxed">Arquitectura de soluciones personalizada y escalable.</p>
-                </div>
-                <!-- Step 3 -->
-                <div class="relative text-center group">
-                    <div class="w-20 h-20 bg-white/5 border border-white/10 rounded-3xl flex items-center justify-center mx-auto mb-8 relative z-10 shadow-2xl group-hover:bg-primary group-hover:text-white transition-all duration-500 group-hover:-translate-y-2">
-                        <span class="text-3xl font-bold">03</span>
-                    </div>
-                    <h3 class="font-bold text-xl mb-3">Creatividad</h3>
-                    <p class="text-sm text-gray-500 leading-relaxed">Desarrollo de conceptos disruptivos de alto nivel.</p>
-                </div>
-                <!-- Step 4 -->
-                <div class="relative text-center group">
-                    <div class="w-20 h-20 bg-white/5 border border-white/10 rounded-3xl flex items-center justify-center mx-auto mb-8 relative z-10 shadow-2xl group-hover:bg-primary group-hover:text-white transition-all duration-500 group-hover:-translate-y-2">
-                        <span class="text-3xl font-bold">04</span>
-                    </div>
-                    <h3 class="font-bold text-xl mb-3">Ejecución</h3>
-                    <p class="text-sm text-gray-500 leading-relaxed">Implementación técnica con estándares de excelencia.</p>
-                </div>
-                <!-- Step 5 -->
-                <div class="relative text-center group">
-                    <div class="w-20 h-20 bg-white/5 border border-white/10 rounded-3xl flex items-center justify-center mx-auto mb-8 relative z-10 shadow-2xl group-hover:bg-primary group-hover:text-white transition-all duration-500 group-hover:-translate-y-2">
-                        <span class="text-3xl font-bold">05</span>
-                    </div>
-                    <h3 class="font-bold text-xl mb-3">Analítica</h3>
-                    <p class="text-sm text-gray-500 leading-relaxed">Monitoreo en tiempo real y análisis de KPIs.</p>
-                </div>
-                <!-- Step 6 -->
-                <div class="relative text-center group">
-                    <div class="w-20 h-20 bg-white/5 border border-white/10 rounded-3xl flex items-center justify-center mx-auto mb-8 relative z-10 shadow-2xl group-hover:bg-primary group-hover:text-white transition-all duration-500 group-hover:-translate-y-2">
-                        <span class="text-3xl font-bold">06</span>
-                    </div>
-                    <h3 class="font-bold text-xl mb-3">Scale Up</h3>
-                    <p class="text-sm text-gray-500 leading-relaxed">Optimización continua para el crecimiento infinito.</p>
-                </div>
+            <div class="mt-20 text-center">
+                <a href="#contacto" class="bg-primary text-white px-10 py-5 rounded-full font-bold text-xl hover:scale-105 transition transform shadow-2xl shadow-primary/30 inline-block">
+                    Iniciar mi transformación
+                </a>
             </div>
         </div>
     </section>
@@ -512,78 +606,72 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contacto" class="py-32 bg-black">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contacto" class="py-32 bg-black relative">
+        <div class="absolute inset-0 z-0">
+            <img src="assets/contacto.png" alt="Decision and Connection" class="w-full h-full object-cover opacity-20" loading="lazy">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid md:grid-cols-2 gap-20">
                 <div>
-                    <h2 class="text-4xl md:text-5xl font-heading font-extrabold mb-8 tracking-tight text-white">¿Listo para <span class="text-primary">liderar</span>?</h2>
-                    <p class="text-xl text-gray-400 mb-12 leading-relaxed">Estás a un paso de transformar tu presencia de marca. Conectemos y definamos el futuro de tu negocio.</p>
+                    <h2 class="text-4xl md:text-5xl font-heading font-extrabold mb-8 tracking-tight text-white uppercase">¿Listo para <span class="text-primary">Escalar</span>?</h2>
+                    <p class="text-xl text-gray-400 mb-12 leading-relaxed">Conectemos para realizar un diagnóstico inicial de tu negocio y definir el sistema de crecimiento que necesitas.</p>
 
                     <div class="space-y-10">
-                        <div class="flex items-center gap-6 group">
-                            <div class="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                                <i data-lucide="mail" class="w-8 h-8"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-500 text-sm uppercase tracking-widest mb-1">Escríbenos</h4>
-                                <p class="text-xl text-white font-medium">holamldmarketing@gmail.com</p>
-                            </div>
-                        </div>
                         <div class="flex items-center gap-6 group">
                             <div class="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
                                 <i data-lucide="phone" class="w-8 h-8"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-gray-500 text-sm uppercase tracking-widest mb-1">Llámanos</h4>
-                                <p class="text-xl text-white font-medium">(+51) 963 198 424</p>
+                                <h4 class="font-bold text-gray-500 text-sm uppercase tracking-widest mb-1">Contacto Directo</h4>
+                                <p class="text-3xl text-white font-black">(+51) 963 198 424</p>
                             </div>
                         </div>
-                        <!-- Physical Address Removed -->
                     </div>
 
-                    <div class="mt-16 flex gap-6">
+                    <div class="mt-16 flex flex-col sm:flex-row gap-6">
                         <a href="https://wa.me/51963198424" target="_blank" class="flex-1 bg-primary text-white py-5 rounded-2xl font-bold text-lg hover:scale-105 transition transform duration-300 shadow-2xl shadow-primary/30 flex items-center justify-center gap-3">
                             <i data-lucide="message-circle"></i>
-                            WhatsApp
+                            WhatsApp Directo
                         </a>
                         <a href="tel:+51963198424" class="flex-1 bg-white/5 border border-white/10 text-white py-5 rounded-2xl font-bold text-lg hover:bg-white/10 transition flex items-center justify-center gap-3">
-                            <i data-lucide="phone"></i>
-                            Llamar
+                            <i data-lucide="phone-call"></i>
+                            Llamar ahora
                         </a>
                     </div>
                 </div>
-                <div class="bg-white/5 p-10 md:p-14 rounded-[3rem] border border-white/10 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-[80px]"></div>
-                    <form action="#" class="space-y-8 relative z-10">
+                <div class="bg-black/60 backdrop-blur-xl p-10 md:p-14 rounded-[3rem] border border-white/10 relative overflow-hidden shadow-2xl">
+                    <form id="contactForm" action="https://formspree.io/f/mqakvweb" method="POST" class="space-y-6 relative z-10">
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
-                                <label class="block text-sm font-bold mb-2">Nombre</label>
-                                <input type="text" placeholder="Tu nombre" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition">
+                                <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Nombre Completo</label>
+                                <input type="text" name="name" required placeholder="Tu nombre" class="w-full bg-white/5 px-6 py-4 rounded-2xl border border-white/10 focus:border-primary text-white outline-none transition">
                             </div>
                             <div>
-                                <label class="block text-sm font-bold mb-2">Email</label>
-                                <input type="email" placeholder="tu@email.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition">
+                                <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Email Corporativo</label>
+                                <input type="email" name="email" required placeholder="tu@empresa.com" class="w-full bg-white/5 px-6 py-4 rounded-2xl border border-white/10 focus:border-primary text-white outline-none transition">
                             </div>
                         </div>
                         <div>
-                            <label class="block text-sm font-bold mb-2">Servicio de interés</label>
-                            <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition bg-white">
-                                <option>Branding</option>
-                                <option>Marketing Digital</option>
-                                <option>Publicidad</option>
-                                <option>Estrategia de Contenido</option>
-                                <option>Redes Sociales</option>
-                                <option>Performance y Analítica</option>
-                                <option>Otro</option>
+                            <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Servicio de interés</label>
+                            <select name="service" class="w-full bg-white/5 px-6 py-4 rounded-2xl border border-white/10 focus:border-primary text-white outline-none transition appearance-none">
+                                <option class="bg-black">Estrategia de Crecimiento</option>
+                                <option class="bg-black">Performance & Paid Media</option>
+                                <option class="bg-black">Desarrollo Web/App</option>
+                                <option class="bg-black">Automatización & IA</option>
+                                <option class="bg-black">Branding Estratégico</option>
+                                <option class="bg-black">Otro</option>
                             </select>
                         </div>
                         <div>
-                            <label class="block text-sm font-bold mb-2">Mensaje</label>
-                            <textarea rows="4" placeholder="Cuéntanos un poco más..." class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition"></textarea>
+                            <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Mensaje</label>
+                            <textarea name="message" rows="4" required placeholder="Cuéntanos sobre tu negocio y objetivos..." class="w-full bg-white/5 px-6 py-4 rounded-2xl border border-white/10 focus:border-primary text-white outline-none transition"></textarea>
                         </div>
-                        <button type="submit" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-opacity-90 transition shadow-xl shadow-primary/20">
-                            Enviar mensaje
+                        <button type="submit" id="submitBtn" class="w-full bg-primary text-white py-5 rounded-2xl font-bold text-xl hover:bg-opacity-90 transition shadow-xl shadow-primary/20 flex items-center justify-center gap-3">
+                            <span>Enviar Solicitud</span>
+                            <i data-lucide="send" class="w-5 h-5"></i>
                         </button>
+                        <p id="formStatus" class="text-center text-sm hidden pt-4"></p>
                     </form>
                 </div>
             </div>
@@ -603,10 +691,6 @@
             <div class="flex flex-col items-center md:items-start gap-4">
                 <p class="text-primary font-bold tracking-widest uppercase text-xs">Conecta con nosotros</p>
                 <div class="flex flex-wrap gap-6 text-gray-400">
-                    <a href="mailto:holamldmarketing@gmail.com" class="hover:text-primary transition-all flex items-center gap-2">
-                        <i data-lucide="mail" class="w-5 h-5"></i>
-                        <span class="text-sm">Email</span>
-                    </a>
                     <a href="tel:+51963198424" class="hover:text-primary transition-all flex items-center gap-2">
                         <i data-lucide="phone" class="w-5 h-5"></i>
                         <span class="text-sm">Llamar</span>
@@ -625,15 +709,144 @@
                     </a>
                 </div>
             </div>
-            <div class="text-right">
-                <p class="text-gray-500 text-sm font-medium">© 2024 MLD. Marca La Diferencia.</p>
-                <p class="text-[10px] text-gray-700 uppercase tracking-widest mt-1">Premium Marketing Agency</p>
+            <div class="flex flex-col items-center md:items-end gap-4">
+                <div class="flex gap-6 text-xs text-gray-600">
+                    <a href="#" class="hover:text-primary transition">Privacidad</a>
+                    <a href="#" class="hover:text-primary transition">Términos</a>
+                    <a href="#" class="hover:text-primary transition">Sitemap</a>
+                </div>
+                <div class="text-center md:text-right">
+                    <p class="text-gray-500 text-sm font-medium">© 2024 MLD. Marca La Diferencia.</p>
+                    <p class="text-[10px] text-gray-700 uppercase tracking-widest mt-1">Premium Marketing Agency</p>
+                </div>
             </div>
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-8 right-8 z-[60] w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center shadow-2xl opacity-0 translate-y-10 pointer-events-none transition-all duration-500 hover:scale-110">
+        <i data-lucide="arrow-up"></i>
+    </button>
+
     <script>
         lucide.createIcons();
+
+        // Portfolio Modals Data
+        const projectData = {
+            luxury: {
+                title: "Elite Residences",
+                category: "Luxury Rebranding",
+                image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1200",
+                reto: "Posicionar una desarrolladora de lujo en un mercado global hiper-competitivo.",
+                estrategia: "Identidad visual minimalista inspirada en arquitectura moderna y campaña de contenidos ultra-premium.",
+                solucion: "Desarrollo de ecosistema digital de alta gama, incluyendo VR tours, assets 3D y pauta segmentada a ultra-high-net-worth individuals.",
+                resultados: "Incremento del 200% en leads internacionales y consolidación de marca elite."
+            },
+            fintech: {
+                title: "NeoBank Global",
+                category: "Performance & Acquisition",
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200",
+                reto: "Adquisición de usuarios a bajo costo en un sector de alta fricción.",
+                estrategia: "Optimización de embudo basada en IA y segmentación psicográfica avanzada.",
+                solucion: "Implementación de sistema de testing continuo (CRO) y automatización de marketing automation para reactivación de usuarios.",
+                resultados: "Reducción del 45% en CAC y crecimiento exponencial de la base activa (5x ROI)."
+            }
+        };
+
+        function openModal(projectId) {
+            const data = projectData[projectId];
+            const content = `
+                <div class="h-64 md:h-auto overflow-hidden">
+                    <img src="${data.image}" alt="${data.title}" class="w-full h-full object-cover">
+                </div>
+                <div class="p-8 md:p-16 overflow-y-auto max-h-[70vh] md:max-h-none">
+                    <span class="text-primary font-bold uppercase tracking-widest text-sm mb-4 block">${data.category}</span>
+                    <h2 class="text-4xl md:text-6xl font-heading font-extrabold mb-10 text-white">${data.title}</h2>
+
+                    <div class="grid gap-10">
+                        <div>
+                            <h4 class="text-primary font-bold uppercase tracking-widest text-xs mb-3">El Reto</h4>
+                            <p class="text-gray-300 text-lg">${data.reto}</p>
+                        </div>
+                        <div>
+                            <h4 class="text-primary font-bold uppercase tracking-widest text-xs mb-3">Estrategia</h4>
+                            <p class="text-gray-300 text-lg">${data.estrategia}</p>
+                        </div>
+                        <div>
+                            <h4 class="text-primary font-bold uppercase tracking-widest text-xs mb-3">Solución</h4>
+                            <p class="text-gray-300 text-lg">${data.solucion}</p>
+                        </div>
+                        <div class="bg-white/5 p-8 rounded-3xl border border-white/10">
+                            <h4 class="text-primary font-bold uppercase tracking-widest text-xs mb-3">Resultados</h4>
+                            <p class="text-white text-2xl font-bold">${data.resultados}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.getElementById('modalContent').innerHTML = content;
+            document.getElementById('caseModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            lucide.createIcons();
+        }
+
+        function closeModal() {
+            document.getElementById('caseModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Back to Top Logic
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+                backToTop.classList.add('opacity-100', 'translate-y-0');
+            } else {
+                backToTop.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+                backToTop.classList.remove('opacity-100', 'translate-y-0');
+            }
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Form Handling
+        const contactForm = document.getElementById('contactForm');
+        const formStatus = document.getElementById('formStatus');
+        const submitBtn = document.getElementById('submitBtn');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span>Enviando...</span>';
+
+                const formData = new FormData(contactForm);
+                try {
+                    const response = await fetch(contactForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (response.ok) {
+                        formStatus.textContent = "¡Solicitud enviada con éxito! Nos contactaremos pronto.";
+                        formStatus.classList.remove('hidden', 'text-red-500');
+                        formStatus.classList.add('text-green-500');
+                        contactForm.reset();
+                    } else {
+                        throw new Error();
+                    }
+                } catch (error) {
+                    formStatus.textContent = "Hubo un error al enviar. Por favor intenta de nuevo o usa el contacto directo.";
+                    formStatus.classList.remove('hidden', 'text-green-500');
+                    formStatus.classList.add('text-red-500');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<span>Enviar Solicitud</span> <i data-lucide="send" class="w-5 h-5"></i>';
+                    lucide.createIcons();
+                }
+            });
+        }
 
         // Mobile Menu Toggle
         const btn = document.getElementById('mobile-menu-button');
