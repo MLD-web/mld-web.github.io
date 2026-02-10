@@ -42,6 +42,15 @@
     </script>
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @keyframes float-up {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-float-up {
+            animation: float-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    </style>
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
@@ -101,10 +110,10 @@
                         <span class="text-primary font-bold text-xs uppercase tracking-widest mb-3 block">Branding • Lujo</span>
                         <h3 class="text-2xl font-bold mb-4">Elite Residences</h3>
                         <p class="text-gray-400 text-sm mb-6 leading-relaxed">Rebranding completo para una firma inmobiliaria de ultra-lujo, logrando una identidad que respira exclusividad.</p>
-                        <div class="flex items-center text-white font-bold text-sm group/btn cursor-pointer">
+                        <button onclick="openCaseModal('luxury')" class="flex items-center text-white font-bold text-sm group/btn cursor-pointer">
                             Ver caso de estudio
                             <i data-lucide="arrow-right" class="ml-2 w-4 h-4 text-primary group-hover/btn:translate-x-2 transition-transform"></i>
-                        </div>
+                        </button>
                     </div>
                 </div>
 
@@ -117,10 +126,10 @@
                         <span class="text-primary font-bold text-xs uppercase tracking-widest mb-3 block">Performance • Fintech</span>
                         <h3 class="text-2xl font-bold mb-4">NeoBank Global</h3>
                         <p class="text-gray-400 text-sm mb-6 leading-relaxed">Estrategia de adquisición masiva con segmentación por IA, optimizando el CAC en un 45%.</p>
-                        <div class="flex items-center text-white font-bold text-sm group/btn cursor-pointer">
+                        <button onclick="openCaseModal('fintech')" class="flex items-center text-white font-bold text-sm group/btn cursor-pointer">
                             Ver caso de estudio
                             <i data-lucide="arrow-right" class="ml-2 w-4 h-4 text-primary group-hover/btn:translate-x-2 transition-transform"></i>
-                        </div>
+                        </button>
                     </div>
                 </div>
 
@@ -133,10 +142,10 @@
                         <span class="text-primary font-bold text-xs uppercase tracking-widest mb-3 block">Marketing Digital • Tech</span>
                         <h3 class="text-2xl font-bold mb-4">Neural Launch</h3>
                         <p class="text-gray-400 text-sm mb-6 leading-relaxed">Campaña de lanzamiento 360° para startup de IA, generando +50k registros en el primer mes.</p>
-                        <div class="flex items-center text-white font-bold text-sm group/btn cursor-pointer">
+                        <button onclick="openCaseModal('tech')" class="flex items-center text-white font-bold text-sm group/btn cursor-pointer">
                             Ver caso de estudio
                             <i data-lucide="arrow-right" class="ml-2 w-4 h-4 text-primary group-hover/btn:translate-x-2 transition-transform"></i>
-                        </div>
+                        </button>
                     </div>
                 </div>
 
@@ -149,15 +158,31 @@
                         <span class="text-primary font-bold text-xs uppercase tracking-widest mb-3 block">Social Media • Fashion</span>
                         <h3 class="text-2xl font-bold mb-4">Aura Modas</h3>
                         <p class="text-gray-400 text-sm mb-6 leading-relaxed">Gestión integral de redes sociales y marketing de influencers para marca de moda sostenible.</p>
-                        <div class="flex items-center text-white font-bold text-sm group/btn cursor-pointer">
+                        <button onclick="openCaseModal('fashion')" class="flex items-center text-white font-bold text-sm group/btn cursor-pointer">
                             Ver caso de estudio
                             <i data-lucide="arrow-right" class="ml-2 w-4 h-4 text-primary group-hover/btn:translate-x-2 transition-transform"></i>
-                        </div>
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Case Study Modal -->
+    <div id="caseModal" class="fixed inset-0 z-[100] hidden overflow-y-auto" tabindex="-1">
+        <div class="fixed inset-0 bg-black/90 backdrop-blur-xl" onclick="closeCaseModal()"></div>
+        <div class="relative min-h-screen flex items-center justify-center p-4 md:p-10">
+            <div class="bg-black border border-white/10 w-full max-w-6xl rounded-[3rem] overflow-hidden relative shadow-2xl animate-float-up">
+                <button onclick="closeCaseModal()" class="absolute top-8 right-8 z-10 w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-primary transition">
+                    <i data-lucide="x"></i>
+                </button>
+
+                <div id="modalContent" class="grid md:grid-cols-2 min-h-[70vh]">
+                    <!-- content injected by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-black py-16 border-t border-white/10">
@@ -176,11 +201,11 @@
                         <i data-lucide="phone" class="w-5 h-5"></i>
                         <span class="text-sm">Llamar</span>
                     </a>
-                    <a href="https://www.instagram.com/mldmarketing" target="_blank" class="hover:text-primary transition-all flex items-center gap-2">
+                    <a href="https://www.instagram.com/hola_mld?utm_source=qr&igsh=MWt5ZW9janpmMWtrcA==" target="_blank" class="hover:text-primary transition-all flex items-center gap-2">
                         <i data-lucide="instagram" class="w-5 h-5"></i>
-                        <span class="text-sm">@mldmarketing</span>
+                        <span class="text-sm">@hola_mld</span>
                     </a>
-                    <a href="https://www.facebook.com/mldmarketing" target="_blank" class="hover:text-primary transition-all flex items-center gap-2">
+                    <a href="https://www.facebook.com/share/1CMUPWz9Zi/" target="_blank" class="hover:text-primary transition-all flex items-center gap-2">
                         <i data-lucide="facebook" class="w-5 h-5"></i>
                         <span class="text-sm">MLD Marketing</span>
                     </a>
@@ -199,6 +224,100 @@
 
     <script>
         lucide.createIcons();
+
+        // Portfolio Modals Data
+        const projectData = {
+            luxury: {
+                title: "Elite Residences",
+                category: "Luxury Rebranding",
+                image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1200",
+                reto: "Posicionar una desarrolladora de lujo en un mercado global hiper-competitivo.",
+                estrategia: "Identidad visual minimalista inspirada en arquitectura moderna y campaña de contenidos ultra-premium.",
+                solucion: "Desarrollo de ecosistema digital de alta gama, incluyendo VR tours, assets 3D y pauta segmentada a ultra-high-net-worth individuals.",
+                resultados: "Incremento del 200% en leads internacionales y consolidación de marca elite."
+            },
+            fintech: {
+                title: "NeoBank Global",
+                category: "Performance & Acquisition",
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200",
+                reto: "Adquisición de usuarios a bajo costo en un sector de alta fricción.",
+                estrategia: "Optimización de embudo basada en IA y segmentación psicográfica avanzada.",
+                solucion: "Implementación de sistema de testing continuo (CRO) y automatización de marketing automation para reactivación de usuarios.",
+                resultados: "Reducción del 45% en CAC y crecimiento exponencial de la base activa (5x ROI)."
+            },
+            tech: {
+                title: "Neural Launch",
+                category: "Marketing Digital • Tech",
+                image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=1200",
+                reto: "Lanzamiento de una startup de IA en un mercado saturado de ruido tecnológico.",
+                estrategia: "Campaña de marketing de guerrilla digital y sistema de referidos incentivado para viralidad.",
+                solucion: "Desarrollo de landing page de alta conversión y embudo de nutrición automatizado con IA.",
+                resultados: "Más de 50,000 registros en el primer mes y un ROI de inversión publicitaria de 4x."
+            },
+            fashion: {
+                title: "Aura Modas",
+                category: "Social Media • Fashion",
+                image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=1200",
+                reto: "Incrementar ventas directas y recordación de marca para una firma de moda sostenible.",
+                estrategia: "Mix de marketing de influencers con micro-perfiles de nicho y contenido orgánico de alto impacto.",
+                solucion: "Implementación de ecosistema e-commerce optimizado y campañas de retargeting dinámico.",
+                resultados: "Aumento del 120% en facturación semestral y comunidad de 100k seguidores reales."
+            }
+        };
+
+        function openCaseModal(projectId) {
+            const data = projectData[projectId];
+            if (!data) return;
+
+            const content = `
+                <div class="h-64 md:h-auto overflow-hidden">
+                    <img src="${data.image}" alt="${data.title}" class="w-full h-full object-cover">
+                </div>
+                <div class="p-8 md:p-16 overflow-y-auto max-h-[70vh] md:max-h-none">
+                    <span class="text-primary font-bold uppercase tracking-widest text-sm mb-4 block">${data.category}</span>
+                    <h2 class="text-4xl md:text-6xl font-heading font-extrabold mb-10 text-white">${data.title}</h2>
+
+                    <div class="grid gap-10">
+                        <div>
+                            <h4 class="text-primary font-bold uppercase tracking-widest text-xs mb-3">El Reto</h4>
+                            <p class="text-gray-300 text-lg">${data.reto}</p>
+                        </div>
+                        <div>
+                            <h4 class="text-primary font-bold uppercase tracking-widest text-xs mb-3">Estrategia</h4>
+                            <p class="text-gray-300 text-lg">${data.estrategia}</p>
+                        </div>
+                        <div>
+                            <h4 class="text-primary font-bold uppercase tracking-widest text-xs mb-3">Solución</h4>
+                            <p class="text-gray-300 text-lg">${data.solucion}</p>
+                        </div>
+                        <div class="bg-white/5 p-8 rounded-3xl border border-white/10">
+                            <h4 class="text-primary font-bold uppercase tracking-widest text-xs mb-3">Resultados</h4>
+                            <p class="text-white text-2xl font-bold">${data.resultados}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            const modal = document.getElementById('caseModal');
+            document.getElementById('modalContent').innerHTML = content;
+            modal.classList.remove('hidden');
+            modal.setAttribute('aria-modal', 'true');
+            modal.setAttribute('role', 'dialog');
+            document.body.style.overflow = 'hidden';
+            modal.focus();
+            lucide.createIcons();
+        }
+
+        function closeCaseModal() {
+            const modal = document.getElementById('caseModal');
+            modal.classList.add('hidden');
+            modal.removeAttribute('aria-modal');
+            modal.removeAttribute('role');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeCaseModal();
+        });
 
         // Mobile Menu Toggle
         const btn = document.getElementById('mobile-menu-button');
