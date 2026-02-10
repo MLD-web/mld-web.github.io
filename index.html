@@ -341,7 +341,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-2 gap-12">
                 <!-- Project 1 -->
-                <div class="group cursor-pointer" onclick="openModal('luxury')">
+                <div class="group cursor-pointer" onclick="openCaseModal('luxury')">
                     <div class="relative overflow-hidden rounded-[2.5rem] border border-white/10 aspect-[16/10] mb-8">
                         <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1200" alt="Luxury Rebranding" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-60"></div>
@@ -359,7 +359,7 @@
                 </div>
 
                 <!-- Project 2 -->
-                <div class="group cursor-pointer" onclick="openModal('fintech')">
+                <div class="group cursor-pointer" onclick="openCaseModal('fintech')">
                     <div class="relative overflow-hidden rounded-[2.5rem] border border-white/10 aspect-[16/10] mb-8">
                         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200" alt="Fintech Performance" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-60"></div>
@@ -370,6 +370,42 @@
                     </div>
                     <div class="flex items-center justify-between px-4">
                         <p class="text-gray-400">Adquisición masiva con precisión quirúrgica de datos.</p>
+                        <div class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all">
+                            <i data-lucide="plus" class="text-white"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="group cursor-pointer" onclick="openCaseModal('tech')">
+                    <div class="relative overflow-hidden rounded-[2.5rem] border border-white/10 aspect-[16/10] mb-8">
+                        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=1200" alt="AI Startup" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-60"></div>
+                        <div class="absolute bottom-8 left-8">
+                            <span class="bg-primary text-white text-[10px] font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full mb-4 inline-block">Marketing Digital • Tech</span>
+                            <h3 class="text-3xl font-bold text-white">Neural Launch</h3>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between px-4">
+                        <p class="text-gray-400">Lanzamiento 360° con +50k registros en el primer mes.</p>
+                        <div class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all">
+                            <i data-lucide="plus" class="text-white"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="group cursor-pointer" onclick="openCaseModal('fashion')">
+                    <div class="relative overflow-hidden rounded-[2.5rem] border border-white/10 aspect-[16/10] mb-8">
+                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=1200" alt="E-commerce Fashion" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-60"></div>
+                        <div class="absolute bottom-8 left-8">
+                            <span class="bg-primary text-white text-[10px] font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full mb-4 inline-block">Social Media • Fashion</span>
+                            <h3 class="text-3xl font-bold text-white">Aura Modas</h3>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between px-4">
+                        <p class="text-gray-400">Escalamiento de e-commerce y comunidad digital.</p>
                         <div class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all">
                             <i data-lucide="plus" class="text-white"></i>
                         </div>
@@ -392,11 +428,11 @@
     </section>
 
     <!-- Case Study Modal -->
-    <div id="caseModal" class="fixed inset-0 z-[100] hidden overflow-y-auto">
-        <div class="fixed inset-0 bg-black/90 backdrop-blur-xl" onclick="closeModal()"></div>
+    <div id="caseModal" class="fixed inset-0 z-[100] hidden overflow-y-auto" tabindex="-1">
+        <div class="fixed inset-0 bg-black/90 backdrop-blur-xl" onclick="closeCaseModal()"></div>
         <div class="relative min-h-screen flex items-center justify-center p-4 md:p-10">
-            <div class="bg-mld-black border border-white/10 w-full max-w-6xl rounded-[3rem] overflow-hidden relative animate-float-up">
-                <button onclick="closeModal()" class="absolute top-8 right-8 z-10 w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-primary transition">
+            <div class="bg-mld-black border border-white/10 w-full max-w-6xl rounded-[3rem] overflow-hidden relative animate-float-up shadow-2xl">
+                <button onclick="closeCaseModal()" class="absolute top-8 right-8 z-10 w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-primary transition">
                     <i data-lucide="x"></i>
                 </button>
 
@@ -642,6 +678,9 @@
                 </div>
                 <div class="bg-black/60 backdrop-blur-xl p-10 md:p-14 rounded-[3rem] border border-white/10 relative overflow-hidden shadow-2xl">
                     <form id="contactForm" action="https://formspree.io/f/mqakvweb" method="POST" class="space-y-6 relative z-10">
+                        <!-- Anti-spam honeypot -->
+                        <input type="text" name="_gotcha" style="display:none">
+
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Nombre Completo</label>
@@ -654,14 +693,20 @@
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Servicio de interés</label>
-                            <select name="service" class="w-full bg-white/5 px-6 py-4 rounded-2xl border border-white/10 focus:border-primary text-white outline-none transition appearance-none">
-                                <option class="bg-black">Estrategia de Crecimiento</option>
-                                <option class="bg-black">Performance & Paid Media</option>
-                                <option class="bg-black">Desarrollo Web/App</option>
-                                <option class="bg-black">Automatización & IA</option>
-                                <option class="bg-black">Branding Estratégico</option>
-                                <option class="bg-black">Otro</option>
-                            </select>
+                            <div class="relative">
+                                <select name="service" required class="w-full bg-white/5 px-6 py-4 rounded-2xl border border-white/10 focus:border-primary text-white outline-none transition appearance-none">
+                                    <option value="" disabled selected class="bg-black">Selecciona un servicio</option>
+                                    <option class="bg-black">Estrategia de Crecimiento</option>
+                                    <option class="bg-black">Performance & Paid Media</option>
+                                    <option class="bg-black">Desarrollo Web/App</option>
+                                    <option class="bg-black">Automatización & IA</option>
+                                    <option class="bg-black">Branding Estratégico</option>
+                                    <option class="bg-black">Otro</option>
+                                </select>
+                                <div class="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
+                                    <i data-lucide="chevron-down" class="w-5 h-5"></i>
+                                </div>
+                            </div>
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Mensaje</label>
@@ -671,7 +716,7 @@
                             <span>Enviar Solicitud</span>
                             <i data-lucide="send" class="w-5 h-5"></i>
                         </button>
-                        <p id="formStatus" class="text-center text-sm hidden pt-4"></p>
+                        <p id="formStatus" class="text-center text-sm hidden pt-4 font-bold"></p>
                     </form>
                 </div>
             </div>
@@ -695,11 +740,11 @@
                         <i data-lucide="phone" class="w-5 h-5"></i>
                         <span class="text-sm">Llamar</span>
                     </a>
-                    <a href="https://www.instagram.com/mldmarketing" target="_blank" class="hover:text-primary transition-all flex items-center gap-2">
+                    <a href="https://www.instagram.com/hola_mld?utm_source=qr&igsh=MWt5ZW9janpmMWtrcA==" target="_blank" class="hover:text-primary transition-all flex items-center gap-2">
                         <i data-lucide="instagram" class="w-5 h-5"></i>
-                        <span class="text-sm">@mldmarketing</span>
+                        <span class="text-sm">@hola_mld</span>
                     </a>
-                    <a href="https://www.facebook.com/mldmarketing" target="_blank" class="hover:text-primary transition-all flex items-center gap-2">
+                    <a href="https://www.facebook.com/share/1CMUPWz9Zi/" target="_blank" class="hover:text-primary transition-all flex items-center gap-2">
                         <i data-lucide="facebook" class="w-5 h-5"></i>
                         <span class="text-sm">MLD Marketing</span>
                     </a>
@@ -750,11 +795,31 @@
                 estrategia: "Optimización de embudo basada en IA y segmentación psicográfica avanzada.",
                 solucion: "Implementación de sistema de testing continuo (CRO) y automatización de marketing automation para reactivación de usuarios.",
                 resultados: "Reducción del 45% en CAC y crecimiento exponencial de la base activa (5x ROI)."
+            },
+            tech: {
+                title: "Neural Launch",
+                category: "Marketing Digital • Tech",
+                image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=1200",
+                reto: "Lanzamiento de una startup de IA en un mercado saturado de ruido tecnológico.",
+                estrategia: "Campaña de marketing de guerrilla digital y sistema de referidos incentivado para viralidad.",
+                solucion: "Desarrollo de landing page de alta conversión y embudo de nutrición automatizado con IA.",
+                resultados: "Más de 50,000 registros en el primer mes y un ROI de inversión publicitaria de 4x."
+            },
+            fashion: {
+                title: "Aura Modas",
+                category: "Social Media • Fashion",
+                image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=1200",
+                reto: "Incrementar ventas directas y recordación de marca para una firma de moda sostenible.",
+                estrategia: "Mix de marketing de influencers con micro-perfiles de nicho y contenido orgánico de alto impacto.",
+                solucion: "Implementación de ecosistema e-commerce optimizado y campañas de retargeting dinámico.",
+                resultados: "Aumento del 120% en facturación semestral y comunidad de 100k seguidores reales."
             }
         };
 
-        function openModal(projectId) {
+        function openCaseModal(projectId) {
             const data = projectData[projectId];
+            if (!data) return;
+
             const content = `
                 <div class="h-64 md:h-auto overflow-hidden">
                     <img src="${data.image}" alt="${data.title}" class="w-full h-full object-cover">
@@ -783,16 +848,31 @@
                     </div>
                 </div>
             `;
+            const modal = document.getElementById('caseModal');
             document.getElementById('modalContent').innerHTML = content;
-            document.getElementById('caseModal').classList.remove('hidden');
+            modal.classList.remove('hidden');
+            modal.setAttribute('aria-modal', 'true');
+            modal.setAttribute('role', 'dialog');
             document.body.style.overflow = 'hidden';
+
+            // Focus management
+            modal.focus();
+
             lucide.createIcons();
         }
 
-        function closeModal() {
-            document.getElementById('caseModal').classList.add('hidden');
+        function closeCaseModal() {
+            const modal = document.getElementById('caseModal');
+            modal.classList.add('hidden');
+            modal.removeAttribute('aria-modal');
+            modal.removeAttribute('role');
             document.body.style.overflow = 'auto';
         }
+
+        // Close on ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeCaseModal();
+        });
 
         // Back to Top Logic
         const backToTop = document.getElementById('backToTop');
@@ -817,8 +897,13 @@
         if (contactForm) {
             contactForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
+
+                // Bloquear doble submit
                 submitBtn.disabled = true;
                 submitBtn.innerHTML = '<span>Enviando...</span>';
+                formStatus.textContent = "Enviando...";
+                formStatus.classList.remove('hidden', 'text-red-500', 'text-green-500');
+                formStatus.classList.add('text-gray-400');
 
                 const formData = new FormData(contactForm);
                 try {
@@ -829,20 +914,31 @@
                     });
 
                     if (response.ok) {
-                        formStatus.textContent = "¡Solicitud enviada con éxito! Nos contactaremos pronto.";
-                        formStatus.classList.remove('hidden', 'text-red-500');
+                        formStatus.textContent = "✓ Enviado";
+                        formStatus.classList.remove('text-gray-400');
                         formStatus.classList.add('text-green-500');
                         contactForm.reset();
+
+                        // Redirección a gracias.html tras éxito
+                        setTimeout(() => {
+                            window.location.href = 'gracias.html';
+                        }, 1000);
                     } else {
+                        const data = await response.json();
+                        if (Object.hasOwn(data, 'errors')) {
+                            formStatus.textContent = data["errors"].map(error => error["message"]).join(", ");
+                        } else {
+                            formStatus.textContent = "Error al enviar. Intente de nuevo.";
+                        }
                         throw new Error();
                     }
                 } catch (error) {
-                    formStatus.textContent = "Hubo un error al enviar. Por favor intenta de nuevo o usa el contacto directo.";
-                    formStatus.classList.remove('hidden', 'text-green-500');
+                    formStatus.textContent = "Error al enviar. Por favor intenta de nuevo.";
+                    formStatus.classList.remove('hidden', 'text-green-500', 'text-gray-400');
                     formStatus.classList.add('text-red-500');
-                } finally {
                     submitBtn.disabled = false;
                     submitBtn.innerHTML = '<span>Enviar Solicitud</span> <i data-lucide="send" class="w-5 h-5"></i>';
+                } finally {
                     lucide.createIcons();
                 }
             });
