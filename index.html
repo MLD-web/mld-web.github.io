@@ -175,34 +175,18 @@
 
     <!-- Who We Are Section -->
     <section id="nosotros" class="py-32 bg-black relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-20 items-center">
-                <div class="order-2 md:order-1 relative">
-                    <img src="assets/quienes-somos.png" alt="Strategic Marketing Systems" class="w-full rounded-[3rem] shadow-2xl border border-white/10" loading="lazy">
-                    <div class="absolute -bottom-10 -right-10 w-48 h-48 bg-primary/20 blur-[80px]"></div>
-                </div>
-                <div class="order-1 md:order-2">
-                    <h2 class="text-4xl md:text-5xl font-heading font-extrabold mb-8 tracking-tight text-white uppercase">Quiénes <span class="text-primary">Somos</span></h2>
-                    <div class="space-y-6 text-xl text-gray-400 leading-relaxed">
-                        <p>MLD es una agencia de marketing y publicidad enfocada en <span class="text-white font-semibold">crecimiento estratégico</span>, criterio de negocio y ejecución basada en datos.</p>
-                        <p>No vendemos publicaciones ni anuncios aislados: diseñamos <span class="text-white">sistemas de marketing</span> que ayudan a las marcas a tomar mejores decisiones, escalar con orden y construir ventajas reales en el mercado.</p>
-                        <p>Trabajamos con empresas que entienden que el marketing no es un gasto creativo, sino una <span class="text-primary font-bold">palanca estratégica</span> de crecimiento.</p>
-                    </div>
-                    <div class="mt-12">
-                        <a href="#contacto" class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all">
-                            Solicitar auditoría gratuita
-                            <i data-lucide="chevron-right"></i>
-                        </a>
-                    </div>
-
-                    <!-- Firma CTO -->
-                    <div class="mt-16 pt-8 border-t border-white/5">
-                        <p class="text-white font-light tracking-widest uppercase text-sm">— Diego Rojas</p>
-                        <p class="text-[10px] font-bold text-white/80 tracking-[0.2em] uppercase mt-1">CTO — MLD</p>
-                    </div>
-                </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-heading font-extrabold mb-12 tracking-tight text-white uppercase">Quiénes <span class="text-primary">Somos</span></h2>
+            <div class="relative inline-block w-full max-w-5xl mx-auto">
+                <img src="assets/quienes-somos.png" alt="Strategic Marketing Systems" class="w-full rounded-[3rem] shadow-2xl border border-white/10" loading="lazy">
+                <div class="absolute -bottom-10 -right-10 w-48 h-48 bg-primary/20 blur-[80px]"></div>
             </div>
 
+            <!-- Firma CTO -->
+            <div class="mt-16 pt-8 border-t border-white/5 inline-block text-left">
+                <p class="text-white font-light tracking-widest uppercase text-sm">— Diego Rojas</p>
+                <p class="text-[10px] font-bold text-white/80 tracking-[0.2em] uppercase mt-1">CTO — MLD</p>
+            </div>
         </div>
     </section>
 
@@ -389,23 +373,7 @@
                     </div>
                 </div>
 
-                <!-- Project 3 -->
-                <div class="group cursor-pointer" onclick="openCaseModal('tech')">
-                    <div class="relative overflow-hidden rounded-[2.5rem] border border-white/10 aspect-[16/10] mb-8">
-                        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=1200" alt="AI Startup" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-60"></div>
-                        <div class="absolute bottom-8 left-8">
-                            <span class="bg-primary text-white text-[10px] font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full mb-4 inline-block">Marketing Digital • Tech</span>
-                            <h3 class="text-3xl font-bold text-white">Neural Launch</h3>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between px-4">
-                        <p class="text-gray-400">Lanzamiento 360° con +50k registros en el primer mes.</p>
-                        <div class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all">
-                            <i data-lucide="plus" class="text-white"></i>
-                        </div>
-                    </div>
-                </div>
+                <!-- Project 3 (Removed Neural Launch) -->
 
                 <!-- Project 4 -->
                 <div class="group cursor-pointer" onclick="openCaseModal('fashion')">
@@ -618,24 +586,6 @@
                     </div>
                 </div>
 
-                <!-- Testimonial 3 -->
-                <div class="testimonial-card p-8 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all duration-500 group">
-                    <div class="flex text-primary mb-4">
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                    </div>
-                    <p class="text-gray-400 italic mb-6">"Encontramos en MLD el partner técnico que hablába nuestro idioma de negocio. Su ejecución es impecable."</p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">JS</div>
-                        <div>
-                            <p class="font-bold text-white">Jorge Silva</p>
-                            <p class="text-xs text-gray-500">Founder, Neural Launch</p>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <div class="text-center mb-16">
@@ -820,8 +770,10 @@
                 </div>
                 <div class="text-center md:text-right">
                     <p class="text-gray-500 text-sm font-medium">© 2024 MLD. Marca La Diferencia.</p>
-                    <p class="text-[10px] text-gray-700 uppercase tracking-widest mt-1">MLD — CTO: Diego Rojas</p>
-                    <p class="text-[9px] text-gray-800 uppercase tracking-widest mt-0.5">Premium Marketing Agency</p>
+                    <div class="mt-4 pt-4 border-t border-white/5">
+                        <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-1 font-bold">Dirección tecnológica</p>
+                        <p class="text-white text-sm font-medium">Diego Rojas — <span class="text-primary text-[10px]">CTO, MLD</span></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -854,15 +806,6 @@
                 estrategia: "Optimización de embudo basada en IA y segmentación psicográfica avanzada.",
                 solucion: "Implementación de sistema de testing continuo (CRO) y automatización de marketing automation para reactivación de usuarios.",
                 resultados: "Reducción del 45% en CAC y crecimiento exponencial de la base activa (5x ROI)."
-            },
-            tech: {
-                title: "Neural Launch",
-                category: "Marketing Digital • Tech",
-                image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=1200",
-                reto: "Lanzamiento de una startup de IA en un mercado saturado de ruido tecnológico.",
-                estrategia: "Campaña de marketing de guerrilla digital y sistema de referidos incentivado para viralidad.",
-                solucion: "Desarrollo de landing page de alta conversión y embudo de nutrición automatizado con IA.",
-                resultados: "Más de 50,000 registros en el primer mes y un ROI de inversión publicitaria de 4x."
             },
             fashion: {
                 title: "Aura Modas",
