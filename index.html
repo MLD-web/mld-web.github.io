@@ -194,8 +194,15 @@
                             <i data-lucide="chevron-right"></i>
                         </a>
                     </div>
+
+                    <!-- Firma CTO -->
+                    <div class="mt-16 pt-8 border-t border-white/5">
+                        <p class="text-gray-500 font-light tracking-widest uppercase text-sm">— Diego Rojas</p>
+                        <p class="text-[10px] font-bold text-primary tracking-[0.2em] uppercase mt-1">CTO — MLD</p>
+                    </div>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -322,6 +329,12 @@
                     <h3 class="text-xl font-bold mb-3 text-white">Seguridad web</h3>
                     <p class="text-gray-400 text-sm leading-relaxed">Implementación de medidas de seguridad, monitoreo, backups, protección contra ataques y buenas prácticas técnicas.</p>
                 </div>
+            </div>
+
+            <!-- Nota de autoridad técnica -->
+            <div class="mt-20 pt-10 border-t border-white/5 flex flex-col items-center">
+                <p class="text-gray-500 text-[10px] uppercase tracking-[0.3em] font-bold mb-2">Arquitectura y estrategia técnica</p>
+                <p class="text-white font-medium tracking-wider text-center">Diego Rojas — <span class="text-primary text-xs font-bold">CTO, MLD</span></p>
             </div>
         </div>
     </section>
@@ -542,6 +555,12 @@
                         <li class="text-gray-300 border-l-2 border-primary pl-4 py-1">Construimos activos digitales que generan valor a largo plazo.</li>
                     </ul>
                     <p class="mt-8 text-white font-bold text-lg italic">MLD no es una agencia tradicional. Es un partner estratégico de crecimiento digital.</p>
+
+                    <!-- Firma editorial -->
+                    <div class="mt-10 pt-6 border-t border-white/5">
+                        <p class="text-gray-400 font-light tracking-widest uppercase text-xs">— Diego Rojas</p>
+                        <p class="text-[9px] font-bold text-primary tracking-[0.2em] uppercase mt-1">CTO — MLD</p>
+                    </div>
                 </div>
             </div>
             <div class="mt-20 text-center">
@@ -552,73 +571,48 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- Testimonials Section / Review Form -->
     <section class="py-32 bg-black relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-24">
-                <h2 class="text-4xl md:text-5xl font-heading font-extrabold mb-6 tracking-tight">Voz de nuestros <span class="text-primary">Socios</span></h2>
-                <p class="text-xl text-gray-400 max-w-2xl mx-auto">La excelencia se mide por el éxito de quienes confían en nosotros.</p>
+                <h2 class="text-4xl md:text-5xl font-heading font-extrabold mb-6 tracking-tight">Comparte tu <span class="text-primary">Experiencia</span></h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">Tu opinión nos ayuda a seguir marcando la diferencia.</p>
             </div>
-            <div class="grid md:grid-cols-3 gap-10">
-                <!-- Testimonial 1 -->
-                <div class="bg-white/5 p-10 rounded-[2.5rem] border border-white/10 relative group hover:border-primary/30 transition-all duration-500">
-                    <div class="flex text-primary mb-6">
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                    </div>
-                    <p class="text-gray-300 mb-8 italic leading-relaxed text-lg">"MLD elevó nuestra marca a un nivel que no creíamos posible. Su enfoque en el lujo y la tecnología es único en el mercado."</p>
-                    <div class="flex items-center gap-5">
-                        <div class="w-14 h-14 bg-primary/20 rounded-2xl overflow-hidden border border-primary/30">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200" alt="Client 1" class="w-full h-full object-cover">
+
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-white/5 p-8 md:p-12 rounded-[3rem] border border-white/10 shadow-2xl">
+                    <form id="reviewForm" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Nombre</label>
+                                <input type="text" name="reviewer_name" required placeholder="Tu nombre" class="w-full bg-white/5 px-6 py-4 rounded-2xl border border-white/10 focus:border-primary text-white outline-none transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Empresa / Cargo</label>
+                                <input type="text" name="reviewer_company" placeholder="Ej. CEO en EmpresaX" class="w-full bg-white/5 px-6 py-4 rounded-2xl border border-white/10 focus:border-primary text-white outline-none transition">
+                            </div>
                         </div>
                         <div>
-                            <h4 class="font-bold text-white">Alexandra Vance</h4>
-                            <p class="text-sm text-primary font-medium">Founder, V-Tech</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Testimonial 2 -->
-                <div class="bg-white/5 p-10 rounded-[2.5rem] border border-white/10 relative group hover:border-primary/30 transition-all duration-500">
-                    <div class="flex text-primary mb-6">
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                    </div>
-                    <p class="text-gray-300 mb-8 italic leading-relaxed text-lg">"Resultados tangibles desde el primer mes. La precisión de su estrategia analítica es quirúrgica."</p>
-                    <div class="flex items-center gap-5">
-                        <div class="w-14 h-14 bg-primary/20 rounded-2xl overflow-hidden border border-primary/30">
-                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200" alt="Client 2" class="w-full h-full object-cover">
+                            <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Valoración</label>
+                            <div class="flex gap-4 text-gray-600">
+                                <button type="button" class="star-rating hover:text-primary transition" data-rating="1"><i data-lucide="star" class="w-8 h-8"></i></button>
+                                <button type="button" class="star-rating hover:text-primary transition" data-rating="2"><i data-lucide="star" class="w-8 h-8"></i></button>
+                                <button type="button" class="star-rating hover:text-primary transition" data-rating="3"><i data-lucide="star" class="w-8 h-8"></i></button>
+                                <button type="button" class="star-rating hover:text-primary transition" data-rating="4"><i data-lucide="star" class="w-8 h-8"></i></button>
+                                <button type="button" class="star-rating hover:text-primary transition" data-rating="5"><i data-lucide="star" class="w-8 h-8"></i></button>
+                                <input type="hidden" name="rating" id="ratingValue" value="5">
+                            </div>
                         </div>
                         <div>
-                            <h4 class="font-bold text-white">Julian Black</h4>
-                            <p class="text-sm text-primary font-medium">CMO, Zenith Corp</p>
+                            <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Tu Reseña</label>
+                            <textarea name="review_text" rows="4" required placeholder="Cuéntanos tu experiencia trabajando con MLD..." class="w-full bg-white/5 px-6 py-4 rounded-2xl border border-white/10 focus:border-primary text-white outline-none transition"></textarea>
                         </div>
-                    </div>
-                </div>
-                <!-- Testimonial 3 -->
-                <div class="bg-white/5 p-10 rounded-[2.5rem] border border-white/10 relative group hover:border-primary/30 transition-all duration-500">
-                    <div class="flex text-primary mb-6">
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                    </div>
-                    <p class="text-gray-300 mb-8 italic leading-relaxed text-lg">"Creatividad que rompe esquemas. MLD es el socio ideal para marcas que buscan Marca La Diferencia."</p>
-                    <div class="flex items-center gap-5">
-                        <div class="w-14 h-14 bg-primary/20 rounded-2xl overflow-hidden border border-primary/30">
-                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=200" alt="Client 3" class="w-full h-full object-cover">
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-white">Elena Rosso</h4>
-                            <p class="text-sm text-primary font-medium">Creative Director, Aura Luxe</p>
-                        </div>
-                    </div>
+                        <button type="submit" class="w-full bg-primary text-white py-5 rounded-2xl font-bold text-xl hover:bg-opacity-90 transition shadow-xl shadow-primary/20 flex items-center justify-center gap-3">
+                            <span>Enviar Reseña</span>
+                            <i data-lucide="check-circle" class="w-5 h-5"></i>
+                        </button>
+                        <p id="reviewStatus" class="text-center text-sm hidden pt-4 font-bold text-green-500"></p>
+                    </form>
                 </div>
             </div>
         </div>
@@ -762,7 +756,8 @@
                 </div>
                 <div class="text-center md:text-right">
                     <p class="text-gray-500 text-sm font-medium">© 2024 MLD. Marca La Diferencia.</p>
-                    <p class="text-[10px] text-gray-700 uppercase tracking-widest mt-1">Premium Marketing Agency</p>
+                    <p class="text-[10px] text-gray-700 uppercase tracking-widest mt-1">MLD — CTO: Diego Rojas</p>
+                    <p class="text-[9px] text-gray-800 uppercase tracking-widest mt-0.5">Premium Marketing Agency</p>
                 </div>
             </div>
         </div>
@@ -844,6 +839,12 @@
                         <div class="bg-white/5 p-8 rounded-3xl border border-white/10">
                             <h4 class="text-primary font-bold uppercase tracking-widest text-xs mb-3">Resultados</h4>
                             <p class="text-white text-2xl font-bold">${data.resultados}</p>
+                        </div>
+
+                        <!-- Liderazgo técnico del caso -->
+                        <div class="mt-4 pt-6 border-t border-white/5">
+                            <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-1 font-bold">Caso liderado por</p>
+                            <p class="text-white text-sm font-medium">Diego Rojas — <span class="text-primary text-[10px]">CTO, MLD</span></p>
                         </div>
                     </div>
                 </div>
@@ -951,6 +952,46 @@
         btn.addEventListener('click', () => {
             menu.classList.toggle('hidden');
         });
+
+        // Review Form Star Rating
+        const stars = document.querySelectorAll('.star-rating');
+        const ratingInput = document.getElementById('ratingValue');
+
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                const rating = star.getAttribute('data-rating');
+                ratingInput.value = rating;
+
+                // Update visual state
+                stars.forEach(s => {
+                    if (s.getAttribute('data-rating') <= rating) {
+                        s.classList.add('text-primary');
+                        s.classList.remove('text-gray-600');
+                    } else {
+                        s.classList.remove('text-primary');
+                        s.classList.add('text-gray-600');
+                    }
+                });
+            });
+        });
+
+        // Review Form Submission (Simulation)
+        const reviewForm = document.getElementById('reviewForm');
+        const reviewStatus = document.getElementById('reviewStatus');
+
+        if (reviewForm) {
+            reviewForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                reviewStatus.textContent = "✓ ¡Gracias por tu reseña! La revisaremos pronto.";
+                reviewStatus.classList.remove('hidden');
+                reviewForm.reset();
+                // Reset stars
+                stars.forEach(s => {
+                    s.classList.remove('text-primary');
+                    s.classList.add('text-gray-600');
+                });
+            });
+        }
 
         // Scroll reveal animation
         const observerOptions = {
