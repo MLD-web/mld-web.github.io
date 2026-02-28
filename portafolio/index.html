@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portafolio | MLD | Marca La Diferencia</title>
+
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com;">
+    <meta name="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta name="Permissions-Policy" content="geolocation=(), camera=(), microphone=()">
+
     <meta name="description" content="Sistemas de crecimiento real y casos de éxito de MLD. Marca La Diferencia con estrategias basadas en datos.">
     <!-- Open Graph -->
     <meta property="og:title" content="Casos de Impacto | MLD | Marca La Diferencia">
@@ -21,7 +27,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com/3.4.1" integrity="sha384-SOMLQz+nKv/ORIYXo3J3NrWJ33oBgGvkHlV9t8i70QVLq8ZtST9Np1gDsVUkk4xN" crossorigin="anonymous"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -41,7 +47,7 @@
         }
     </script>
     <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lucide@0.321.0/dist/umd/lucide.min.js" integrity="sha384-aJfHqBavS1aacXcEyVdrpsQFv5tPDRMgKADGce8H4sxm+Z+fgvJu/+WvZOHoR98/" crossorigin="anonymous"></script>
     <style>
         @keyframes float-up {
             from { opacity: 0; transform: translateY(30px); }
