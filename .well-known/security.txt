@@ -1,5 +1,5 @@
-Contact: mailto:seguridad@mld.com.pe
-Expires: 2027-02-28T00:00:00.000Z
+Contact: https://mld.com.pe/contacto
+Expires: 2025-12-31T23:59:59.000Z
 Preferred-Languages: es, en
 Canonical: https://mld.com.pe/.well-known/security.txt
-Policy: https://mld.com.pe/seguridad
+Policy: https://mld.com.pe/SEGURIDAD.md

@@ -71,3 +71,26 @@ Restringe el acceso a funciones sensibles del navegador (cámara, micrófono, ge
 Se han añadido archivos estándar para la comunicación con investigadores de seguridad:
 - `/.well-known/security.txt`: Información de contacto para reportar vulnerabilidades.
 - `/.well-known/mta-sts.txt`: Política de seguridad de transporte de correo.
+
+### 5. Configuración de Servidor (Headers de Seguridad)
+Se han incluido archivos de configuración para los servidores más comunes para asegurar que los headers de seguridad se envíen correctamente desde el lado del servidor:
+
+- **Apache (`.htaccess`)**: Configurado con `mod_headers`.
+- **Netlify (`_headers`)**: Configuración nativa de Netlify.
+- **Vercel (`vercel.json`)**: Configuración nativa de Vercel.
+
+#### Configuración para Nginx
+Si el sitio se despliega en un servidor Nginx, se debe añadir lo siguiente al bloque `server` en el archivo de configuración:
+
+```nginx
+server {
+    ...
+    add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://www.google-analytics.com https://www.googletagmanager.com https://stats.g.doubleclick.net; connect-src 'self' https://formspree.io https://www.google-analytics.com https://*.google-analytics.com https://stats.g.doubleclick.net;" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-XSS-Protection "1; mode=block" always;
+    add_header Permissions-Policy "geolocation=(), camera=(), microphone=()" always;
+    ...
+}
+```
