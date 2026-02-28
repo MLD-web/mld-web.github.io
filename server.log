@@ -1,7 +1,0 @@
-127.0.0.1 - - [11/Feb/2026 04:48:53] "GET / HTTP/1.1" 200 -
-127.0.0.1 - - [11/Feb/2026 04:48:53] "GET /assets/logo.png HTTP/1.1" 200 -
-127.0.0.1 - - [11/Feb/2026 04:48:53] "GET /assets/hero.png HTTP/1.1" 200 -
-127.0.0.1 - - [11/Feb/2026 04:48:54] "GET /assets/quienes-somos.png HTTP/1.1" 200 -
-127.0.0.1 - - [11/Feb/2026 04:48:54] "GET /assets/casos-exito.png HTTP/1.1" 200 -
-127.0.0.1 - - [11/Feb/2026 04:48:54] "GET /assets/servicios.png HTTP/1.1" 200 -
-127.0.0.1 - - [11/Feb/2026 04:48:56] "GET /assets/proceso.png HTTP/1.1" 200 -
