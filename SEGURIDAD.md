@@ -48,3 +48,26 @@ v=TLSRPTv1; rua=mailto:seguridad@mld.com.pe
 ```
 
 *Nota: Requiere la publicación del archivo de política en `https://mta-sts.mld.com.pe/.well-known/mta-sts.txt`.*
+
+---
+
+## Seguridad Implementada en el Código
+
+Además de las configuraciones de DNS, se han aplicado las siguientes medidas directamente en el sitio web:
+
+### 1. Content Security Policy (CSP)
+Se ha implementado una política de seguridad de contenido mediante etiquetas `<meta>` para prevenir ataques de Cross-Site Scripting (XSS) e inyección de datos. La política permite:
+- Carga de scripts desde dominios de confianza (Tailwind, Lucide, Google Analytics).
+- Conexiones seguras a servicios de analítica.
+- Estilos en línea necesarios para el funcionamiento de Tailwind CSS.
+
+### 2. Referrer Policy
+Configurado como `strict-origin-when-cross-origin` para proteger la privacidad del usuario al navegar hacia enlaces externos.
+
+### 3. Permissions Policy
+Restringe el acceso a funciones sensibles del navegador (cámara, micrófono, geolocalización) para mejorar la privacidad.
+
+### 4. Divulgación de Seguridad
+Se han añadido archivos estándar para la comunicación con investigadores de seguridad:
+- `/.well-known/security.txt`: Información de contacto para reportar vulnerabilidades.
+- `/.well-known/mta-sts.txt`: Política de seguridad de transporte de correo.
