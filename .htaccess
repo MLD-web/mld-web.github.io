@@ -7,13 +7,3 @@
     Header set X-XSS-Protection "1; mode=block"
     Header set Permissions-Policy "geolocation=(), camera=(), microphone=()"
 </IfModule>
-
-# Seguridad y Tipos de Archivos
-AddType text/plain .txt
-
-# Asegurar acceso a .well-known
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteCond %{REQUEST_URI} ^/\.well-known/ [NC]
-    RewriteRule ^ - [L]
-</IfModule>
