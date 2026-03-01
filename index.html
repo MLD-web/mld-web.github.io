@@ -114,7 +114,7 @@
 </head>
 <body class="font-sans bg-black text-white">
     <!-- Skip to Content Link -->
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-black px-6 py-3 rounded-full font-bold z-[100] shadow-2xl">
+    <a href="#main-content" title="Saltar al contenido principal" aria-label="Saltar al contenido principal" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-black px-6 py-3 rounded-full font-bold z-[100] shadow-2xl">
         Saltar al contenido principal
     </a>
 
@@ -122,19 +122,19 @@
     <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
-                <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="#inicio" title="Ir al inicio de MLD" aria-label="Ir al inicio de MLD" class="flex-shrink-0 flex items-center gap-3 group">
                     <img src="assets/logo.png" alt="MLD Logo" class="h-10 w-10 object-cover rounded-lg" fetchpriority="high" decoding="async" width="40" height="40">
                     <div class="flex flex-col">
                         <span class="text-2xl font-heading font-extrabold text-white leading-none">MLD</span>
                         <span class="text-[10px] text-primary font-bold tracking-[0.2em] uppercase">Marca La Diferencia</span>
                     </div>
-                </div>
+                </a>
                 <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#inicio" class="text-gray-300 hover:text-primary transition font-medium">Inicio</a>
-                    <a href="#nosotros" class="text-gray-300 hover:text-primary transition font-medium">Nosotros</a>
-                    <a href="#servicios" class="text-gray-300 hover:text-primary transition font-medium">Servicios</a>
-                    <a href="#portafolio" class="text-gray-300 hover:text-primary transition font-medium">Portafolio</a>
-                    <a href="#contacto" class="bg-primary text-black px-6 py-2 rounded-full hover:scale-105 transition transform duration-300 font-semibold shadow-lg shadow-primary/20">Cotizar ahora</a>
+                    <a href="#inicio" title="Ir a la sección de inicio" aria-label="Ir a la sección de inicio" class="text-gray-300 hover:text-primary transition font-medium">Inicio</a>
+                    <a href="#nosotros" title="Conocer más sobre nosotros" aria-label="Conocer más sobre nosotros" class="text-gray-300 hover:text-primary transition font-medium">Nosotros</a>
+                    <a href="#servicios" title="Ver nuestros servicios" aria-label="Ver nuestros servicios" class="text-gray-300 hover:text-primary transition font-medium">Servicios</a>
+                    <a href="#portafolio" title="Ver nuestro portafolio de proyectos" aria-label="Ver nuestro portafolio de proyectos" class="text-gray-300 hover:text-primary transition font-medium">Portafolio</a>
+                    <a href="#contacto" title="Solicitar una cotización" aria-label="Solicitar una cotización" class="bg-primary text-black px-6 py-2 rounded-full hover:scale-105 transition transform duration-300 font-semibold shadow-lg shadow-primary/20">Cotizar ahora</a>
                 </div>
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-button" class="text-white focus:outline-none" aria-label="Abrir menú de navegación" aria-expanded="false">
@@ -145,11 +145,11 @@
         </div>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-black border-b border-white/10 px-4 pt-2 pb-6 space-y-2">
-            <a href="#inicio" class="block py-2 text-gray-300 hover:text-primary">Inicio</a>
-            <a href="#nosotros" class="block py-2 text-gray-300 hover:text-primary">Nosotros</a>
-            <a href="#servicios" class="block py-2 text-gray-300 hover:text-primary">Servicios</a>
-            <a href="#portafolio" class="block py-2 text-gray-300 hover:text-primary">Portafolio</a>
-            <a href="#contacto" class="block py-2 text-primary font-bold">Cotizar ahora</a>
+            <a href="#inicio" title="Ir a la sección de inicio" aria-label="Ir a la sección de inicio" class="block py-2 text-gray-300 hover:text-primary">Inicio</a>
+            <a href="#nosotros" title="Conocer más sobre nosotros" aria-label="Conocer más sobre nosotros" class="block py-2 text-gray-300 hover:text-primary">Nosotros</a>
+            <a href="#servicios" title="Ver nuestros servicios" aria-label="Ver nuestros servicios" class="block py-2 text-gray-300 hover:text-primary">Servicios</a>
+            <a href="#portafolio" title="Ver nuestro portafolio de proyectos" aria-label="Ver nuestro portafolio de proyectos" class="block py-2 text-gray-300 hover:text-primary">Portafolio</a>
+            <a href="#contacto" title="Solicitar una cotización" aria-label="Solicitar una cotización" class="block py-2 text-primary font-bold">Cotizar ahora</a>
         </div>
     </nav>
 
@@ -176,11 +176,11 @@
                         No somos una agencia tradicional. Somos tu <span class="text-primary font-semibold text-white">partner estratégico</span> de crecimiento digital orientado a resultados de negocio.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-5">
-                        <a href="#contacto" class="flex items-center justify-center bg-primary text-black px-10 py-5 rounded-full hover:scale-105 transition transform duration-300 font-bold text-lg shadow-2xl shadow-primary/30">
+                        <a href="#contacto" title="Iniciar diagnóstico de negocio" aria-label="Iniciar diagnóstico de negocio" class="flex items-center justify-center bg-primary text-black px-10 py-5 rounded-full hover:scale-105 transition transform duration-300 font-bold text-lg shadow-2xl shadow-primary/30">
                             Iniciar Diagnóstico
-                            <i data-lucide="arrow-right" class="ml-2 w-6 h-6"></i>
+                            <i data-lucide="arrow-right" class="ml-2 w-6 h-6" aria-hidden="true"></i>
                         </a>
-                        <a href="https://wa.me/51963198424" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center bg-transparent border border-white/20 text-white px-10 py-5 rounded-full hover:bg-white/5 transition transform duration-300 font-bold text-lg">
+                        <a href="https://wa.me/51963198424" target="_blank" rel="noopener noreferrer" title="Contactar por WhatsApp Directo" aria-label="Contactar por WhatsApp Directo" class="flex items-center justify-center bg-transparent border border-white/20 text-white px-10 py-5 rounded-full hover:bg-white/5 transition transform duration-300 font-bold text-lg">
                             WhatsApp Directo
                         </a>
                     </div>
@@ -423,13 +423,13 @@
             </div>
 
             <div class="mt-20 flex flex-col md:flex-row items-center justify-center gap-6">
-                <a href="portafolio/" class="inline-flex items-center gap-4 text-white font-bold text-lg hover:text-primary transition group">
+                <a href="portafolio/" title="Explorar todos los casos de éxito" aria-label="Explorar todos los casos de éxito" class="inline-flex items-center gap-4 text-white font-bold text-lg hover:text-primary transition group">
                     Explorar todos los casos
                     <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-primary transition">
-                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        <i data-lucide="arrow-right" class="w-5 h-5" aria-hidden="true"></i>
                     </div>
                 </a>
-                <a href="#contacto" class="inline-flex items-center bg-white/5 border border-white/10 px-8 py-4 rounded-full text-white font-bold hover:bg-primary hover:text-black hover:border-primary transition-all">
+                <a href="#contacto" title="Consultar por un servicio a medida" aria-label="Consultar por un servicio a medida" class="inline-flex items-center bg-white/5 border border-white/10 px-8 py-4 rounded-full text-white font-bold hover:bg-primary hover:text-black hover:border-primary transition-all">
                     Consultar por un servicio a medida
                 </a>
             </div>
@@ -560,7 +560,7 @@
                 </div>
             </div>
             <div class="mt-20 text-center">
-                <a href="#contacto" class="bg-primary text-black px-10 py-5 rounded-full font-bold text-xl hover:scale-105 transition transform shadow-2xl shadow-primary/30 inline-block">
+                <a href="#contacto" title="Iniciar transformación de negocio" aria-label="Iniciar transformación de negocio" class="bg-primary text-black px-10 py-5 rounded-full font-bold text-xl hover:scale-105 transition transform shadow-2xl shadow-primary/30 inline-block">
                     Iniciar mi transformación
                 </a>
             </div>
@@ -702,12 +702,12 @@
                     </div>
 
                     <div class="mt-16 flex flex-col sm:flex-row gap-6">
-                        <a href="https://wa.me/51963198424" target="_blank" rel="noopener noreferrer" class="flex-1 bg-primary text-black py-5 rounded-2xl font-bold text-lg hover:scale-105 transition transform duration-300 shadow-2xl shadow-primary/30 flex items-center justify-center gap-3">
-                            <i data-lucide="message-circle"></i>
+                        <a href="https://wa.me/51963198424" target="_blank" rel="noopener noreferrer" title="Contactar por WhatsApp Directo" aria-label="Contactar por WhatsApp Directo" class="flex-1 bg-primary text-black py-5 rounded-2xl font-bold text-lg hover:scale-105 transition transform duration-300 shadow-2xl shadow-primary/30 flex items-center justify-center gap-3">
+                            <i data-lucide="message-circle" aria-hidden="true"></i>
                             WhatsApp Directo
                         </a>
-                        <a href="tel:+51963198424" class="flex-1 bg-white/5 border border-white/10 text-white py-5 rounded-2xl font-bold text-lg hover:bg-white/10 transition flex items-center justify-center gap-3">
-                            <i data-lucide="phone-call"></i>
+                        <a href="tel:+51963198424" title="Llamar al número de contacto" aria-label="Llamar al número de contacto" class="flex-1 bg-white/5 border border-white/10 text-white py-5 rounded-2xl font-bold text-lg hover:bg-white/10 transition flex items-center justify-center gap-3">
+                            <i data-lucide="phone-call" aria-hidden="true"></i>
                             Llamar ahora
                         </a>
                     </div>
@@ -774,29 +774,29 @@
             <div class="flex flex-col items-center md:items-start gap-4">
                 <p class="text-primary font-bold tracking-widest uppercase text-xs">Conecta con nosotros</p>
                 <div class="flex flex-wrap gap-6 text-gray-400">
-                    <a href="tel:+51963198424" class="hover:text-primary transition-all flex items-center gap-2">
-                        <i data-lucide="phone" class="w-5 h-5"></i>
+                    <a href="tel:+51963198424" title="Llamar a MLD" aria-label="Llamar a MLD" class="hover:text-primary transition-all flex items-center gap-2">
+                        <i data-lucide="phone" class="w-5 h-5" aria-hidden="true"></i>
                         <span class="text-sm">Llamar</span>
                     </a>
-                    <a href="https://www.instagram.com/hola_mld?utm_source=qr&igsh=MWt5ZW9janpmMWtrcA==" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-all flex items-center gap-2">
-                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                    <a href="https://www.instagram.com/hola_mld?utm_source=qr&igsh=MWt5ZW9janpmMWtrcA==" target="_blank" rel="noopener noreferrer" title="Visitar Instagram de MLD" aria-label="Visitar Instagram de MLD" class="hover:text-primary transition-all flex items-center gap-2">
+                        <i data-lucide="instagram" class="w-5 h-5" aria-hidden="true"></i>
                         <span class="text-sm">@hola_mld</span>
                     </a>
-                    <a href="https://www.facebook.com/share/1CMUPWz9Zi/" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-all flex items-center gap-2">
-                        <i data-lucide="facebook" class="w-5 h-5"></i>
+                    <a href="https://www.facebook.com/share/1CMUPWz9Zi/" target="_blank" rel="noopener noreferrer" title="Visitar Facebook de MLD" aria-label="Visitar Facebook de MLD" class="hover:text-primary transition-all flex items-center gap-2">
+                        <i data-lucide="facebook" class="w-5 h-5" aria-hidden="true"></i>
                         <span class="text-sm">MLD Marketing</span>
                     </a>
-                    <a href="https://www.tiktok.com/@mldmarketing" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-all flex items-center gap-2">
-                        <i data-lucide="music-2" class="w-5 h-5"></i>
+                    <a href="https://www.tiktok.com/@mldmarketing" target="_blank" rel="noopener noreferrer" title="Visitar TikTok de MLD" aria-label="Visitar TikTok de MLD" class="hover:text-primary transition-all flex items-center gap-2">
+                        <i data-lucide="music-2" class="w-5 h-5" aria-hidden="true"></i>
                         <span class="text-sm">TikTok</span>
                     </a>
                 </div>
             </div>
             <div class="flex flex-col items-center md:items-end gap-4">
                 <div class="flex gap-6 text-xs text-gray-600">
-                    <a href="#" class="hover:text-primary transition">Privacidad</a>
-                    <a href="#" class="hover:text-primary transition">Términos</a>
-                    <a href="#" class="hover:text-primary transition">Sitemap</a>
+                    <a href="#inicio" title="Ver política de privacidad" aria-label="Ver política de privacidad" class="hover:text-primary transition">Privacidad</a>
+                    <a href="#inicio" title="Ver términos y condiciones" aria-label="Ver términos y condiciones" class="hover:text-primary transition">Términos</a>
+                    <a href="#inicio" title="Ver mapa del sitio" aria-label="Ver mapa del sitio" class="hover:text-primary transition">Sitemap</a>
                 </div>
                 <div class="text-center md:text-right">
                     <p class="text-gray-500 text-sm font-medium">© 2024 MLD. Marca La Diferencia.</p>
