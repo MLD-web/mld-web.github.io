@@ -205,9 +205,18 @@
             if (thinkingDiv.parentNode) messagesEl.removeChild(thinkingDiv);
 
             const isJson = (res.headers.get("content-type") || "").includes("application/json");
-            const data = isJson ? await res.json() : { reply: await res.text() };
+            const responseText = await res.text();
+            let data;
+            try {
+                data = isJson ? JSON.parse(responseText) : { reply: responseText };
+            } catch (e) {
+                data = { reply: responseText };
+            }
 
-            if (!res.ok) throw new Error(data?.detail || "HTTP " + res.status);
+            if (!res.ok) {
+                const errorMsg = data?.detail || data?.error || responseText || ("HTTP " + res.status);
+                throw new Error(errorMsg);
+            }
 
             const reply = data.reply || "¿Me podrías dar un poco más de detalle sobre tu negocio?";
 
@@ -228,11 +237,13 @@
             if (history.length > 20) history = [history[0], ...history.slice(-19)];
         } catch (err) {
             if (thinkingDiv.parentNode) messagesEl.removeChild(thinkingDiv);
+            console.error("Chatbot Error:", err);
 
             const errorDiv = document.createElement("div");
             errorDiv.className = "bg-white/5 text-gray-200 p-4 rounded-2xl rounded-tl-none max-w-[90%] text-sm leading-relaxed mb-4 self-start border border-red-500/20";
             errorDiv.innerHTML = `
-                <p class="mb-3 text-red-400">Lo siento, hubo un problema de conexión con mi cerebro estratégico.</p>
+                <p class="mb-1 text-red-400 font-bold">Error de conexión</p>
+                <p class="mb-3 text-xs text-gray-400">${escapeHtml(String(err).slice(0, 150))}</p>
                 <div class="flex flex-col gap-2">
                     <button onclick="location.reload()" class="bg-white/10 hover:bg-white/20 py-2 px-4 rounded-xl text-xs transition">Reintentar conexión</button>
                     <a href="${WHATSAPP_LINK}" target="_blank" class="bg-[#25D366] text-black font-bold py-2 px-4 rounded-xl text-xs text-center">Ir a WhatsApp Directo</a>
