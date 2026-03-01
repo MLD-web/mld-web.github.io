@@ -6,9 +6,11 @@
     <title>¡Gracias! | MLD | Marca La Diferencia</title>
 
     <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:;">
-    <meta name="Referrer-Policy" content="strict-origin-when-cross-origin">
-    <meta name="Permissions-Policy" content="geolocation=(), camera=(), microphone=()">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; object-src 'none'; base-uri 'self';">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta name="Permissions-Policy" content="geolocation=(), camera=(), microphone=(), display-capture=(), payment=()">
 
     <!-- Resource Hints -->
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
@@ -35,7 +37,7 @@
         }
     </script>
     <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@0.321.0/dist/umd/lucide.min.js"></script>
+    <script src="https://unpkg.com/lucide@0.321.0/dist/umd/lucide.min.js" defer></script>
 </head>
 <body class="bg-black text-white min-h-screen flex items-center justify-center p-6 font-sans">
     <div class="max-w-2xl w-full text-center">
@@ -48,7 +50,7 @@
         <p class="text-xl text-gray-400 mb-12 leading-relaxed">Hemos recibido tu mensaje correctamente. Un estratega de nuestro equipo analizará tu caso y se pondrá en contacto contigo en las próximas 24 horas.</p>
 
         <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <a href="https://wa.me/51963198424" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto flex items-center justify-center gap-3 bg-primary text-white px-10 py-5 rounded-full font-bold text-lg hover:scale-105 transition transform shadow-2xl shadow-primary/30">
+            <a href="https://wa.me/51963198424" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto flex items-center justify-center gap-3 bg-primary text-black px-10 py-5 rounded-full font-bold text-lg hover:scale-105 transition transform shadow-2xl shadow-primary/30">
                 <i data-lucide="message-circle" class="w-6 h-6"></i>
                 WhatsApp Directo
             </a>
@@ -59,13 +61,15 @@
         </div>
 
         <div class="mt-20">
-            <img src="assets/logo.png" alt="MLD Logo" class="h-12 mx-auto opacity-50" loading="lazy" decoding="async">
+            <img src="assets/logo.png" alt="MLD Logo" class="h-12 mx-auto opacity-50" loading="lazy" decoding="async" width="48" height="48">
             <p class="text-[10px] text-gray-600 uppercase tracking-[0.3em] mt-4 font-bold">MLD | Marca La Diferencia</p>
         </div>
     </div>
 
     <script>
-        lucide.createIcons();
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+        });
     </script>
 </body>
 </html>
