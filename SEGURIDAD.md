@@ -85,13 +85,13 @@ Si el sitio se despliega en un servidor Nginx, se debe añadir lo siguiente al b
 ```nginx
 server {
     ...
-    add_header Content-Security-Policy "upgrade-insecure-requests; default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://www.google-analytics.com https://www.googletagmanager.com https://stats.g.doubleclick.net; connect-src 'self' https://formspree.io https://www.google-analytics.com https://*.google-analytics.com https://stats.g.doubleclick.net; object-src 'none'; base-uri 'self';" always;
+    add_header Content-Security-Policy "upgrade-insecure-requests; default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://www.google-analytics.com https://www.googletagmanager.com https://stats.g.doubleclick.net; connect-src 'self' https://formspree.io https://www.google-analytics.com https://*.google-analytics.com https://stats.g.doubleclick.net;" always;
     add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
     add_header Referrer-Policy "strict-origin-when-cross-origin" always;
     add_header X-Frame-Options "SAMEORIGIN" always;
     add_header X-Content-Type-Options "nosniff" always;
     add_header X-XSS-Protection "1; mode=block" always;
-    add_header Permissions-Policy "geolocation=(), camera=(), microphone=(), display-capture=(), payment=()" always;
+    add_header Permissions-Policy "geolocation=(), camera=(), microphone=()" always;
     ...
 }
 ```
