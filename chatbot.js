@@ -180,10 +180,11 @@
         addMessage("user", text);
         history.push({ role: "user", content: text });
 
-        // Intent detection for immediate WhatsApp
-        if (/whatsapp|wsp|hablar|asesor|llamar|contactar|telefono|teléfono/i.test(text)) {
+        // Intent detection for immediate WhatsApp (Only if specifically asking for contact info)
+        const specificContactIntent = /link|enlace|numero|número|pasar al whatsapp|dame el whatsapp/i.test(text);
+        if (specificContactIntent) {
             setTimeout(() => {
-                addWhatsAppButton("Excelente decisión. Para una atención inmediata, haz clic en el botón y conéctate con nuestro equipo por WhatsApp:", WHATSAPP_LINK);
+                addWhatsAppButton("Aquí tienes el acceso directo a nuestro WhatsApp para agendar tu diagnóstico:", WHATSAPP_LINK);
             }, 600);
             return;
         }
@@ -211,7 +212,7 @@
             const reply = data.reply || "¿Me podrías dar un poco más de detalle sobre tu negocio?";
 
             // Intercept links in AI response to render as buttons
-            const waRegex = /https?:\/\/(wa\.me|api\.whatsapp\.com|chat\.whatsapp\.com)[^\s)]+/g;
+            const waRegex = /https?:\/\/(wa\.link|wa\.me|api\.whatsapp\.com|chat\.whatsapp\.com)[^\s)]+/g;
             const waMatch = reply.match(waRegex);
 
             if (waMatch) {
@@ -227,10 +228,18 @@
             if (history.length > 20) history = [history[0], ...history.slice(-19)];
         } catch (err) {
             if (thinkingDiv.parentNode) messagesEl.removeChild(thinkingDiv);
-            addWhatsAppButton(
-                "Hubo un pequeño error de conexión. Por favor, intenta de nuevo en unos segundos o conéctanos directamente por aquí:",
-                WHATSAPP_LINK
-            );
+
+            const errorDiv = document.createElement("div");
+            errorDiv.className = "bg-white/5 text-gray-200 p-4 rounded-2xl rounded-tl-none max-w-[90%] text-sm leading-relaxed mb-4 self-start border border-red-500/20";
+            errorDiv.innerHTML = `
+                <p class="mb-3 text-red-400">Lo siento, hubo un problema de conexión con mi cerebro estratégico.</p>
+                <div class="flex flex-col gap-2">
+                    <button onclick="location.reload()" class="bg-white/10 hover:bg-white/20 py-2 px-4 rounded-xl text-xs transition">Reintentar conexión</button>
+                    <a href="${WHATSAPP_LINK}" target="_blank" class="bg-[#25D366] text-black font-bold py-2 px-4 rounded-xl text-xs text-center">Ir a WhatsApp Directo</a>
+                </div>
+            `;
+            messagesEl.appendChild(errorDiv);
+            messagesEl.scrollTop = messagesEl.scrollHeight;
         }
     }
 })();
