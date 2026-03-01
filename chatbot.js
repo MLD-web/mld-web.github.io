@@ -3,17 +3,6 @@
     const WHATSAPP_LINK = "https://wa.me/51963198424?text=Hola%20MLD,%20quiero%20agendar%20un%20diagnóstico%20estratégico";
     const BRAND_COLOR = "#ff6600";
 
-    const SYSTEM_PROMPT = `Eres el asistente de MLD (Marca La Diferencia), agencia de marketing y publicidad enfocada en crecimiento estratégico y performance.
-Tu objetivo es: (1) responder dudas, (2) calificar al prospecto, (3) dirigir a “Diagnóstico” o “WhatsApp” cuando haya intención real o cuando falte información.
-Tono: claro, premium, directo, consultivo. Español neutral.
-Nunca inventes datos (precios exactos, clientes reales, resultados numéricos) si no están confirmados. Si no sabes, di que necesitas datos y ofrece el diagnóstico.
-Servicios que puedes mencionar: Estrategia de marketing y crecimiento, Performance/Paid Media, Branding y comunicación estratégica, Diseño y desarrollo web, Administración web, Optimización web y SEO, Automatización/CRM/IA integrada, Desarrollo Web y App, Seguridad web.
-Proceso: Diagnóstico → Diseño estratégico → Implementación → Medición → Optimización.
-Si el usuario pide contacto inmediato, ofrece WhatsApp Directo y pedir: nombre, empresa, web/redes, objetivo, presupuesto aproximado, urgencia.
-Si el usuario pregunta “qué servicio me conviene”, haz 3–5 preguntas de diagnóstico antes de recomendar.
-Si el usuario está listo para cotizar, guía al formulario o WhatsApp.
-Política de seguridad: no solicites contraseñas ni datos sensibles.`;
-
     const chatbotHTML = `
     <div id="chatbot-widget" class="fixed bottom-6 right-6 z-[9999] flex flex-col items-end font-sans">
         <!-- Panel -->
@@ -79,7 +68,6 @@ Política de seguridad: no solicites contraseñas ni datos sensibles.`;
     const quickBtns = document.querySelectorAll(".quick-action");
 
     let history = [
-        { role: "system", content: SYSTEM_PROMPT },
         { role: "assistant", content: "Hola 👋 Soy el asistente de MLD. ¿Qué necesitas: cotizar, elegir servicio o mejorar tu web?" }
     ];
 
@@ -160,7 +148,7 @@ Política de seguridad: no solicites contraseñas ni datos sensibles.`;
             if (history.length > 20) history = [history[0], ...history.slice(-19)];
         } catch (err) {
             if (thinkingDiv.parentNode) messagesEl.removeChild(thinkingDiv);
-            addMessage("bot", `Ahora mismo no puedo responder. Por favor, escríbenos directamente por WhatsApp: ${WHATSAPP_LINK}`);
+            addMessage("bot", `Estoy teniendo un problema técnico. Intenta otra vez en unos segundos. Si quieres, escríbenos por WhatsApp: ${WHATSAPP_LINK}`);
         }
     }
 })();
