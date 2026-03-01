@@ -1,6 +1,6 @@
 (function() {
     const WORKER_URL = "https://mld-web-chatbot.cortheygeme003.workers.dev";
-    const WHATSAPP_NUMBER = "51963198424";
+    const WHATSAPP_LINK = "https://wa.me/51963198424?text=Hola%20MLD,%20quiero%20agendar%20un%20diagnóstico%20estratégico";
     const BRAND_COLOR = "#ff6600";
 
     const SYSTEM_PROMPT = `Eres el asistente de MLD (Marca La Diferencia), agencia de marketing y publicidad enfocada en crecimiento estratégico y performance.
@@ -160,7 +160,7 @@ Política de seguridad: no solicites contraseñas ni datos sensibles.`;
             if (history.length > 20) history = [history[0], ...history.slice(-19)];
         } catch (err) {
             if (thinkingDiv.parentNode) messagesEl.removeChild(thinkingDiv);
-            addMessage("bot", `Ahora mismo no puedo responder. Por favor, escríbenos directamente por WhatsApp: https://wa.me/${WHATSAPP_NUMBER}`);
+            addMessage("bot", `Ahora mismo no puedo responder. Por favor, escríbenos directamente por WhatsApp: ${WHATSAPP_LINK}`);
         }
     }
 })();
