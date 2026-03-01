@@ -19,7 +19,7 @@
             </div>
 
             <!-- Messages -->
-            <div id="chatbot-messages" class="flex-1 overflow-y-auto p-6 space-y-4 min-h-[300px] scrollbar-hide">
+            <div id="chatbot-messages" class="flex-1 overflow-y-auto p-6 space-y-4 min-h-[300px] scrollbar-hide flex flex-col">
                 <div class="bg-white/5 text-gray-200 p-4 rounded-2xl rounded-tl-none max-w-[85%] text-sm leading-relaxed">
                     Hola 👋 Soy el asistente de MLD. ¿Qué necesitas: cotizar, elegir servicio o mejorar tu web?
                 </div>
@@ -71,17 +71,53 @@
         { role: "assistant", content: "Hola 👋 Soy el asistente de MLD. ¿Qué necesitas: cotizar, elegir servicio o mejorar tu web?" }
     ];
 
+    function escapeHtml(str) {
+        return str.replace(/[&<>"']/g, (m) => ({
+            "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+        }[m]));
+    }
+
+    function linkify(text) {
+        const escaped = escapeHtml(text);
+        return escaped.replace(
+            /(https?:\/\/[^\s]+)/g,
+            '<a href="$1" target="_blank" rel="noopener noreferrer" class="mld-link">$1</a>'
+        );
+    }
+
     function addMessage(role, text) {
         const div = document.createElement("div");
         if (role === "user") {
-            div.className = "text-white p-4 rounded-2xl rounded-tr-none max-w-[85%] text-sm leading-relaxed self-end ml-auto";
+            div.className = "text-white p-4 rounded-2xl rounded-tr-none max-w-[85%] text-sm leading-relaxed self-end ml-auto mb-4";
             div.style.backgroundColor = "rgba(255, 102, 0, 0.15)";
             div.style.border = "1px solid rgba(255, 102, 0, 0.2)";
         } else {
-            div.className = "bg-white/5 text-gray-200 p-4 rounded-2xl rounded-tl-none max-w-[85%] text-sm leading-relaxed";
+            div.className = "bg-white/5 text-gray-200 p-4 rounded-2xl rounded-tl-none max-w-[85%] text-sm leading-relaxed mb-4 self-start";
         }
-        div.textContent = text;
+        div.innerHTML = linkify(text);
         messagesEl.appendChild(div);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    window.mldChat = { addMessage, openChat, closeChat };
+
+    function addWhatsAppButton(messageText, url) {
+        const wrap = document.createElement("div");
+        wrap.className = "bg-white/5 text-gray-200 p-4 rounded-2xl rounded-tl-none max-w-[85%] text-sm leading-relaxed mb-4 self-start";
+
+        const p = document.createElement("div");
+        p.textContent = messageText;
+
+        const a = document.createElement("a");
+        a.href = url;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.className = "mld-wa-btn";
+        a.textContent = "Abrir WhatsApp";
+
+        wrap.appendChild(p);
+        wrap.appendChild(a);
+        messagesEl.appendChild(wrap);
         messagesEl.scrollTop = messagesEl.scrollHeight;
     }
 
@@ -123,7 +159,7 @@
         history.push({ role: "user", content: text });
 
         const thinkingDiv = document.createElement("div");
-        thinkingDiv.className = "bg-white/5 text-gray-400 p-4 rounded-2xl rounded-tl-none max-w-[85%] text-sm italic animate-pulse";
+        thinkingDiv.className = "bg-white/5 text-gray-400 p-4 rounded-2xl rounded-tl-none max-w-[85%] text-sm italic animate-pulse mb-4 self-start";
         thinkingDiv.textContent = "Pensando...";
         messagesEl.appendChild(thinkingDiv);
         messagesEl.scrollTop = messagesEl.scrollHeight;
@@ -148,7 +184,10 @@
             if (history.length > 20) history = [history[0], ...history.slice(-19)];
         } catch (err) {
             if (thinkingDiv.parentNode) messagesEl.removeChild(thinkingDiv);
-            addMessage("bot", `Estoy teniendo un problema técnico. Intenta otra vez en unos segundos. Si quieres, escríbenos por WhatsApp: ${WHATSAPP_LINK}`);
+            addWhatsAppButton(
+                "Estoy teniendo un problema técnico. Intenta otra vez en unos segundos. Si quieres, escríbenos por WhatsApp:",
+                WHATSAPP_LINK
+            );
         }
     }
 })();

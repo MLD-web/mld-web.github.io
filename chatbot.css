@@ -7,3 +7,32 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
+
+.mld-link {
+    color: #ff6600;
+    text-decoration: underline;
+    word-break: break-word;
+    font-weight: 600;
+}
+
+.mld-link:hover {
+    color: #fff;
+}
+
+.mld-wa-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 16px;
+    border-radius: 12px;
+    background: #25D366;
+    color: #000;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.mld-wa-btn:hover {
+    transform: scale(1.05);
+    background: #20ba5a;
+    color: #000;
+}
