@@ -810,8 +810,50 @@
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="backToTop" class="fixed bottom-8 right-8 z-[60] w-14 h-14 bg-primary text-black rounded-full flex items-center justify-center shadow-2xl opacity-0 translate-y-10 pointer-events-none transition-all duration-500 hover:scale-110" aria-label="Volver al inicio de la página">
+<!-- Back to Top Button -->
+<button id="backToTop" class="fixed bottom-8 right-8 z-[60] w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center shadow-2xl opacity-0 translate-y-10 pointer-events-none transition-all duration-500 hover:scale-110" aria-label="Volver al inicio de la página">
+    <i data-lucide="arrow-up"></i>
+</button>
         <i data-lucide="arrow-up"></i>
+    </button>
+
+    <!-- MLD Assistant Chatbot -->
+    <div id="mld-assistant" role="dialog" aria-label="Asistente MLD" aria-modal="true" class="fixed bottom-24 right-8 w-[90vw] md:w-[400px] h-[600px] max-h-[80vh] bg-black border border-white/10 rounded-[2.5rem] shadow-2xl z-[70] flex flex-col overflow-hidden transition-all duration-500 translate-y-full opacity-0 pointer-events-none" tabindex="-1">
+        <!-- Header -->
+        <div class="p-6 border-b border-white/10 bg-white/5 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white">
+                    <i data-lucide="bot" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white text-lg leading-none">Asistente MLD</h3>
+                    <span class="text-[10px] text-primary font-bold uppercase tracking-widest">En línea</span>
+                </div>
+            </div>
+            <button id="close-chat" class="text-gray-500 hover:text-white transition" aria-label="Cerrar chat">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Messages Area -->
+        <div id="chat-messages" class="flex-1 overflow-y-auto p-6 space-y-4 scroll-smooth">
+            <!-- Messages will appear here -->
+        </div>
+
+        <!-- Input Area -->
+        <div class="p-6 border-t border-white/10 bg-white/5">
+            <form id="chat-form" class="relative">
+                <input type="text" id="chat-input" placeholder="Escribe tu mensaje..." class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 pr-14 text-white placeholder-gray-500 focus:border-primary outline-none transition" autocomplete="off">
+                <button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-primary text-white rounded-xl flex items-center justify-center hover:scale-105 transition shadow-lg shadow-primary/20" aria-label="Enviar mensaje">
+                    <i data-lucide="send" class="w-5 h-5"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Chat Toggle Button -->
+    <button id="chatbot-toggle" class="fixed bottom-8 right-8 z-[70] w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-300" aria-label="Abrir asistente MLD" aria-expanded="false">
+        <i data-lucide="message-square-text" class="w-8 h-8"></i>
     </button>
 
     <script>
@@ -1083,6 +1125,196 @@
             if (section.id !== 'inicio') { // Hero is already visible
                 section.classList.add('opacity-0', 'translate-y-10', 'transition-[opacity,transform]', 'duration-1000', 'ease-out');
                 observer.observe(section);
+            }
+        });
+
+        // MLD Assistant Logic
+        const assistant = {
+            isOpen: false,
+            diagnosticStep: 0,
+            diagnosticData: {},
+
+            toggle() {
+                const chat = document.getElementById('mld-assistant');
+                const toggle = document.getElementById('chatbot-toggle');
+                const icon = toggle.querySelector('i');
+
+                this.isOpen = !this.isOpen;
+
+                if (this.isOpen) {
+                    chat.classList.remove('translate-y-full', 'opacity-0', 'pointer-events-none');
+                    chat.classList.add('translate-y-0', 'opacity-100');
+                    toggle.setAttribute('aria-expanded', 'true');
+                    if (document.getElementById('chat-messages').children.length === 0) {
+                        this.addMessage("¡Hola! Soy el asistente de MLD. Ayudamos a empresas a escalar con estrategia y performance. ¿En qué puedo ayudarte hoy?", 'bot');
+                    }
+                    setTimeout(() => document.getElementById('chat-input').focus(), 500);
+                } else {
+                    chat.classList.add('translate-y-full', 'opacity-0', 'pointer-events-none');
+                    chat.classList.remove('translate-y-0', 'opacity-100');
+                    toggle.setAttribute('aria-expanded', 'false');
+                }
+            },
+
+            addMessage(text, sender) {
+                const container = document.getElementById('chat-messages');
+                const div = document.createElement('div');
+                div.className = `flex ${sender === 'user' ? 'justify-end' : 'justify-start'} mb-4 animate-float-up`;
+
+                const inner = document.createElement('div');
+                inner.className = `max-w-[80%] px-5 py-3 rounded-2xl text-sm ${
+                    sender === 'user'
+                    ? 'bg-primary text-white rounded-br-none'
+                    : 'bg-white/10 text-gray-200 rounded-bl-none border border-white/5'
+                }`;
+
+                if (sender === 'user') {
+                    inner.textContent = text;
+                } else {
+                    inner.innerHTML = text;
+                }
+
+                div.appendChild(inner);
+                container.appendChild(div);
+                container.scrollTop = container.scrollHeight;
+            },
+
+            escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            },
+
+            classifyIntent(text) {
+                const input = text.toLowerCase();
+                if (input.includes('servicio') || input.includes('hacen') || input.includes('ofrecen') || input.includes('ayuda')) return 'A';
+                if (input.includes('proceso') || input.includes('trabajan') || input.includes('metodología')) return 'B';
+                if (input.includes('precio') || input.includes('cuanto cuesta') || input.includes('cotiza') || input.includes('presupuesto')) return 'C';
+                if (input.includes('soporte') || input.includes('error') || input.includes('falla') || input.includes('seguridad')) return 'D';
+                if (input.includes('contacto') || input.includes('whatsapp') || input.includes('hablar') || input.includes('agendar')) return 'E';
+                if (input.includes('diagnóstico') || input.includes('conviene')) return 'DIAG';
+                return 'F';
+            },
+
+            async handleResponse(text) {
+                if (this.diagnosticStep > 0) {
+                    this.handleDiagnostic(text);
+                    return;
+                }
+
+                const intent = this.classifyIntent(text);
+
+                // Simulated typing delay
+                const delay = (ms) => new Promise(res => setTimeout(res, ms));
+                await delay(800);
+
+                switch (intent) {
+                    case 'A':
+                        if (text.toLowerCase().includes('hacen')) {
+                            this.addMessage("MLD diseña y opera sistemas de crecimiento digital: estrategia, performance, branding y desarrollo web, con foco en impacto de negocio. Si me dices tu rubro y objetivo (ventas, leads, posicionamiento), te recomiendo el mejor camino y te propongo un diagnóstico inicial.", 'bot');
+                        } else {
+                            this.addMessage("Trabajamos desde estrategia y funnels hasta performance (Paid Media/CRO), branding, desarrollo web, SEO y automatizaciones/CRM con IA. ¿Qué objetivo tienes hoy y en qué etapa está tu negocio (inicio / creciendo / ya inviertes en ads)?", 'bot');
+                        }
+                        break;
+                    case 'B':
+                        this.addMessage("Nuestro proceso es claro y orientado a resultados: 1) Diagnóstico, 2) Diseño estratégico, 3) Implementación, 4) Medición y 5) Optimización continua. ¿Te gustaría agendar una llamada para profundizar en cómo aplicarlo a tu caso?", 'bot');
+                        break;
+                    case 'C':
+                        this.addMessage("Para cotizar bien necesitamos 4 datos: 1) objetivo principal, 2) canales actuales (ads/SEO/redes), 3) ticket promedio o margen (si aplica), 4) urgencia. Con eso te digo el rango y el plan recomendado. Si prefieres, lo vemos por WhatsApp.", 'bot');
+                        break;
+                    case 'D':
+                        this.addMessage("Si tienes un problema técnico o de seguridad, nuestro equipo puede auditar tu sitio. ¿Podrías indicarme la URL y el tipo de error que estás experimentando?", 'bot');
+                        break;
+                    case 'E':
+                        this.addMessage("Perfecto. Puedes hablar directamente con un consultor por WhatsApp aquí: <a href='https://wa.me/51963198424' target='_blank' rel='noopener noreferrer' class='text-primary font-bold underline'>WhatsApp Directo</a>. Si me dejas tu nombre y empresa, puedo enviarle un resumen de tu caso.", 'bot');
+                        break;
+                    case 'DIAG':
+                        this.startDiagnostic();
+                        break;
+                    default:
+                        this.addMessage("Entiendo. Para darte la mejor recomendación, ¿te gustaría realizar un breve diagnóstico de 1 minuto?", 'bot');
+                }
+            },
+
+            startDiagnostic() {
+                this.diagnosticStep = 1;
+                this.addMessage("Excelente. Empecemos el diagnóstico rápido. ¿Cuál es el nombre de tu empresa o proyecto?", 'bot');
+            },
+
+            handleDiagnostic(text) {
+                switch (this.diagnosticStep) {
+                    case 1:
+                        this.diagnosticData.empresa = text;
+                        this.diagnosticStep = 2;
+                        this.addMessage("¿Cuál es tu rubro y sitio web (si tienes)?", 'bot');
+                        break;
+                    case 2:
+                        this.diagnosticData.rubro_web = text;
+                        this.diagnosticStep = 3;
+                        this.addMessage("¿Cuál es tu objetivo principal ahora: más ventas, captar leads o posicionar tu marca?", 'bot');
+                        break;
+                    case 3:
+                        this.diagnosticData.objetivo = text;
+                        this.diagnosticStep = 4;
+                        this.addMessage("¿En qué etapa estás: acabas de empezar, estás creciendo o ya inviertes en publicidad?", 'bot');
+                        break;
+                    case 4:
+                        this.diagnosticData.etapa = text;
+                        this.diagnosticStep = 5;
+                        this.addMessage("Finalmente, ¿cuál es tu presupuesto aproximado mensual para marketing y qué tan pronto necesitas ver resultados?", 'bot');
+                        break;
+                    case 5:
+                        this.diagnosticData.presupuesto_urgencia = text;
+                        this.diagnosticStep = 0;
+                        this.finishDiagnostic();
+                        break;
+                }
+            },
+
+            finishDiagnostic() {
+                const message = this.generateHandoff();
+                const escapedObj = this.escapeHtml(this.diagnosticData.objetivo.toLowerCase());
+                this.addMessage(`Gracias por los datos. Basado en esto, te recomiendo un enfoque de ${escapedObj} escalonado.`, 'bot');
+                this.addMessage(`He preparado un resumen para enviarlo a un consultor por WhatsApp y agendar tu diagnóstico formal.`, 'bot');
+
+                const escapedMessage = this.escapeHtml(message);
+                this.addMessage(`<div class='bg-white/5 p-4 rounded-xl mb-3 text-xs font-mono break-words'>${escapedMessage}</div>`, 'bot');
+
+                const whatsappUrl = `https://wa.me/51963198424?text=${encodeURIComponent(message)}`;
+                this.addMessage(`<a href='${whatsappUrl}' target='_blank' rel='noopener noreferrer' class='bg-primary text-white px-6 py-3 rounded-xl font-bold block text-center'>Enviar por WhatsApp</a>`, 'bot');
+            },
+
+            generateHandoff() {
+                return `Hola MLD, vengo de la web.
+Empresa: ${this.diagnosticData.empresa}
+Rubro/Web: ${this.diagnosticData.rubro_web}
+Objetivo: ${this.diagnosticData.objetivo}
+Etapa: ${this.diagnosticData.etapa}
+Presupuesto/Urgencia: ${this.diagnosticData.presupuesto_urgencia}
+Quiero agendar el diagnóstico formal.`;
+            }
+        };
+
+        // Event Listeners
+        document.getElementById('chatbot-toggle').addEventListener('click', () => assistant.toggle());
+        document.getElementById('close-chat').addEventListener('click', () => assistant.toggle());
+
+        // Keyboard navigation for chatbot
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && assistant.isOpen) {
+                assistant.toggle();
+                document.getElementById('chatbot-toggle').focus();
+            }
+        });
+
+        document.getElementById('chat-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const input = document.getElementById('chat-input');
+            const text = input.value.trim();
+            if (text) {
+                assistant.addMessage(text, 'user');
+                input.value = '';
+                assistant.handleResponse(text);
             }
         });
     </script>
