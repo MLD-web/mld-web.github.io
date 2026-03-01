@@ -1,6 +1,6 @@
 (function() {
     const WORKER_URL = "https://mld-web-chatbot.cortheygeme003.workers.dev";
-    const WHATSAPP_LINK = "https://wa.me/51963198424?text=Hola%20MLD,%20quiero%20agendar%20un%20diagnóstico%20estratégico";
+    const WHATSAPP_LINK = "https://wa.link/mqakvweb";
     const BRAND_COLOR = "#ff6600";
 
     const chatbotHTML = `
@@ -191,7 +191,7 @@
 
         const thinkingDiv = document.createElement("div");
         thinkingDiv.className = "bg-white/5 text-gray-500 p-4 rounded-2xl rounded-tl-none max-w-[85%] text-xs italic animate-pulse mb-4 self-start flex items-center gap-2";
-        thinkingDiv.innerHTML = `<div class="w-1 h-1 bg-gray-500 rounded-full"></div> Analizando estrategia...`;
+        thinkingDiv.innerHTML = `<div class="w-1.5 h-1.5 bg-orange-500 rounded-full"></div> Consultando mi cerebro estratégico...`;
         messagesEl.appendChild(thinkingDiv);
         messagesEl.scrollTop = messagesEl.scrollHeight;
 
