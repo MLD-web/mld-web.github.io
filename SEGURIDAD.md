@@ -56,7 +56,7 @@ v=TLSRPTv1; rua=mailto:seguridad@mld.com.pe
 Además de las configuraciones de DNS, se han aplicado las siguientes medidas directamente en el sitio web:
 
 ### 1. Content Security Policy (CSP)
-Se ha implementado una política de seguridad de contenido mediante etiquetas `<meta>` para prevenir ataques de Cross-Site Scripting (XSS) e inyección de datos. La política permite:
+Se ha implementado una política de seguridad de contenido mediante etiquetas `<meta>` para prevenir ataques de Cross-Site Scripting (XSS) e inyección de datos. La política incluye la directiva `upgrade-insecure-requests` y permite:
 - Carga de scripts desde dominios de confianza (Tailwind, Lucide, Google Analytics).
 - Conexiones seguras a servicios de analítica.
 - Estilos en línea necesarios para el funcionamiento de Tailwind CSS.
@@ -73,7 +73,7 @@ Se han añadido archivos estándar para la comunicación con investigadores de s
 - `/.well-known/mta-sts.txt`: Política de seguridad de transporte de correo.
 
 ### 5. Configuración de Servidor (Headers de Seguridad)
-Se han incluido archivos de configuración para los servidores más comunes para asegurar que los headers de seguridad se envíen correctamente desde el lado del servidor:
+Se han incluido archivos de configuración para los servidores más comunes para asegurar que los headers de seguridad se envíen correctamente desde el lado del servidor, incluyendo **HSTS (Strict-Transport-Security)** para forzar conexiones seguras:
 
 - **Apache (`.htaccess`)**: Configurado con `mod_headers`.
 - **Netlify (`_headers`)**: Configuración nativa de Netlify.
@@ -85,7 +85,8 @@ Si el sitio se despliega en un servidor Nginx, se debe añadir lo siguiente al b
 ```nginx
 server {
     ...
-    add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://www.google-analytics.com https://www.googletagmanager.com https://stats.g.doubleclick.net; connect-src 'self' https://formspree.io https://www.google-analytics.com https://*.google-analytics.com https://stats.g.doubleclick.net;" always;
+    add_header Content-Security-Policy "upgrade-insecure-requests; default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://www.google-analytics.com https://www.googletagmanager.com https://stats.g.doubleclick.net; connect-src 'self' https://formspree.io https://www.google-analytics.com https://*.google-analytics.com https://stats.g.doubleclick.net;" always;
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
     add_header Referrer-Policy "strict-origin-when-cross-origin" always;
     add_header X-Frame-Options "SAMEORIGIN" always;
     add_header X-Content-Type-Options "nosniff" always;

@@ -9,7 +9,7 @@
     <link rel="canonical" href="https://mld.com.pe/">
 
     <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://www.google-analytics.com https://www.googletagmanager.com https://stats.g.doubleclick.net; connect-src 'self' https://formspree.io https://www.google-analytics.com https://*.google-analytics.com https://stats.g.doubleclick.net;">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://www.google-analytics.com https://www.googletagmanager.com https://stats.g.doubleclick.net; connect-src 'self' https://formspree.io https://www.google-analytics.com https://*.google-analytics.com https://stats.g.doubleclick.net;">
     <meta name="Referrer-Policy" content="strict-origin-when-cross-origin">
     <meta name="Permissions-Policy" content="geolocation=(), camera=(), microphone=()">
 
@@ -170,7 +170,7 @@
                             Iniciar Diagnóstico
                             <i data-lucide="arrow-right" class="ml-2 w-6 h-6"></i>
                         </a>
-                        <a href="https://wa.me/51963198424" target="_blank" class="flex items-center justify-center bg-transparent border border-white/20 text-white px-10 py-5 rounded-full hover:bg-white/5 transition transform duration-300 font-bold text-lg">
+                        <a href="https://wa.me/51963198424" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center bg-transparent border border-white/20 text-white px-10 py-5 rounded-full hover:bg-white/5 transition transform duration-300 font-bold text-lg">
                             WhatsApp Directo
                         </a>
                     </div>
@@ -692,7 +692,7 @@
                     </div>
 
                     <div class="mt-16 flex flex-col sm:flex-row gap-6">
-                        <a href="https://wa.me/51963198424" target="_blank" class="flex-1 bg-primary text-white py-5 rounded-2xl font-bold text-lg hover:scale-105 transition transform duration-300 shadow-2xl shadow-primary/30 flex items-center justify-center gap-3">
+                        <a href="https://wa.me/51963198424" target="_blank" rel="noopener noreferrer" class="flex-1 bg-primary text-white py-5 rounded-2xl font-bold text-lg hover:scale-105 transition transform duration-300 shadow-2xl shadow-primary/30 flex items-center justify-center gap-3">
                             <i data-lucide="message-circle"></i>
                             WhatsApp Directo
                         </a>
@@ -705,7 +705,7 @@
                 <div class="bg-black/60 backdrop-blur-xl p-10 md:p-14 rounded-[3rem] border border-white/10 relative overflow-hidden shadow-2xl">
                     <form id="contactForm" action="https://formspree.io/f/mqakvweb" method="POST" class="space-y-6 relative z-10">
                         <!-- Anti-spam honeypot -->
-                        <input type="text" name="_gotcha" style="display:none">
+                        <input type="text" name="_gotcha" style="display:none" autocomplete="off" tabindex="-1">
 
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
@@ -766,15 +766,15 @@
                         <i data-lucide="phone" class="w-5 h-5"></i>
                         <span class="text-sm">Llamar</span>
                     </a>
-                    <a href="https://www.instagram.com/hola_mld?utm_source=qr&igsh=MWt5ZW9janpmMWtrcA==" target="_blank" class="hover:text-primary transition-all flex items-center gap-2">
+                    <a href="https://www.instagram.com/hola_mld?utm_source=qr&igsh=MWt5ZW9janpmMWtrcA==" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-all flex items-center gap-2">
                         <i data-lucide="instagram" class="w-5 h-5"></i>
                         <span class="text-sm">@hola_mld</span>
                     </a>
-                    <a href="https://www.facebook.com/share/1CMUPWz9Zi/" target="_blank" class="hover:text-primary transition-all flex items-center gap-2">
+                    <a href="https://www.facebook.com/share/1CMUPWz9Zi/" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-all flex items-center gap-2">
                         <i data-lucide="facebook" class="w-5 h-5"></i>
                         <span class="text-sm">MLD Marketing</span>
                     </a>
-                    <a href="https://www.tiktok.com/@mldmarketing" target="_blank" class="hover:text-primary transition-all flex items-center gap-2">
+                    <a href="https://www.tiktok.com/@mldmarketing" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-all flex items-center gap-2">
                         <i data-lucide="music-2" class="w-5 h-5"></i>
                         <span class="text-sm">TikTok</span>
                     </a>
