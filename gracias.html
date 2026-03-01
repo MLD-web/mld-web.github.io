@@ -6,9 +6,9 @@
     <title>¡Gracias! | MLD | Marca La Diferencia</title>
 
     <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; object-src 'none'; base-uri 'self';">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="Permissions-Policy" content="geolocation=(), camera=(), microphone=(), display-capture=(), payment=()">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://mld-web-chatbot.cortheygeme003.workers.dev;">
+    <meta name="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta name="Permissions-Policy" content="geolocation=(), camera=(), microphone=()">
 
     <!-- Resource Hints -->
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
@@ -36,6 +36,8 @@
     </script>
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@0.321.0/dist/umd/lucide.min.js"></script>
+    <link rel="stylesheet" href="./chatbot.css">
+    <script defer src="./chatbot.js"></script>
 </head>
 <body class="bg-black text-white min-h-screen flex items-center justify-center p-6 font-sans">
     <div class="max-w-2xl w-full text-center">
