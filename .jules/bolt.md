@@ -1,0 +1,3 @@
+## 2024-05-24 - [Frontend Performance Suite]
+**Aprendizaje:** Para sitios estáticos que dependen de múltiples CDNs (Tailwind, Lucide, Google Analytics), el uso de `preconnect` y `dns-prefetch` es crítico para reducir el impacto de la latencia en el Camino Crítico de Renderizado. Además, `lucide.createIcons()` puede ser costoso si se ejecuta globalmente en aplicaciones con muchos íconos; limitarlo con `root` en contenedores dinámicos (modals) mejora la respuesta de la UI.
+**Acción:** Siempre incluir resource hints para CDNs y limitar el alcance de scripts de procesamiento de DOM (como Lucide o animaciones) a subárboles específicos cuando sea posible.

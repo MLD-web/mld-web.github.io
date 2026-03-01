@@ -22,6 +22,17 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16.png">
     <link rel="icon" type="image/png" sizes="192x192" href="../assets/android-chrome-192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="../assets/android-chrome-512.png">
+
+    <!-- Resource Hints -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://www.google-analytics.com">
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -72,7 +83,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <a href="../" class="flex items-center gap-3 group">
-                    <img src="../assets/logo.png" alt="MLD Logo" class="h-10 w-10 object-cover rounded-lg">
+                    <img src="../assets/logo.png" alt="MLD Logo" class="h-10 w-10 object-cover rounded-lg" fetchpriority="high" decoding="async">
                     <div class="flex flex-col">
                         <span class="text-2xl font-heading font-extrabold text-white leading-none group-hover:text-primary transition">MLD</span>
                         <span class="text-[10px] text-primary font-bold tracking-[0.2em] uppercase">Marca La Diferencia</span>
@@ -110,7 +121,7 @@
                 <!-- Project 1 -->
                 <div class="group relative overflow-hidden rounded-[2.5rem] bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-500 shadow-2xl hover:-translate-y-2">
                     <div class="aspect-video overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=800" alt="Luxury Real Estate" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=800" alt="Luxury Real Estate" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" decoding="async">
                     </div>
                     <div class="p-8">
                         <span class="text-primary font-bold text-xs uppercase tracking-widest mb-3 block">Branding • Lujo</span>
@@ -126,7 +137,7 @@
                 <!-- Project 2 -->
                 <div class="group relative overflow-hidden rounded-[2.5rem] bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-500 shadow-2xl hover:-translate-y-2">
                     <div class="aspect-video overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Fintech Performance" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Fintech Performance" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" decoding="async">
                     </div>
                     <div class="p-8">
                         <span class="text-primary font-bold text-xs uppercase tracking-widest mb-3 block">Performance • Fintech</span>
@@ -142,7 +153,7 @@
                 <!-- Project 4 -->
                 <div class="group relative overflow-hidden rounded-[2.5rem] bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-500 shadow-2xl hover:-translate-y-2">
                     <div class="aspect-video overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=800" alt="E-commerce Fashion" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=800" alt="E-commerce Fashion" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" decoding="async">
                     </div>
                     <div class="p-8">
                         <span class="text-primary font-bold text-xs uppercase tracking-widest mb-3 block">Social Media • Fashion</span>
@@ -253,6 +264,7 @@
             const data = projectData[projectId];
             if (!data) return;
 
+            const modalContent = document.getElementById('modalContent');
             const content = `
                 <div class="h-64 md:h-auto overflow-hidden">
                     <img src="${data.image}" alt="${data.title}" class="w-full h-full object-cover">
@@ -288,13 +300,15 @@
                 </div>
             `;
             const modal = document.getElementById('caseModal');
-            document.getElementById('modalContent').innerHTML = content;
+            modalContent.innerHTML = content;
             modal.classList.remove('hidden');
             modal.setAttribute('aria-modal', 'true');
             modal.setAttribute('role', 'dialog');
             document.body.style.overflow = 'hidden';
             modal.focus();
-            lucide.createIcons();
+            lucide.createIcons({
+                root: modalContent
+            });
         }
 
         function closeCaseModal() {

@@ -10,6 +10,12 @@
     <meta name="Referrer-Policy" content="strict-origin-when-cross-origin">
     <meta name="Permissions-Policy" content="geolocation=(), camera=(), microphone=()">
 
+    <!-- Resource Hints -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
+
     <script src="https://cdn.tailwindcss.com/3.4.1"></script>
     <script>
         tailwind.config = {
@@ -53,7 +59,7 @@
         </div>
 
         <div class="mt-20">
-            <img src="assets/logo.png" alt="MLD Logo" class="h-12 mx-auto opacity-50">
+            <img src="assets/logo.png" alt="MLD Logo" class="h-12 mx-auto opacity-50" loading="lazy" decoding="async">
             <p class="text-[10px] text-gray-600 uppercase tracking-[0.3em] mt-4 font-bold">MLD | Marca La Diferencia</p>
         </div>
     </div>
