@@ -6,7 +6,7 @@
     const chatbotHTML = `
     <div id="chatbot-widget" class="fixed bottom-6 right-6 z-[9999] flex flex-col items-end font-sans">
         <!-- Panel -->
-        <div id="chatbot-panel" class="hidden w-[90vw] md:w-[400px] max-h-[600px] bg-[#0a0a0a] border border-white/10 rounded-3xl shadow-2xl flex flex-col overflow-hidden mb-4 animate-float-up text-white">
+        <div id="chatbot-panel" class="hidden w-[90vw] md:w-[400px] max-h-[600px] bg-[#0a0a0a] border border-white/10 rounded-3xl shadow-2xl flex flex-col overflow-hidden mb-4 animate-float-up text-white" aria-hidden="true">
             <!-- Header -->
             <div class="bg-gradient-to-r from-black to-[#111] p-6 border-b border-white/10 flex justify-between items-center">
                 <div class="flex items-center gap-3">
@@ -16,7 +16,7 @@
                         <p class="text-gray-400 text-[10px] mt-1 uppercase tracking-widest font-bold">Partner Estratégico</p>
                     </div>
                 </div>
-                <button id="close-chat" class="text-gray-400 hover:text-white transition p-2">
+                <button id="close-chat" class="text-gray-400 hover:text-white transition p-2" type="button" aria-label="Cerrar">
                     <i data-lucide="x" class="w-6 h-6"></i>
                 </button>
             </div>
@@ -30,14 +30,14 @@
 
             <!-- Quick Actions -->
             <div id="chatbot-actions" class="p-4 flex flex-wrap gap-2 border-t border-white/5 bg-black/50">
-                <button class="quick-action bg-white/5 hover:bg-orange-500/20 text-gray-300 hover:text-white px-4 py-2 rounded-full text-xs transition border border-white/10" data-msg="Quiero cotizar un servicio">Quiero cotizar</button>
-                <button class="quick-action bg-white/5 hover:bg-orange-500/20 text-gray-300 hover:text-white px-4 py-2 rounded-full text-xs transition border border-white/10" data-msg="¿Qué servicio me conviene?">¿Qué me conviene?</button>
-                <button class="quick-action bg-white/5 hover:bg-green-500/20 text-gray-300 hover:text-white px-4 py-2 rounded-full text-xs transition border border-white/10" data-msg="Hablar por WhatsApp">WhatsApp Directo</button>
+                <button class="quick-action bg-white/5 hover:bg-orange-500/20 text-gray-300 hover:text-white px-4 py-2 rounded-full text-xs transition border border-white/10" type="button" data-msg="Quiero cotizar un servicio">Quiero cotizar</button>
+                <button class="quick-action bg-white/5 hover:bg-orange-500/20 text-gray-300 hover:text-white px-4 py-2 rounded-full text-xs transition border border-white/10" type="button" data-msg="¿Qué servicio me conviene?">¿Qué me conviene?</button>
+                <a class="quick-action bg-white/5 hover:bg-green-500/20 text-gray-300 hover:text-white px-4 py-2 rounded-full text-xs transition border border-white/10 flex items-center justify-center" href="${WHATSAPP_LINK}" target="_blank" rel="noopener noreferrer">WhatsApp Directo</a>
             </div>
 
             <!-- Input -->
             <form id="chatbot-form" class="p-4 bg-black border-t border-white/10 flex gap-2">
-                <input type="text" id="chatbot-input" placeholder="Escribe tu duda aquí..." class="flex-1 bg-white/5 border border-white/10 rounded-full px-5 py-3 text-sm text-white focus:outline-none focus:border-[#ff6600] transition">
+                <input type="text" id="chatbot-input" placeholder="Escribe tu duda aquí..." class="flex-1 bg-white/5 border border-white/10 rounded-full px-5 py-3 text-sm text-white focus:outline-none focus:border-[#ff6600] transition" autocomplete="off">
                 <button type="submit" class="text-white p-3 rounded-full hover:scale-110 active:scale-95 transition shadow-lg shadow-orange-500/20" style="background-color: ${BRAND_COLOR}">
                     <i data-lucide="send" class="w-5 h-5"></i>
                 </button>
@@ -45,7 +45,7 @@
         </div>
 
         <!-- Toggle Button -->
-        <button id="chat-toggle" class="text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl shadow-orange-500/40 hover:scale-110 active:scale-90 transition-all duration-300 group relative" style="background-color: ${BRAND_COLOR}">
+        <button id="chat-toggle" class="text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl shadow-orange-500/40 hover:scale-110 active:scale-90 transition-all duration-300 group relative" style="background-color: ${BRAND_COLOR}" type="button" aria-label="Abrir chat">
             <i data-lucide="message-square" class="w-7 h-7 group-hover:hidden"></i>
             <i data-lucide="chevron-down" class="w-7 h-7 hidden group-hover:block"></i>
             <span class="absolute -top-1 -right-1 w-4 h-4 bg-green-500 border-2 border-black rounded-full"></span>
@@ -58,13 +58,6 @@
     container.innerHTML = chatbotHTML;
     document.body.appendChild(container);
 
-    // Initial Lucide icons
-    if (window.lucide) {
-        window.lucide.createIcons({
-            root: document.getElementById('chatbot-widget')
-        });
-    }
-
     const toggleBtn = document.getElementById("chat-toggle");
     const panel = document.getElementById("chatbot-panel");
     const closeBtn = document.getElementById("close-chat");
@@ -73,13 +66,30 @@
     const input = document.getElementById("chatbot-input");
     const quickBtns = document.querySelectorAll(".quick-action");
 
+    // Protection against null
+    if (!toggleBtn || !panel || !closeBtn || !messagesEl || !form || !input) {
+        console.error("Chatbot: faltan elementos del DOM. Revisa chatbotHTML.");
+        return;
+    }
+
+    // Initial Lucide icons
+    if (window.lucide) {
+        window.lucide.createIcons({
+            root: document.getElementById('chatbot-widget')
+        });
+    }
+
     let history = [
         { role: "assistant", content: "Hola 👋 Soy el asistente de MLD. ¿Qué necesitas hoy: cotizar un servicio, elegir la mejor opción para tu negocio o mejorar tu presencia web?" }
     ];
 
     function escapeHtml(str) {
-        return str.replace(/[&<>"']/g, (m) => ({
-            "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+        return String(str).replace(/[&<>"']/g, (m) => ({
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#039;"
         }[m]));
     }
 
@@ -126,7 +136,6 @@
         a.rel = "noopener noreferrer";
         a.className = "mld-wa-btn flex items-center justify-center gap-2 group";
 
-        // Add icon manually or use innerHTML
         a.innerHTML = `<i data-lucide="message-circle" class="w-4 h-4"></i> <span>Abrir WhatsApp</span>`;
 
         wrap.appendChild(p);
@@ -140,9 +149,6 @@
         messagesEl.scrollTop = messagesEl.scrollHeight;
     }
 
-    // Public API
-    window.mldChat = { addMessage, addWhatsAppButton, openChat, closeChat };
-
     function openChat() {
         panel.classList.remove("hidden");
         panel.setAttribute("aria-hidden", "false");
@@ -153,12 +159,15 @@
         panel.setAttribute("aria-hidden", "true");
     }
 
-    toggleBtn?.addEventListener("click", () => {
+    // Public API
+    window.mldChat = { addMessage, addWhatsAppButton, openChat, closeChat };
+
+    toggleBtn.addEventListener("click", () => {
         if (panel.classList.contains("hidden")) openChat();
         else closeChat();
     });
 
-    closeBtn?.addEventListener("click", closeChat);
+    closeBtn.addEventListener("click", closeChat);
 
     quickBtns.forEach(btn => {
         btn.addEventListener("click", () => {
@@ -167,20 +176,20 @@
         });
     });
 
-    form?.addEventListener("submit", (e) => {
+    form.addEventListener("submit", (e) => {
         e.preventDefault();
-        const text = (input?.value || "").trim();
+        const text = (input.value || "").trim();
         if (!text) return;
         sendUserMessage(text);
     });
 
     async function sendUserMessage(text) {
-        if (input) input.value = "";
+        input.value = "";
         openChat();
         addMessage("user", text);
         history.push({ role: "user", content: text });
 
-        // Intent detection for immediate WhatsApp (Only if specifically asking for contact info)
+        // Intent detection for immediate WhatsApp
         const specificContactIntent = /link|enlace|numero|número|pasar al whatsapp|dame el whatsapp/i.test(text);
         if (specificContactIntent) {
             setTimeout(() => {
@@ -233,7 +242,6 @@
 
             history.push({ role: "assistant", content: reply });
 
-            // Manage history length
             if (history.length > 20) history = [history[0], ...history.slice(-19)];
         } catch (err) {
             if (thinkingDiv.parentNode) messagesEl.removeChild(thinkingDiv);
