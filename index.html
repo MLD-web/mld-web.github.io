@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MLD | Marca La Diferencia | Agencia de Marketing y Publicidad</title>
-    <meta name="description" content="MLD es una agencia de marketing estratégico enfocada en crecimiento real, sistemas de negocio y ejecución basada en datos. Marca La Diferencia con nuestro partner estratégico.">
+    <meta name="description" content="MLD es una agencia de marketing estratégico enfocada en crecimiento real y sistemas de negocio basados en datos. Marca La Diferencia con tu partner estratégico.">
     <meta name="keywords" content="marketing estratégico, crecimiento digital, performance marketing, branding estratégico, agencia de publicidad, MLD, Marca La Diferencia">
+    <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://mld.com.pe/">
 
     <!-- Security Headers -->
@@ -16,7 +17,7 @@
     <!-- Open Graph -->
     <meta property="og:title" content="MLD | Marca La Diferencia | Agencia de Marketing y Publicidad">
     <meta property="og:description" content="No vendemos publicaciones, diseñamos sistemas de crecimiento real basados en datos y criterio de negocio.">
-    <meta property="og:image" content="assets/logo.png">
+    <meta property="og:image" content="https://mld.com.pe/assets/logo.png">
     <meta property="og:url" content="https://mld.com.pe/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="MLD Marca La Diferencia">
@@ -109,6 +110,11 @@
     </script>
 </head>
 <body class="font-sans bg-black text-white">
+    <!-- Skip to Content Link -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-white px-6 py-3 rounded-full font-bold z-[100] shadow-2xl">
+        Saltar al contenido principal
+    </a>
+
     <!-- Navbar -->
     <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -119,7 +125,7 @@
                         <span class="text-2xl font-heading font-extrabold text-white leading-none">MLD</span>
                         <span class="text-[10px] text-primary font-bold tracking-[0.2em] uppercase">Marca La Diferencia</span>
                     </div>
-                </div>
+                </a>
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="#inicio" class="text-gray-300 hover:text-primary transition font-medium">Inicio</a>
                     <a href="#nosotros" class="text-gray-300 hover:text-primary transition font-medium">Nosotros</a>
@@ -128,7 +134,7 @@
                     <a href="#contacto" class="bg-primary text-white px-6 py-2 rounded-full hover:scale-105 transition transform duration-300 font-semibold shadow-lg shadow-primary/20">Cotizar ahora</a>
                 </div>
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <button id="mobile-menu-button" class="text-white focus:outline-none" aria-label="Abrir menú de navegación" aria-expanded="false">
                         <i data-lucide="menu" class="w-8 h-8"></i>
                     </button>
                 </div>
@@ -136,14 +142,15 @@
         </div>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-black border-b border-white/10 px-4 pt-2 pb-6 space-y-2">
-            <a href="#inicio" class="block py-2 text-gray-300 hover:text-primary">Inicio</a>
-            <a href="#nosotros" class="block py-2 text-gray-300 hover:text-primary">Nosotros</a>
-            <a href="#servicios" class="block py-2 text-gray-300 hover:text-primary">Servicios</a>
-            <a href="#portafolio" class="block py-2 text-gray-300 hover:text-primary">Portafolio</a>
-            <a href="#contacto" class="block py-2 text-primary font-bold">Cotizar ahora</a>
+            <a href="#inicio" title="Ir a la sección de inicio" aria-label="Ir a la sección de inicio" class="block py-2 text-gray-300 hover:text-primary">Inicio</a>
+            <a href="#nosotros" title="Conocer más sobre nosotros" aria-label="Conocer más sobre nosotros" class="block py-2 text-gray-300 hover:text-primary">Nosotros</a>
+            <a href="#servicios" title="Ver nuestros servicios" aria-label="Ver nuestros servicios" class="block py-2 text-gray-300 hover:text-primary">Servicios</a>
+            <a href="#portafolio" title="Ver nuestro portafolio de proyectos" aria-label="Ver nuestro portafolio de proyectos" class="block py-2 text-gray-300 hover:text-primary">Portafolio</a>
+            <a href="#contacto" title="Solicitar una cotización" aria-label="Solicitar una cotización" class="block py-2 text-primary font-bold">Cotizar ahora</a>
         </div>
     </nav>
 
+    <main id="main-content">
     <!-- Hero Section -->
     <section id="inicio" class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-black">
         <!-- background asset -->
@@ -168,9 +175,9 @@
                     <div class="flex flex-col sm:flex-row gap-5">
                         <a href="#contacto" class="flex items-center justify-center bg-primary text-white px-10 py-5 rounded-full hover:scale-105 transition transform duration-300 font-bold text-lg shadow-2xl shadow-primary/30">
                             Iniciar Diagnóstico
-                            <i data-lucide="arrow-right" class="ml-2 w-6 h-6"></i>
+                            <i data-lucide="arrow-right" class="ml-2 w-6 h-6" aria-hidden="true"></i>
                         </a>
-                        <a href="https://wa.me/51963198424" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center bg-transparent border border-white/20 text-white px-10 py-5 rounded-full hover:bg-white/5 transition transform duration-300 font-bold text-lg">
+                        <a href="https://wa.me/51963198424" target="_blank" rel="noopener noreferrer" title="Contactar por WhatsApp Directo" aria-label="Contactar por WhatsApp Directo" class="flex items-center justify-center bg-transparent border border-white/20 text-white px-10 py-5 rounded-full hover:bg-white/5 transition transform duration-300 font-bold text-lg">
                             WhatsApp Directo
                         </a>
                     </div>
@@ -356,7 +363,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-2 gap-12">
                 <!-- Project 1 -->
-                <div class="group cursor-pointer" onclick="openCaseModal('luxury')">
+                <div class="group cursor-pointer" onclick="openCaseModal('luxury')" role="button" tabindex="0" aria-label="Ver caso de estudio Elite Residences">
                     <div class="relative overflow-hidden rounded-[2.5rem] border border-white/10 aspect-[16/10] mb-8">
                         <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1200" alt="Luxury Rebranding" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-60"></div>
@@ -374,7 +381,7 @@
                 </div>
 
                 <!-- Project 2 -->
-                <div class="group cursor-pointer" onclick="openCaseModal('fintech')">
+                <div class="group cursor-pointer" onclick="openCaseModal('fintech')" role="button" tabindex="0" aria-label="Ver caso de estudio NeoBank Global">
                     <div class="relative overflow-hidden rounded-[2.5rem] border border-white/10 aspect-[16/10] mb-8">
                         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200" alt="Fintech Performance" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-60"></div>
@@ -394,7 +401,7 @@
                 <!-- Project 3 (Removed Neural Launch) -->
 
                 <!-- Project 4 -->
-                <div class="group cursor-pointer" onclick="openCaseModal('fashion')">
+                <div class="group cursor-pointer" onclick="openCaseModal('fashion')" role="button" tabindex="0" aria-label="Ver caso de estudio Aura Modas">
                     <div class="relative overflow-hidden rounded-[2.5rem] border border-white/10 aspect-[16/10] mb-8">
                         <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=1200" alt="E-commerce Fashion" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-60"></div>
@@ -413,10 +420,10 @@
             </div>
 
             <div class="mt-20 flex flex-col md:flex-row items-center justify-center gap-6">
-                <a href="portafolio/" class="inline-flex items-center gap-4 text-white font-bold text-lg hover:text-primary transition group">
+                <a href="portafolio/" title="Explorar todos los casos de éxito" aria-label="Explorar todos los casos de éxito" class="inline-flex items-center gap-4 text-white font-bold text-lg hover:text-primary transition group">
                     Explorar todos los casos
                     <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-primary transition">
-                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        <i data-lucide="arrow-right" class="w-5 h-5" aria-hidden="true"></i>
                     </div>
                 </a>
                 <a href="#contacto" class="inline-flex items-center bg-white/5 border border-white/10 px-8 py-4 rounded-full text-white font-bold hover:bg-primary hover:border-primary transition-all">
@@ -427,11 +434,11 @@
     </section>
 
     <!-- Case Study Modal -->
-    <div id="caseModal" class="fixed inset-0 z-[100] hidden overflow-y-auto" tabindex="-1">
+    <div id="caseModal" class="fixed inset-0 z-[100] hidden items-center justify-center overflow-y-auto outline-none" tabindex="-1">
         <div class="fixed inset-0 bg-black/90 backdrop-blur-xl" onclick="closeCaseModal()"></div>
         <div class="relative min-h-screen flex items-center justify-center p-4 md:p-10">
             <div class="bg-mld-black border border-white/10 w-full max-w-6xl rounded-[3rem] overflow-hidden relative animate-float-up shadow-2xl">
-                <button onclick="closeCaseModal()" class="absolute top-8 right-8 z-10 w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-primary transition">
+                <button onclick="closeCaseModal()" class="absolute top-8 right-8 z-10 w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-primary transition" aria-label="Cerrar modal">
                     <i data-lucide="x"></i>
                 </button>
 
@@ -616,28 +623,28 @@
                     <form id="reviewForm" class="space-y-6">
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
-                                <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Nombre</label>
-                                <input type="text" name="reviewer_name" required placeholder="Tu nombre" class="w-full bg-white/5 px-6 py-4 rounded-2xl border border-white/10 focus:border-primary text-white outline-none transition">
+                                <label for="reviewer_name" class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Nombre</label>
+                                <input type="text" id="reviewer_name" name="reviewer_name" required placeholder="Tu nombre" class="w-full bg-white/5 px-6 py-4 rounded-2xl border border-white/10 focus:border-primary text-white outline-none transition">
                             </div>
                             <div>
-                                <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Empresa / Cargo</label>
-                                <input type="text" name="reviewer_company" placeholder="Ej. CEO en EmpresaX" class="w-full bg-white/5 px-6 py-4 rounded-2xl border border-white/10 focus:border-primary text-white outline-none transition">
+                                <label for="reviewer_company" class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Empresa / Cargo</label>
+                                <input type="text" id="reviewer_company" name="reviewer_company" placeholder="Ej. CEO en EmpresaX" class="w-full bg-white/5 px-6 py-4 rounded-2xl border border-white/10 focus:border-primary text-white outline-none transition">
                             </div>
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Valoración</label>
                             <div class="flex gap-4 text-gray-600">
-                                <button type="button" class="star-rating hover:text-primary transition" data-rating="1"><i data-lucide="star" class="w-8 h-8"></i></button>
-                                <button type="button" class="star-rating hover:text-primary transition" data-rating="2"><i data-lucide="star" class="w-8 h-8"></i></button>
-                                <button type="button" class="star-rating hover:text-primary transition" data-rating="3"><i data-lucide="star" class="w-8 h-8"></i></button>
-                                <button type="button" class="star-rating hover:text-primary transition" data-rating="4"><i data-lucide="star" class="w-8 h-8"></i></button>
-                                <button type="button" class="star-rating hover:text-primary transition" data-rating="5"><i data-lucide="star" class="w-8 h-8"></i></button>
+                                <button type="button" class="star-rating hover:text-primary transition" data-rating="1" aria-label="Calificar con 1 estrella"><i data-lucide="star" class="w-8 h-8"></i></button>
+                                <button type="button" class="star-rating hover:text-primary transition" data-rating="2" aria-label="Calificar con 2 estrellas"><i data-lucide="star" class="w-8 h-8"></i></button>
+                                <button type="button" class="star-rating hover:text-primary transition" data-rating="3" aria-label="Calificar con 3 estrellas"><i data-lucide="star" class="w-8 h-8"></i></button>
+                                <button type="button" class="star-rating hover:text-primary transition" data-rating="4" aria-label="Calificar con 4 estrellas"><i data-lucide="star" class="w-8 h-8"></i></button>
+                                <button type="button" class="star-rating hover:text-primary transition" data-rating="5" aria-label="Calificar con 5 estrellas"><i data-lucide="star" class="w-8 h-8"></i></button>
                                 <input type="hidden" name="rating" id="ratingValue" value="5">
                             </div>
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Tu Reseña</label>
-                            <textarea name="review_text" rows="4" required placeholder="Cuéntanos tu experiencia trabajando con MLD..." class="w-full bg-white/5 px-6 py-4 rounded-2xl border border-white/10 focus:border-primary text-white outline-none transition"></textarea>
+                            <label for="review_text" class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Tu Reseña</label>
+                            <textarea id="review_text" name="review_text" rows="4" required placeholder="Cuéntanos tu experiencia trabajando con MLD..." class="w-full bg-white/5 px-6 py-4 rounded-2xl border border-white/10 focus:border-primary text-white outline-none transition"></textarea>
                         </div>
                         <button type="submit" class="w-full bg-primary text-white py-5 rounded-2xl font-bold text-xl hover:bg-opacity-90 transition shadow-xl shadow-primary/20 flex items-center justify-center gap-3">
                             <span>Enviar Reseña</span>
@@ -696,8 +703,8 @@
                             <i data-lucide="message-circle"></i>
                             WhatsApp Directo
                         </a>
-                        <a href="tel:+51963198424" class="flex-1 bg-white/5 border border-white/10 text-white py-5 rounded-2xl font-bold text-lg hover:bg-white/10 transition flex items-center justify-center gap-3">
-                            <i data-lucide="phone-call"></i>
+                        <a href="tel:+51963198424" title="Llamar al número de contacto" aria-label="Llamar al número de contacto" class="flex-1 bg-white/5 border border-white/10 text-white py-5 rounded-2xl font-bold text-lg hover:bg-white/10 transition flex items-center justify-center gap-3">
+                            <i data-lucide="phone-call" aria-hidden="true"></i>
                             Llamar ahora
                         </a>
                     </div>
@@ -709,18 +716,18 @@
 
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
-                                <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Nombre Completo</label>
-                                <input type="text" name="name" required placeholder="Tu nombre" class="w-full bg-white/5 px-6 py-4 rounded-2xl border border-white/10 focus:border-primary text-white outline-none transition">
+                                <label for="contact_name" class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Nombre Completo</label>
+                                <input type="text" id="contact_name" name="name" required placeholder="Tu nombre" class="w-full bg-white/5 px-6 py-4 rounded-2xl border border-white/10 focus:border-primary text-white outline-none transition">
                             </div>
                             <div>
-                                <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Email Corporativo</label>
-                                <input type="email" name="email" required placeholder="tu@empresa.com" class="w-full bg-white/5 px-6 py-4 rounded-2xl border border-white/10 focus:border-primary text-white outline-none transition">
+                                <label for="contact_email" class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Email Corporativo</label>
+                                <input type="email" id="contact_email" name="email" required placeholder="tu@empresa.com" class="w-full bg-white/5 px-6 py-4 rounded-2xl border border-white/10 focus:border-primary text-white outline-none transition">
                             </div>
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Servicio de interés</label>
+                            <label for="contact_service" class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Servicio de interés</label>
                             <div class="relative">
-                                <select name="service" required class="w-full bg-white/5 px-6 py-4 rounded-2xl border border-white/10 focus:border-primary text-white outline-none transition appearance-none">
+                                <select id="contact_service" name="service" required class="w-full bg-white/5 px-6 py-4 rounded-2xl border border-white/10 focus:border-primary text-white outline-none transition appearance-none">
                                     <option value="" disabled selected class="bg-black">Selecciona un servicio</option>
                                     <option class="bg-black">Estrategia de Crecimiento</option>
                                     <option class="bg-black">Performance & Paid Media</option>
@@ -735,8 +742,8 @@
                             </div>
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Mensaje</label>
-                            <textarea name="message" rows="4" required placeholder="Cuéntanos sobre tu negocio y objetivos..." class="w-full bg-white/5 px-6 py-4 rounded-2xl border border-white/10 focus:border-primary text-white outline-none transition"></textarea>
+                            <label for="contact_message" class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Mensaje</label>
+                            <textarea id="contact_message" name="message" rows="4" required placeholder="Cuéntanos sobre tu negocio y objetivos..." class="w-full bg-white/5 px-6 py-4 rounded-2xl border border-white/10 focus:border-primary text-white outline-none transition"></textarea>
                         </div>
                         <button type="submit" id="submitBtn" class="w-full bg-primary text-white py-5 rounded-2xl font-bold text-xl hover:bg-opacity-90 transition shadow-xl shadow-primary/20 flex items-center justify-center gap-3">
                             <span>Enviar Solicitud</span>
@@ -748,6 +755,8 @@
             </div>
         </div>
     </section>
+
+    </main>
 
     <!-- Footer -->
     <footer class="bg-black py-16 border-t border-white/10">
@@ -762,29 +771,29 @@
             <div class="flex flex-col items-center md:items-start gap-4">
                 <p class="text-primary font-bold tracking-widest uppercase text-xs">Conecta con nosotros</p>
                 <div class="flex flex-wrap gap-6 text-gray-400">
-                    <a href="tel:+51963198424" class="hover:text-primary transition-all flex items-center gap-2">
-                        <i data-lucide="phone" class="w-5 h-5"></i>
+                    <a href="tel:+51963198424" title="Llamar a MLD" aria-label="Llamar a MLD" class="hover:text-primary transition-all flex items-center gap-2">
+                        <i data-lucide="phone" class="w-5 h-5" aria-hidden="true"></i>
                         <span class="text-sm">Llamar</span>
                     </a>
-                    <a href="https://www.instagram.com/hola_mld?utm_source=qr&igsh=MWt5ZW9janpmMWtrcA==" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-all flex items-center gap-2">
-                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                    <a href="https://www.instagram.com/hola_mld?utm_source=qr&igsh=MWt5ZW9janpmMWtrcA==" target="_blank" rel="noopener noreferrer" title="Visitar Instagram de MLD" aria-label="Visitar Instagram de MLD" class="hover:text-primary transition-all flex items-center gap-2">
+                        <i data-lucide="instagram" class="w-5 h-5" aria-hidden="true"></i>
                         <span class="text-sm">@hola_mld</span>
                     </a>
-                    <a href="https://www.facebook.com/share/1CMUPWz9Zi/" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-all flex items-center gap-2">
-                        <i data-lucide="facebook" class="w-5 h-5"></i>
+                    <a href="https://www.facebook.com/share/1CMUPWz9Zi/" target="_blank" rel="noopener noreferrer" title="Visitar Facebook de MLD" aria-label="Visitar Facebook de MLD" class="hover:text-primary transition-all flex items-center gap-2">
+                        <i data-lucide="facebook" class="w-5 h-5" aria-hidden="true"></i>
                         <span class="text-sm">MLD Marketing</span>
                     </a>
-                    <a href="https://www.tiktok.com/@mldmarketing" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-all flex items-center gap-2">
-                        <i data-lucide="music-2" class="w-5 h-5"></i>
+                    <a href="https://www.tiktok.com/@mldmarketing" target="_blank" rel="noopener noreferrer" title="Visitar TikTok de MLD" aria-label="Visitar TikTok de MLD" class="hover:text-primary transition-all flex items-center gap-2">
+                        <i data-lucide="music-2" class="w-5 h-5" aria-hidden="true"></i>
                         <span class="text-sm">TikTok</span>
                     </a>
                 </div>
             </div>
             <div class="flex flex-col items-center md:items-end gap-4">
                 <div class="flex gap-6 text-xs text-gray-600">
-                    <a href="#" class="hover:text-primary transition">Privacidad</a>
-                    <a href="#" class="hover:text-primary transition">Términos</a>
-                    <a href="#" class="hover:text-primary transition">Sitemap</a>
+                    <a href="#inicio" title="Ver política de privacidad" aria-label="Ver política de privacidad" class="hover:text-primary transition">Privacidad</a>
+                    <a href="#inicio" title="Ver términos y condiciones" aria-label="Ver términos y condiciones" class="hover:text-primary transition">Términos</a>
+                    <a href="#inicio" title="Ver mapa del sitio" aria-label="Ver mapa del sitio" class="hover:text-primary transition">Sitemap</a>
                 </div>
                 <div class="text-center md:text-right">
                     <p class="text-gray-500 text-sm font-medium">© 2024 MLD. Marca La Diferencia.</p>
@@ -798,9 +807,12 @@
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="backToTop" class="fixed bottom-8 right-8 z-[60] w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center shadow-2xl opacity-0 translate-y-10 pointer-events-none transition-all duration-500 hover:scale-110">
+    <button id="backToTop" class="fixed bottom-24 right-8 z-[60] w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center shadow-2xl opacity-0 translate-y-10 pointer-events-none transition-all duration-500 hover:scale-110" aria-label="Volver al inicio de la página">
         <i data-lucide="arrow-up"></i>
     </button>
+
+    <link rel="stylesheet" href="./chatbot.css">
+    <script defer src="./chatbot.js"></script>
 
     <script>
         lucide.createIcons();
@@ -836,10 +848,12 @@
             }
         };
 
+        let lastFocusedElement;
         function openCaseModal(projectId) {
             const data = projectData[projectId];
             if (!data) return;
 
+            lastFocusedElement = document.activeElement;
             const modalContent = document.getElementById('modalContent');
             const content = `
                 <div class="h-64 md:h-auto overflow-hidden">
@@ -847,7 +861,7 @@
                 </div>
                 <div class="p-8 md:p-16 overflow-y-auto max-h-[70vh] md:max-h-none">
                     <span class="text-primary font-bold uppercase tracking-widest text-sm mb-4 block">${data.category}</span>
-                    <h2 class="text-4xl md:text-6xl font-heading font-extrabold mb-10 text-white">${data.title}</h2>
+                    <h2 id="modalTitle" class="text-4xl md:text-6xl font-heading font-extrabold mb-10 text-white">${data.title}</h2>
 
                     <div class="grid gap-10">
                         <div>
@@ -878,12 +892,16 @@
             const modal = document.getElementById('caseModal');
             modalContent.innerHTML = content;
             modal.classList.remove('hidden');
+            modal.classList.add('flex');
             modal.setAttribute('aria-modal', 'true');
             modal.setAttribute('role', 'dialog');
+            modal.setAttribute('aria-labelledby', 'modalTitle');
             document.body.style.overflow = 'hidden';
 
             // Focus management
-            modal.focus();
+            setTimeout(() => {
+                modal.focus();
+            }, 100);
 
             lucide.createIcons({
                 root: modalContent
@@ -893,9 +911,15 @@
         function closeCaseModal() {
             const modal = document.getElementById('caseModal');
             modal.classList.add('hidden');
+            modal.classList.remove('flex');
             modal.removeAttribute('aria-modal');
             modal.removeAttribute('role');
+            modal.removeAttribute('aria-labelledby');
             document.body.style.overflow = 'auto';
+
+            if (lastFocusedElement) {
+                lastFocusedElement.focus();
+            }
         }
 
         // Close on ESC
@@ -980,7 +1004,18 @@
         const menu = document.getElementById('mobile-menu');
 
         btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
+            const isExpanded = menu.classList.toggle('hidden') === false;
+            btn.setAttribute('aria-expanded', isExpanded);
+        });
+
+        // Accessibility for project cards
+        document.querySelectorAll('[role="button"]').forEach(card => {
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    card.click();
+                }
+            });
         });
 
         // Review Form Star Rating
@@ -1046,6 +1081,7 @@
                 observer.observe(section);
             }
         });
+
     </script>
 </body>
 </html>
