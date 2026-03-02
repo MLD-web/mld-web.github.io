@@ -16,8 +16,8 @@
                 <div class="flex items-center gap-3">
                     <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                     <div>
-                        <h3 class="text-white font-bold text-lg leading-none">Asistente MLD</h3>
-                        <p class="text-gray-400 text-[10px] mt-1 uppercase tracking-widest font-bold">Partner Estratégico</p>
+                        <div class="text-white font-bold text-lg leading-none">Asistente MLD</div>
+                        <div class="text-gray-400 text-[10px] mt-1 uppercase tracking-widest font-bold">Partner Estratégico</div>
                     </div>
                 </div>
                 <button id="close-chat" class="text-gray-400 hover:text-white transition p-2" type="button" aria-label="Cerrar">
@@ -26,22 +26,22 @@
             </div>
 
             <!-- Messages -->
-            <div id="chatbot-messages" class="flex-1 overflow-y-auto p-6 space-y-4 min-h-[350px] scrollbar-hide flex flex-col">
+            <div id="chatbot-messages" class="flex-1 overflow-y-auto p-6 space-y-4 min-h-[350px] scrollbar-hide flex flex-col mld-chatbot-messages">
                 <div class="bg-white/5 text-gray-200 p-4 rounded-2xl rounded-tl-none max-w-[90%] text-sm leading-relaxed mb-2 self-start border border-white/5">
                     Hola 👋 Soy el asistente de MLD. ¿Qué necesitas hoy: cotizar un servicio, elegir la mejor opción para tu negocio o mejorar tu presencia web?
                 </div>
             </div>
 
             <!-- Quick Actions -->
-            <div id="chatbot-actions" class="p-4 flex flex-wrap gap-2 border-t border-white/5 bg-black/50">
-                <button class="quick-action bg-white/5 hover:bg-orange-500/20 text-gray-300 hover:text-white px-4 py-2 rounded-full text-xs transition border border-white/10" type="button" data-msg="Quiero cotizar un servicio">Quiero cotizar</button>
-                <button class="quick-action bg-white/5 hover:bg-orange-500/20 text-gray-300 hover:text-white px-4 py-2 rounded-full text-xs transition border border-white/10" type="button" data-msg="¿Qué servicio me conviene?">¿Qué me conviene?</button>
+            <div class="p-4 flex flex-wrap gap-2 border-t border-white/5 bg-black/50 mld-quick">
+                <button class="quick-action bg-white/5 hover:bg-orange-500/20 text-gray-300 hover:text-white px-4 py-2 rounded-full text-xs transition border border-white/10" type="button" data-msg="Quiero cotizar">Quiero cotizar</button>
+                <button class="quick-action bg-white/5 hover:bg-orange-500/20 text-gray-300 hover:text-white px-4 py-2 rounded-full text-xs transition border border-white/10" type="button" data-msg="¿Qué me conviene?">¿Qué me conviene?</button>
                 <a class="quick-action bg-white/5 hover:bg-green-500/20 text-gray-300 hover:text-white px-4 py-2 rounded-full text-xs transition border border-white/10 flex items-center justify-center" href="${WHATSAPP_LINK}" target="_blank" rel="noopener noreferrer">WhatsApp Directo</a>
             </div>
 
             <!-- Input -->
-            <form id="chatbot-form" class="p-4 bg-black border-t border-white/10 flex gap-2">
-                <input type="text" id="chatbot-input" placeholder="Escribe tu duda aquí..." class="flex-1 bg-white/5 border border-white/10 rounded-full px-5 py-3 text-sm text-white focus:outline-none focus:border-[#ff6600] transition" autocomplete="off">
+            <form id="chatbot-form" class="p-4 bg-black border-t border-white/10 flex gap-2 mld-chatbot-form">
+                <input type="text" id="chatbot-input" placeholder="Escribe tu consulta..." class="flex-1 bg-white/5 border border-white/10 rounded-full px-5 py-3 text-sm text-white focus:outline-none focus:border-[#ff6600] transition" autocomplete="off">
                 <button type="submit" class="text-white p-3 rounded-full hover:scale-110 active:scale-95 transition shadow-lg shadow-orange-500/20" style="background-color: ${BRAND_COLOR}">
                     <i data-lucide="send" class="w-5 h-5"></i>
                 </button>
@@ -81,7 +81,11 @@
 
     function escapeHtml(str) {
         return String(str).replace(/[&<>"']/g, (m) => ({
-            "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;"
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#039;"
         }[m]));
     }
 
