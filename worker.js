@@ -37,6 +37,17 @@ export default {
       });
     }
 
+    // Check for API Key early
+    if (!env.OPENAI_API_KEY || env.OPENAI_API_KEY === "undefined") {
+      return new Response(JSON.stringify({
+        error: "config_error",
+        detail: "OPENAI_API_KEY is not configured. Use 'wrangler secret put OPENAI_API_KEY' to set it."
+      }), {
+        status: 500,
+        headers: { "Content-Type": "application/json", ...corsHeaders(origin, isAllowed) }
+      });
+    }
+
     let body;
     try {
       body = await request.json();
@@ -49,7 +60,6 @@ export default {
 
     const messages = Array.isArray(body?.messages) ? body.messages : [];
 
-    // ✅ SYSTEM PROMPT REFINADO CON CONOCIMIENTO REAL DEL SITIO
     const system = {
       role: "system",
       content: `
@@ -95,7 +105,7 @@ REGLAS DE ORO:
 HANDOFF GENERATOR:
 Cuando el usuario esté listo, redacta un mensaje breve: "Aquí tienes tu mensaje para WhatsApp: [Nombre, Empresa, Objetivo, Canal, Urgencia]".
 
-Link oficial de WhatsApp: https://wa.link/mqakvweb
+Link oficial de WhatsApp: https://wa.me/51963198424
 `.trim()
     };
 

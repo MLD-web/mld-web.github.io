@@ -1,6 +1,10 @@
 (function() {
+    // Avoid double injection
+    if (document.getElementById('chatbot-widget')) return;
+
     const WORKER_URL = "https://mld-web-chatbot.cortheygeme003.workers.dev";
-    const WHATSAPP_LINK = "https://wa.link/mqakvweb";
+    const WHATSAPP_NUMBER = "51963198424";
+    const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`;
     const BRAND_COLOR = "#ff6600";
 
     const chatbotHTML = `
@@ -53,7 +57,6 @@
     </div>
     `;
 
-    // Inject HTML
     const container = document.createElement('div');
     container.innerHTML = chatbotHTML;
     document.body.appendChild(container);
@@ -66,17 +69,10 @@
     const input = document.getElementById("chatbot-input");
     const quickBtns = document.querySelectorAll(".quick-action");
 
-    // Protection against null
-    if (!toggleBtn || !panel || !closeBtn || !messagesEl || !form || !input) {
-        console.error("Chatbot: faltan elementos del DOM. Revisa chatbotHTML.");
-        return;
-    }
+    if (!toggleBtn || !panel || !closeBtn || !messagesEl || !form || !input) return;
 
-    // Initial Lucide icons
     if (window.lucide) {
-        window.lucide.createIcons({
-            root: document.getElementById('chatbot-widget')
-        });
+        window.lucide.createIcons({ root: document.getElementById('chatbot-widget') });
     }
 
     let history = [
@@ -85,27 +81,8 @@
 
     function escapeHtml(str) {
         return String(str).replace(/[&<>"']/g, (m) => ({
-            "&": "&amp;",
-            "<": "&lt;",
-            ">": "&gt;",
-            '"': "&quot;",
-            "'": "&#039;"
+            "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;"
         }[m]));
-    }
-
-    function linkify(text) {
-        const urlRegex = /(https?:\/\/[^\s]+)/g;
-        return text.split(urlRegex).map((part, i) => {
-            if (i % 2 === 1) { // It's a URL
-                const escapedUrl = escapeHtml(part);
-                let displayUrl = escapedUrl;
-                if (displayUrl.length > 35) {
-                    displayUrl = displayUrl.substring(0, 32) + "...";
-                }
-                return `<a href="${escapedUrl}" target="_blank" rel="noopener noreferrer" class="mld-link">${displayUrl}</a>`;
-            }
-            return escapeHtml(part);
-        }).join("");
     }
 
     function addMessage(role, text) {
@@ -122,6 +99,24 @@
         messagesEl.scrollTop = messagesEl.scrollHeight;
     }
 
+    function linkify(text) {
+        const urlRegex = /(https?:\/\/[^\s]+)/g;
+        return text.split(urlRegex).map((part, i) => {
+            if (i % 2 === 1) {
+                let url = part;
+                // Force direct WhatsApp link for any WA variant
+                if (url.includes("wa.link") || url.includes("wa.me") || url.includes("whatsapp.com")) {
+                    url = WHATSAPP_LINK;
+                }
+                const escapedUrl = escapeHtml(url);
+                let displayUrl = escapedUrl;
+                if (displayUrl.length > 35) displayUrl = displayUrl.substring(0, 32) + "...";
+                return `<a href="${escapedUrl}" target="_blank" rel="noopener noreferrer" class="mld-link">${displayUrl}</a>`;
+            }
+            return escapeHtml(part);
+        }).join("");
+    }
+
     function addWhatsAppButton(messageText, url) {
         const wrap = document.createElement("div");
         wrap.className = "bg-white/5 text-gray-200 p-4 rounded-2xl rounded-tl-none max-w-[90%] text-sm leading-relaxed mb-4 self-start border border-white/5";
@@ -131,21 +126,19 @@
         p.textContent = messageText;
 
         const a = document.createElement("a");
-        a.href = url;
+        // Always use direct link if it's WhatsApp
+        const finalUrl = (url.includes("wa.link") || url.includes("wa.me") || url.includes("whatsapp.com")) ? WHATSAPP_LINK : url;
+        a.href = finalUrl;
         a.target = "_blank";
         a.rel = "noopener noreferrer";
         a.className = "mld-wa-btn flex items-center justify-center gap-2 group";
-
         a.innerHTML = `<i data-lucide="message-circle" class="w-4 h-4"></i> <span>Abrir WhatsApp</span>`;
 
         wrap.appendChild(p);
         wrap.appendChild(a);
         messagesEl.appendChild(wrap);
 
-        if (window.lucide) {
-            window.lucide.createIcons({ root: wrap });
-        }
-
+        if (window.lucide) window.lucide.createIcons({ root: wrap });
         messagesEl.scrollTop = messagesEl.scrollHeight;
     }
 
@@ -159,7 +152,6 @@
         panel.setAttribute("aria-hidden", "true");
     }
 
-    // Public API
     window.mldChat = { addMessage, addWhatsAppButton, openChat, closeChat };
 
     toggleBtn.addEventListener("click", () => {
@@ -189,7 +181,6 @@
         addMessage("user", text);
         history.push({ role: "user", content: text });
 
-        // Intent detection for immediate WhatsApp
         const specificContactIntent = /link|enlace|numero|número|pasar al whatsapp|dame el whatsapp/i.test(text);
         if (specificContactIntent) {
             setTimeout(() => {
@@ -228,20 +219,17 @@
             }
 
             const reply = data.reply || "¿Me podrías dar un poco más de detalle sobre tu negocio?";
-
-            // Intercept links in AI response to render as buttons
             const waRegex = /https?:\/\/(wa\.link|wa\.me|api\.whatsapp\.com|chat\.whatsapp\.com)[^\s)]+/g;
             const waMatch = reply.match(waRegex);
 
             if (waMatch) {
                 const cleanText = reply.replace(waRegex, "").trim();
-                addWhatsAppButton(cleanText || "Conecta con nosotros directamente:", waMatch[0]);
+                addWhatsAppButton(cleanText || "Conecta con nosotros directamente:", WHATSAPP_LINK);
             } else {
                 addMessage("bot", reply);
             }
 
             history.push({ role: "assistant", content: reply });
-
             if (history.length > 20) history = [history[0], ...history.slice(-19)];
         } catch (err) {
             if (thinkingDiv.parentNode) messagesEl.removeChild(thinkingDiv);
@@ -249,9 +237,16 @@
 
             const errorDiv = document.createElement("div");
             errorDiv.className = "bg-white/5 text-gray-200 p-4 rounded-2xl rounded-tl-none max-w-[90%] text-sm leading-relaxed mb-4 self-start border border-red-500/20";
+
+            // Helpful message for the user if it's an API key error
+            let userFriendlyError = escapeHtml(String(err).slice(0, 150));
+            if (userFriendlyError.includes("API key")) {
+                userFriendlyError = "Error de configuración: La API Key de OpenAI no está configurada correctamente en el Worker.";
+            }
+
             errorDiv.innerHTML = `
                 <p class="mb-1 text-red-400 font-bold">Error de conexión</p>
-                <p class="mb-3 text-xs text-gray-400">${escapeHtml(String(err).slice(0, 150))}</p>
+                <p class="mb-3 text-xs text-gray-400">${userFriendlyError}</p>
                 <div class="flex flex-col gap-2">
                     <button onclick="location.reload()" class="bg-white/10 hover:bg-white/20 py-2 px-4 rounded-xl text-xs transition">Reintentar conexión</button>
                     <a href="${WHATSAPP_LINK}" target="_blank" class="bg-[#25D366] text-black font-bold py-2 px-4 rounded-xl text-xs text-center">Ir a WhatsApp Directo</a>
