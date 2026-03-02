@@ -1,151 +1,126 @@
+// worker.js — Cloudflare Workers AI (Llama 3 8B) + CORS
 export default {
   async fetch(request, env) {
     const origin = request.headers.get("Origin") || "";
+    // Allow MLD domains and local development
     const allowedOrigins = [
-      "https://mld-web.github.io",
       "https://mld.com.pe",
-      "https://www.mld.com.pe",
+      "https://mld-web.github.io",
       "http://localhost:3000",
       "http://127.0.0.1:3000"
     ];
 
-    if (env.ALLOWED_ORIGIN) allowedOrigins.push(env.ALLOWED_ORIGIN);
+    const isAllowedOrigin = allowedOrigins.includes(origin);
+    const corsHeaders = {
+      "Access-Control-Allow-Origin": isAllowedOrigin ? origin : allowedOrigins[0],
+      "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Max-Age": "86400",
+      "Content-Type": "application/json; charset=utf-8",
+    };
 
-    const isAllowed = !origin || allowedOrigins.includes(origin);
-
-    // CORS preflight
+    // Preflight
     if (request.method === "OPTIONS") {
-      return new Response(null, { headers: corsHeaders(origin, isAllowed) });
+      return new Response(null, { status: 204, headers: corsHeaders });
     }
 
-    // Health check
+    // Healthcheck
     if (request.method === "GET") {
-      return new Response("OK", { headers: corsHeaders(origin, isAllowed) });
+      return new Response(JSON.stringify({ ok: true, provider: "cloudflare-ai", model: "llama-3-8b" }), {
+        status: 200,
+        headers: corsHeaders,
+      });
     }
 
     if (request.method !== "POST") {
-      return new Response("Method not allowed", {
+      return new Response(JSON.stringify({ error: "Method not allowed" }), {
         status: 405,
-        headers: corsHeaders(origin, isAllowed),
+        headers: corsHeaders,
       });
     }
 
-    if (!isAllowed) {
-      return new Response("Forbidden origin: " + origin, {
-        status: 403,
-        headers: corsHeaders(origin, isAllowed),
-      });
-    }
-
-    // Check for API Key early
-    if (!env.OPENAI_API_KEY || env.OPENAI_API_KEY === "undefined") {
-      return new Response(JSON.stringify({
-        error: "config_error",
-        detail: "OPENAI_API_KEY is not configured. Use 'wrangler secret put OPENAI_API_KEY' to set it."
-      }), {
-        status: 500,
-        headers: { "Content-Type": "application/json", ...corsHeaders(origin, isAllowed) }
-      });
-    }
-
+    // Parse body
     let body;
     try {
       body = await request.json();
     } catch {
-      return new Response(JSON.stringify({ error: "invalid_json" }), {
+      return new Response(JSON.stringify({ error: "Invalid JSON body" }), {
         status: 400,
-        headers: { "Content-Type": "application/json", ...corsHeaders(origin, isAllowed) },
+        headers: corsHeaders,
       });
     }
 
     const messages = Array.isArray(body?.messages) ? body.messages : [];
+    const userText = (body?.message || "").toString();
 
-    const system = {
-      role: "system",
-      content: `
-Eres el asistente de MLD (Marca La Diferencia), agencia de marketing y publicidad enfocada en crecimiento estratégico y performance.
+    // Acepta tanto {messages:[...]} como {message:"..."}
+    const chatMessages = messages.length
+      ? messages
+      : userText
+        ? [{ role: "user", content: userText }]
+        : [];
 
-Tu objetivo es: (1) responder dudas con info real del sitio, (2) calificar al prospecto, (3) dirigir a “Diagnóstico” o “WhatsApp” cuando haya intención real.
-
-Tono: claro, premium, directo, consultivo. Español neutral.
-
-FILOSOFÍA MLD:
-1. Estrategia antes que táctica: Nada se ejecuta sin una hipótesis clara y objetivo medible.
-2. Datos + criterio humano: Usamos métricas e IA filtradas por pensamiento estratégico.
-3. Crecimiento sostenible: Priorizamos sistemas que escalan a largo plazo.
-
-SERVICIOS DETALLADOS:
-- Estrategia de marketing y crecimiento: Diagnóstico, posicionamiento, funnels y sistemas de adquisición.
-- Performance y adquisición: Paid Media, CRO y escalamiento rentable de campañas.
-- Branding y comunicación estratégica: Identidad, mensajes alineados a venta y creatividad orientada a performance.
-- Diseño y desarrollo web: Sitios estratégicos y landing pages.
-- Administración web: Gestión continua, mantenimiento y actualizaciones.
-- Optimización web y SEO: SEO técnico, velocidad y estructura de contenidos.
-- Automatización, CRM e IA integrada: Implementación de CRM, automatizaciones de marketing y dashboards.
-- Desarrollo Web y App: Aplicaciones escalables.
-- Seguridad web: Monitoreo, backups y protección.
-
-PROCESO DE TRABAJO:
-1. Diagnóstico: Entendemos el negocio, activos, mercado y competencia.
-2. Diseño estratégico: Definimos el sistema completo antes de ejecutar.
-3. Implementación: Lanzamiento con foco en velocidad y control.
-4. Medición: Seguimiento de ROI, CAC, LTV.
-5. Optimización: Iteración basada en evidencia real.
-
-CASOS DE IMPACTO (PORTAFOLIO):
-- Elite Residences (Luxury Rebranding): Incremento del 200% en leads internacionales para inmobiliaria de ultra-lujo.
-- NeoBank Global (Performance & Acquisition): Reducción del 45% en CAC y 5x ROI mediante optimización de embudo e IA.
-- Aura Modas (Social Media • Fashion): Aumento del 120% en facturación semestral para marca de moda sostenible.
-
-REGLAS DE ORO:
-- No inventes datos no mencionados. Si no sabes, ofrece el diagnóstico.
-- Si preguntan “qué me conviene”, haz 3–5 preguntas: ¿Qué vendes?, ¿Cuál es tu objetivo (ventas/leads)?, ¿Ya inviertes en Ads?, ¿Cuál es tu presupuesto aprox?
-- Para cotizar, pide: Nombre, Empresa, Web, Objetivo, Presupuesto y Urgencia. Luego guía a WhatsApp.
-
-HANDOFF GENERATOR:
-Cuando el usuario esté listo, redacta un mensaje breve: "Aquí tienes tu mensaje para WhatsApp: [Nombre, Empresa, Objetivo, Canal, Urgencia]".
-
-Link oficial de WhatsApp: https://wa.me/51963198424
-`.trim()
-    };
-
-    const payload = {
-      model: "gpt-4o-mini",
-      messages: [system, ...messages],
-      temperature: 0.4
-    };
-
-    const apiRes = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${env.OPENAI_API_KEY}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(payload)
-    });
-
-    if (!apiRes.ok) {
-      const detail = await apiRes.text();
-      return new Response(JSON.stringify({ error: "upstream_error", detail }), {
-        status: 502,
-        headers: { "Content-Type": "application/json", ...corsHeaders(origin, isAllowed) }
+    if (!chatMessages.length) {
+      return new Response(JSON.stringify({ error: "Missing messages/message" }), {
+        status: 400,
+        headers: corsHeaders,
       });
     }
 
-    const json = await apiRes.json();
-    const reply = json?.choices?.[0]?.message?.content?.trim() || "¿Me das un poco más de detalle?";
+    // System prompt (MLD Strategic Edition)
+    const system = {
+      role: "system",
+      content:
+        "Eres el Asistente de MLD (Marca La Diferencia), agencia de marketing y publicidad enfocada en crecimiento estratégico y performance. " +
+        "TONO: Claro, premium, directo, consultivo. Español neutral. " +
+        "OBJETIVOS: 1) Responder dudas, 2) Calificar al prospecto, 3) Dirigir a 'Diagnóstico' o 'WhatsApp' cuando haya intención real o falte información. " +
+        "SERVICIOS: Estrategia, Performance/Ads, Branding, Desarrollo Web/App, SEO, Automatización/IA, Seguridad. " +
+        "REGLAS: " +
+        "- No inventes precios ni resultados si no están confirmados. " +
+        "- Si preguntan 'qué me conviene', haz 3-5 preguntas de diagnóstico antes de recomendar. " +
+        "- Si el usuario está listo para cotizar o pide contacto, ofrece WhatsApp (https://wa.link/mqakvweb) y pide: Nombre, Empresa, Web, Objetivo, Presupuesto, Urgencia. " +
+        "- Si detectas intención alta de contacto, genera un mensaje breve para que el usuario lo copie al WhatsApp con sus datos (HANDOFF). " +
+        "PROCESO: Diagnóstico -> Diseño estratégico -> Implementación -> Medición -> Optimización.",
+    };
 
-    return new Response(JSON.stringify({ reply }), {
-      headers: { "Content-Type": "application/json", ...corsHeaders(origin, isAllowed) }
-    });
-  }
+    // Cloudflare AI espera messages estilo chat
+    const aiInput = {
+      messages: [system, ...chatMessages].map((m) => ({
+        role: m.role === "assistant" ? "assistant" : m.role === "system" ? "system" : "user",
+        content: String(m.content ?? ""),
+      })),
+      max_tokens: 600,
+      temperature: 0.6,
+    };
+
+    try {
+      // ✅ Llama 3 8B Instruct en Workers AI
+      const result = await env.AI.run("@cf/meta/llama-3-8b-instruct", aiInput);
+
+      const reply =
+        (typeof result?.response === "string" && result.response.trim()) ||
+        (typeof result?.output_text === "string" && result.output_text.trim()) ||
+        "";
+
+      if (!reply) {
+        return new Response(JSON.stringify({ error: "Empty model response", raw: result }), {
+          status: 502,
+          headers: corsHeaders,
+        });
+      }
+
+      return new Response(JSON.stringify({ reply }), {
+        status: 200,
+        headers: corsHeaders,
+      });
+    } catch (err) {
+      return new Response(
+        JSON.stringify({
+          error: "Workers AI error",
+          message: err?.message || String(err),
+        }),
+        { status: 502, headers: corsHeaders }
+      );
+    }
+  },
 };
-
-function corsHeaders(origin, isAllowed) {
-  return {
-    "Access-Control-Allow-Origin": isAllowed ? origin : "https://mld.com.pe",
-    "Access-Control-Allow-Methods": "POST, OPTIONS, GET",
-    "Access-Control-Allow-Headers": "Content-Type",
-    "Access-Control-Max-Age": "86400"
-  };
-}
